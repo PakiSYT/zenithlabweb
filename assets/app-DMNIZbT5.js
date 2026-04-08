@@ -89,7 +89,7 @@
 <ul>
 <li><a href="contact.html">Rozpocznij projekt</a></li>
 <li><a href="mailto:kontakt@zenithlab.pl">kontakt@zenithlab.pl</a></li>
-<li><a href="tel:+48530177581">+48 530 177 581</a></li>
+<li><a href="tel:+123456789">+48 123 456 789</a></li>
 <li><a href="#">LinkedIn</a></li>
 <li><a href="#">Polityka prywatności</a></li>
 </ul>
