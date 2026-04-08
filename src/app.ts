@@ -23,12 +23,24 @@ import { FORM_SUCCESS_MSG, PAGE_TITLES, type ZenithPageId } from './site-meta';
 const STATIC_IMAGE_URLS: Record<string, string> = (() => {
   const imports = import.meta.glob('../img/**/*.{jpg,jpeg,png,svg}', { eager: true, as: 'url' });
   return Object.fromEntries(
-    Object.entries(imports).map(([file, url]) => [file.replace(/\\\\/g, '/').replace(/^\.\.\//, ''), url as string])
+    Object.entries(imports).flatMap(([file, url]) => {
+      const normalized = file.replace(/\\/g, '/').replace(/^(\.\.\/)+/, '');
+      const entries: Array<[string, string]> = [[normalized, url as string]];
+      if (normalized.startsWith('img/')) {
+        entries.push([`../${normalized}`, url as string]);
+      }
+      return entries;
+    })
   );
 })();
 
 function resolveStaticImageUrl(src: string): string {
-  return STATIC_IMAGE_URLS[src] ?? src;
+  return (
+    STATIC_IMAGE_URLS[src] ??
+    STATIC_IMAGE_URLS[`../${src}`] ??
+    STATIC_IMAGE_URLS[src.replace(/^\.\/?/, '')] ??
+    src
+  );
 }
 
 function resolveStaticUrlsInHtml(html: string): string {
