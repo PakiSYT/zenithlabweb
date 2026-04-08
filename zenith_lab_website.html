@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zenith Lab — Premiumowa agencja cyfrowa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#080808;--bg2:#0e0e0e;--bg3:#141414;--bg4:#1a1a1a;
+--border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+--text:#f0ede8;--text2:rgba(240,237,232,0.55);--text3:rgba(240,237,232,0.28);
+--accent:#c8ff57;--accent2:#a8e040;--accent-dim:rgba(200,255,87,0.12);
+--accent-glow:rgba(200,255,87,0.08);
+--red:#ff4d4d;--blue:#4d9fff;
+--r:16px;--r2:12px;--r3:8px;
+--font-head:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;--font-mono:'JetBrains Mono',monospace;
+--nav-h:72px;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+input,textarea,select{font-family:inherit}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;padding:0 40px;border-bottom:1px solid transparent;transition:all 0.4s ease;background:transparent}
+#nav.scrolled{background:rgba(8,8,8,0.92);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-color:var(--border)}
+.nav-inner{width:100%;max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-head);font-size:22px;font-weight:800;letter-spacing:-0.04em;display:flex;align-items:center;gap:8px}
+.nav-logo-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:14px;font-weight:500;color:var(--text2);transition:color 0.2s;letter-spacing:0.01em}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-item-dropdown{position:relative;align-self:stretch;display:flex;align-items:center}
+.nav-item-dropdown::after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:20px;pointer-events:auto}
+.nav-dropdown-trigger{display:inline-flex;align-items:center;gap:6px}
+.nav-dropdown-trigger::after{content:'▾';font-size:9px;opacity:0.55;transition:transform 0.2s}
+.nav-item-dropdown:hover .nav-dropdown-trigger::after{transform:rotate(-180deg);opacity:0.9}
+.nav-dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);padding-top:10px;margin-top:0;min-width:220px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.2s ease,visibility 0.2s ease;z-index:1001}
+.nav-item-dropdown:hover .nav-dropdown-menu,.nav-item-dropdown:focus-within .nav-dropdown-menu{opacity:1;visibility:visible;pointer-events:auto}
+.nav-dropdown-inner{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:6px 0;box-shadow:0 24px 60px rgba(0,0,0,0.55)}
+.nav-dropdown-menu a{display:block;padding:10px 18px;font-size:13px;font-weight:500;color:var(--text2);white-space:nowrap;transition:background 0.15s,color 0.15s}
+.nav-dropdown-menu a:hover{background:var(--bg3);color:var(--accent)}
+.nav-dropdown-menu a.active{color:var(--accent)}
+.nav-item-dropdown:has(.nav-dropdown-menu a.active) .nav-dropdown-trigger{color:var(--text)}
+.nav-cta{display:flex;align-items:center;gap:16px}
+.btn-ghost{font-size:14px;font-weight:500;color:var(--text2);transition:color 0.2s}
+.btn-ghost:hover{color:var(--text)}
+.btn-primary{font-size:13px;font-weight:600;font-family:var(--font-head);letter-spacing:0.04em;text-transform:uppercase;padding:10px 20px;background:var(--accent);color:#080808;border-radius:var(--r3);transition:all 0.2s;white-space:nowrap}
+.btn-primary:hover{background:var(--accent2);transform:translateY(-1px)}
+.btn-primary:active{transform:translateY(0)}
+.nav-menu-btn{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.nav-menu-btn span{width:24px;height:1.5px;background:var(--text);display:block;transition:all 0.3s}
+.nav-lang{display:flex;align-items:center;gap:2px;margin-right:8px}
+.nav-lang-btn{font-size:12px;font-weight:700;letter-spacing:0.06em;color:var(--text3);padding:6px 10px;border-radius:var(--r3);transition:color 0.2s,background 0.2s;text-transform:uppercase}
+.nav-lang-btn:hover{color:var(--text)}
+.nav-lang-btn.active{color:var(--accent);background:var(--accent-dim)}
+.nav-lang-sep{color:var(--text3);font-size:11px;user-select:none;opacity:0.5}
+
+/* PAGES */
+.page{display:none;min-height:100vh;padding-top:var(--nav-h)}
+.page.active{display:block}
+
+#loader{
+  position:fixed;inset:0;z-index:9999;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;
+  transition:opacity 0.6s ease,visibility 0.6s ease;
+}
+#loader.hide{opacity:0;visibility:hidden;pointer-events:none;}
+.loader-logo{font-family:var(--font-head);font-size:28px;font-weight:800;letter-spacing:-0.04em;color:var(--text);}
+.loader-logo span{color:var(--accent);}
+.loader-bar{width:200px;height:2px;background:var(--border);border-radius:1px;overflow:hidden;}
+.loader-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:1px;width:0;animation:loaderFill 1.6s cubic-bezier(.4,0,.2,1) forwards;}
+@keyframes loaderFill{to{width:100%;}}
+.loader-label{font-family:var(--font-body);font-size:12px;font-weight:500;color:var(--text2);letter-spacing:0.08em;text-transform:uppercase;}
+
+
+/* HERO */
+.hero{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;padding:80px 40px}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
+.hero-glow{position:absolute;top:-200px;right:-100px;width:700px;height:700px;background:radial-gradient(circle,rgba(200,255,87,0.06) 0%,transparent 70%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-100px;left:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(77,159,255,0.05) 0%,transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:1400px;margin:0 auto;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border2);border-radius:100px;padding:6px 16px;font-size:12px;font-weight:500;color:var(--text2);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:40px;background:rgba(255,255,255,0.03)}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero-h1{font-family:var(--font-head);font-size:clamp(52px,8vw,120px);font-weight:800;line-height:0.9;letter-spacing:-0.04em;margin-bottom:40px}
+.hero-h1 .line{display:block;overflow:hidden}
+.hero-h1 .accent-word{color:var(--accent)}
+.hero-h1 .outline-word{-webkit-text-stroke:1px rgba(240,237,232,0.3);color:transparent}
+.hero-sub-row{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.hero-subtext{font-size:17px;color:var(--text2);max-width:480px;line-height:1.7;font-weight:300}
+.hero-actions{display:flex;align-items:center;gap:20px;flex-shrink:0}
+.btn-xl{font-family:var(--font-head);font-size:15px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:16px 36px;background:var(--accent);color:#080808;border-radius:var(--r2);transition:all 0.25s;display:inline-flex;align-items:center;gap:10px}
+.btn-xl:hover{transform:translateY(-2px);box-shadow:0 20px 60px rgba(200,255,87,0.3)}
+.btn-xl-arrow{font-size:18px;transition:transform 0.2s}
+.btn-xl:hover .btn-xl-arrow{transform:translateX(4px)}
+.btn-outline-xl{font-family:var(--font-head);font-size:15px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:16px 36px;border:1px solid var(--border2);color:var(--text);border-radius:var(--r2);transition:all 0.25s;display:inline-flex;align-items:center;gap:10px}
+.btn-outline-xl:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04)}
+.hero-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;margin-top:80px}
+.hero-metric{background:var(--bg2);padding:28px 32px}
+.hero-metric-num{font-family:var(--font-head);font-size:40px;font-weight:800;letter-spacing:-0.04em;margin-bottom:4px}
+.hero-metric-num span{color:var(--accent)}
+.hero-metric-label{font-size:13px;color:var(--text2);letter-spacing:0.04em;text-transform:uppercase;font-weight:500}
+
+/* MARQUEE */
+.marquee-wrap{padding:32px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden;background:var(--bg2)}
+.marquee-track{display:flex;gap:60px;animation:marquee 28s linear infinite;width:max-content}
+.marquee-wrap:hover .marquee-track{animation-play-state:paused}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{font-family:var(--font-head);font-size:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);display:flex;align-items:center;gap:20px;white-space:nowrap}
+.marquee-item .dot{color:var(--accent);font-size:20px}
+
+/* SECTION BASE */
+.section{padding:120px 40px;max-width:1400px;margin:0 auto}
+.section-sm{padding:80px 40px;max-width:1400px;margin:0 auto}
+.section-full{padding:120px 40px}
+.section-label{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.section-label::before{content:'';width:32px;height:1px;background:var(--accent)}
+.section-h2{font-family:var(--font-head);font-size:clamp(36px,5vw,72px);font-weight:800;letter-spacing:-0.04em;line-height:0.95;margin-bottom:24px}
+.section-sub{font-size:17px;color:var(--text2);max-width:560px;line-height:1.7;font-weight:300;margin-bottom:60px}
+
+/* SERVICES PREVIEW */
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r)}
+.service-card{background:var(--bg2);padding:48px;transition:background 0.3s;cursor:pointer;position:relative;overflow:hidden}
+.service-card::after{content:'';position:absolute;inset:0;background:var(--accent-glow);opacity:0;transition:opacity 0.3s}
+.service-card:hover{background:var(--bg3)}
+.service-card:hover::after{opacity:1}
+.service-card:hover .service-num{color:var(--accent)}
+.service-num{font-family:var(--font-mono);font-size:11px;color:var(--text3);margin-bottom:28px;transition:color 0.3s}
+.service-icon{width:48px;height:48px;border:1px solid var(--border2);border-radius:var(--r2);display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-size:22px}
+.service-title{font-family:var(--font-head);font-size:24px;font-weight:700;letter-spacing:-0.02em;margin-bottom:16px}
+.service-desc{font-size:15px;color:var(--text2);line-height:1.7;font-weight:300;margin-bottom:32px}
+.service-tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;border:1px solid var(--border2);border-radius:100px;padding:4px 12px;color:var(--text2)}
+
+/* PROCESS */
+.process-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.process-inner{max-width:1400px;margin:0 auto;padding:120px 40px}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:60px}
+.process-step{background:var(--bg2);padding:40px 36px;position:relative}
+.process-step:not(:last-child)::after{content:'→';position:absolute;top:40px;right:-1px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:16px;z-index:1;background:var(--bg2)}
+.step-num{font-family:var(--font-mono);font-size:11px;color:var(--accent);margin-bottom:20px;letter-spacing:0.1em}
+.step-title{font-family:var(--font-head);font-size:20px;font-weight:700;letter-spacing:-0.02em;margin-bottom:12px}
+.step-desc{font-size:14px;color:var(--text2);line-height:1.7}
+
+/* CASE STUDIES */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.work-card{background:var(--bg2);cursor:pointer;transition:background 0.3s;position:relative;overflow:hidden}
+.work-card:hover{background:var(--bg3)}
+.work-card-img{height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.work-card-inner{padding:36px}
+.work-tag{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-family:var(--font-mono)}
+.work-title{font-family:var(--font-head);font-size:26px;font-weight:800;letter-spacing:-0.03em;margin-bottom:12px}
+.work-desc{font-size:14px;color:var(--text2);line-height:1.7;margin-bottom:20px}
+.work-arrow{font-size:24px;color:var(--accent);transition:transform 0.2s}
+.work-card:hover .work-arrow{transform:translate(4px,-4px)}
+
+/* CTA BANNER */
+.cta-banner{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:80px;text-align:center;position:relative;overflow:hidden;margin:0 40px}
+.cta-banner::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:80px;background:linear-gradient(to bottom,transparent,var(--accent),transparent)}
+.cta-h2{font-family:var(--font-head);font-size:clamp(36px,5vw,72px);font-weight:800;letter-spacing:-0.04em;line-height:1;margin-bottom:24px}
+.cta-sub{font-size:17px;color:var(--text2);font-weight:300;margin-bottom:48px}
+.cta-actions{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:36px;transition:border-color 0.3s}
+.testi-card:hover{border-color:var(--border2)}
+.testi-quote{font-size:15px;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:28px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:40px;height:40px;border-radius:50%;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:14px;font-weight:700;background:var(--accent-dim);color:var(--accent)}
+.testi-name{font-weight:600;font-size:14px;margin-bottom:2px}
+.testi-role{font-size:12px;color:var(--text3);letter-spacing:0.04em}
+
+/* ABOUT PAGE */
+.about-hero{padding:80px 40px 60px;max-width:1400px;margin:0 auto}
+.about-story{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;padding:80px 40px;max-width:1400px;margin:0 auto;border-top:1px solid var(--border)}
+.story-text p{font-size:17px;color:var(--text2);line-height:1.9;font-weight:300;margin-bottom:24px}
+.story-text p:last-child{margin-bottom:0}
+.story-aside{position:sticky;top:100px}
+.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.value-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:28px}
+.value-icon{font-size:24px;margin-bottom:16px}
+.value-title{font-family:var(--font-head);font-size:16px;font-weight:700;margin-bottom:8px}
+.value-desc{font-size:13px;color:var(--text2);line-height:1.7}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:0 40px 120px;max-width:1400px;margin:0 auto}
+.team-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:36px;text-align:center;transition:border-color 0.3s}
+.team-card:hover{border-color:var(--border2)}
+.team-avatar{width:80px;height:80px;border-radius:50%;background:var(--accent-dim);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:24px;font-weight:800;color:var(--accent);margin:0 auto 20px}
+.team-name{font-family:var(--font-head);font-size:18px;font-weight:700;margin-bottom:4px}
+.team-role{font-size:13px;color:var(--accent);margin-bottom:12px;font-weight:500;letter-spacing:0.06em}
+.team-bio{font-size:13px;color:var(--text2);line-height:1.7}
+
+/* SERVICES PAGE */
+.services-page{max-width:1400px;margin:0 auto;padding:80px 40px 120px}
+.service-full{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:80px 0;border-top:1px solid var(--border)}
+.service-full:first-of-type{border-top:none}
+.service-full.reverse{direction:rtl}
+.service-full.reverse>*{direction:ltr}
+.service-visual{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);height:400px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.sv-label{font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;font-family:var(--font-mono)}
+.sv-h3{font-family:var(--font-head);font-size:36px;font-weight:800;letter-spacing:-0.03em;margin-bottom:20px;line-height:1}
+.sv-desc{font-size:16px;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:32px}
+.sv-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+.sv-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--text2)}
+.sv-list li::before{content:'→';color:var(--accent);flex-shrink:0;margin-top:1px}
+
+/* PRICING PAGE */
+.pricing-page{max-width:1400px;margin:0 auto;padding:80px 40px 120px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px}
+.pricing-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:48px;position:relative;transition:all 0.3s}
+.pricing-card.featured{border-color:var(--accent);background:var(--accent-dim)}
+.pricing-card:hover:not(.featured){border-color:var(--border2)}
+.pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:#080808;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 16px;border-radius:100px;font-family:var(--font-head);white-space:nowrap}
+.pricing-name{font-family:var(--font-head);font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2);margin-bottom:16px}
+.pricing-price{font-family:var(--font-head);font-size:52px;font-weight:800;letter-spacing:-0.04em;line-height:1;margin-bottom:8px}
+.pricing-price sup{font-size:24px;vertical-align:top;margin-top:8px}
+.pricing-period{font-size:13px;color:var(--text2);margin-bottom:40px}
+.pricing-divider{height:1px;background:var(--border);margin-bottom:32px}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
+.pricing-features li{display:flex;align-items:center;gap:12px;font-size:15px}
+.feat-check{color:var(--accent);font-size:12px;flex-shrink:0}
+.feat-cross{color:var(--text3);font-size:12px;flex-shrink:0}
+.feat-off{color:var(--text3)}
+.btn-pricing{width:100%;padding:14px;font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border-radius:var(--r2);transition:all 0.2s;display:block;text-align:center}
+.btn-pricing-accent{background:var(--accent);color:#080808}
+.btn-pricing-accent:hover{background:var(--accent2);transform:translateY(-1px)}
+.btn-pricing-ghost{border:1px solid var(--border2);color:var(--text)}
+.btn-pricing-ghost:hover{background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.2)}
+.pricing-custom{margin-top:20px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:48px;text-align:center}
+
+/* CONTACT PAGE */
+.contact-page{max-width:1400px;margin:0 auto;padding:80px 40px 120px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.contact-info h2{font-family:var(--font-head);font-size:clamp(32px,4vw,56px);font-weight:800;letter-spacing:-0.04em;margin-bottom:20px;line-height:1}
+.contact-info p{font-size:16px;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:48px}
+.contact-details{display:flex;flex-direction:column;gap:24px}
+.contact-detail{display:flex;align-items:flex-start;gap:20px;padding:24px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2)}
+.cd-icon{width:40px;height:40px;border-radius:var(--r3);background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cd-label{font-size:12px;color:var(--text3);margin-bottom:4px;letter-spacing:0.06em;font-weight:500;text-transform:uppercase}
+.cd-val{font-size:15px;font-weight:500}
+.contact-form{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:48px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{margin-bottom:16px}
+.form-group.full{grid-column:1/-1}
+.form-label{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text2);margin-bottom:8px;display:block}
+.form-input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r2);padding:14px 16px;font-size:15px;color:var(--text);outline:none;transition:all 0.2s}
+.form-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(200,255,87,0.08)}
+.form-input::placeholder{color:var(--text3)}
+textarea.form-input{min-height:160px;resize:vertical}
+select.form-input option{background:var(--bg3)}
+.form-btn{width:100%;padding:16px;background:var(--accent);color:#080808;font-family:var(--font-head);font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border-radius:var(--r2);cursor:pointer;transition:all 0.2s;border:none;display:flex;align-items:center;justify-content:center;gap:10px}
+.form-btn:hover{background:var(--accent2);transform:translateY(-1px)}
+.form-btn:active{transform:translateY(0)}
+
+/* PORTFOLIO PAGE */
+.portfolio-page{max-width:1400px;margin:0 auto;padding:80px 40px 120px}
+.portfolio-filters{display:flex;gap:12px;margin-bottom:48px;flex-wrap:wrap}
+.filter-btn{font-size:13px;font-weight:500;letter-spacing:0.06em;padding:8px 20px;border:1px solid var(--border2);border-radius:100px;color:var(--text2);transition:all 0.2s;cursor:pointer}
+.filter-btn.active,.filter-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.portfolio-item{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;cursor:pointer;transition:all 0.3s}
+.portfolio-item:hover{border-color:var(--border2);transform:translateY(-4px)}
+.portfolio-img{height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.portfolio-details{padding:28px}
+.portfolio-cat{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-family:var(--font-mono)}
+.portfolio-title{font-family:var(--font-head);font-size:20px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
+.portfolio-client{font-size:13px;color:var(--text2)}
+
+/* BLOG PAGE */
+.blog-page{max-width:1400px;margin:0 auto;padding:80px 40px 120px}
+.blog-featured{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:60px}
+.blog-feat-img{height:400px;display:flex;align-items:center;justify-content:center;background:var(--bg2);position:relative;overflow:hidden}
+.blog-feat-content{background:var(--bg2);padding:60px;display:flex;flex-direction:column;justify-content:flex-end}
+.blog-date{font-size:12px;color:var(--text3);letter-spacing:0.08em;margin-bottom:16px;font-family:var(--font-mono)}
+.blog-title{font-family:var(--font-head);font-size:clamp(22px,3vw,36px);font-weight:800;letter-spacing:-0.03em;margin-bottom:16px;line-height:1.1}
+.blog-excerpt{font-size:15px;color:var(--text2);line-height:1.7;font-weight:300;margin-bottom:28px}
+.blog-meta{display:flex;align-items:center;gap:16px}
+.blog-author{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text2)}
+.blog-author-av{width:28px;height:28px;border-radius:50%;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--accent)}
+.read-more{font-size:13px;font-weight:600;color:var(--accent);display:flex;align-items:center;gap:6px;margin-left:auto}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.blog-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);overflow:hidden;cursor:pointer;transition:all 0.3s}
+.blog-card:hover{border-color:var(--border2);transform:translateY(-4px)}
+.blog-card-img{height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:var(--bg3)}
+.blog-card-content{padding:28px}
+.blog-card-cat{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-family:var(--font-mono)}
+.blog-card-title{font-family:var(--font-head);font-size:18px;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;line-height:1.2}
+.blog-card-exc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:20px}
+.blog-card-meta{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--text3)}
+
+/* FOOTER */
+#footer{background:var(--bg2);border-top:1px solid var(--border);padding:80px 40px 40px}
+.footer-inner{max-width:1400px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+.footer-brand p{font-size:14px;color:var(--text2);line-height:1.7;max-width:300px;margin:16px 0 28px}
+.footer-social{display:flex;gap:12px}
+.social-btn{width:36px;height:36px;border:1px solid var(--border2);border-radius:var(--r3);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--text2);transition:all 0.2s}
+.social-btn:hover{border-color:var(--accent);color:var(--accent)}
+.footer-col h4{font-family:var(--font-head);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:20px;color:var(--text2)}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:14px;color:var(--text3);transition:color 0.2s}
+.footer-col ul li a:hover{color:var(--text)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:32px;display:flex;align-items:center;justify-content:space-between}
+.footer-copy{font-size:13px;color:var(--text3)}
+.footer-bottom-links{display:flex;gap:24px}
+.footer-bottom-links a{font-size:13px;color:var(--text3);transition:color 0.2s}
+.footer-bottom-links a:hover{color:var(--text2)}
+
+/* 404 */
+.page-404{min-height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;position:relative;overflow:hidden}
+.e404-num{font-family:var(--font-head);font-size:clamp(120px,20vw,240px);font-weight:800;letter-spacing:-0.06em;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(200,255,87,0.3);position:relative;z-index:1}
+.e404-title{font-family:var(--font-head);font-size:32px;font-weight:800;margin-bottom:16px;position:relative;z-index:1}
+.e404-sub{font-size:16px;color:var(--text2);margin-bottom:40px;position:relative;z-index:1;font-weight:300}
+
+/* FLOATING ELEMENTS IN VISUALS */
+.vis-dots{position:absolute;inset:0;overflow:hidden}
+.vis-dot{position:absolute;border-radius:50%;opacity:0.15}
+.vis-lines{position:absolute;inset:0}
+
+/* DECORATIVE VISUALS FOR WORK CARDS */
+.wv1{background:linear-gradient(135deg,#0a0a0a 0%,#111 50%,#0d1a0d 100%)}
+.wv2{background:linear-gradient(135deg,#0a0a0a 0%,#111 50%,#0d0d1a 100%)}
+.wv3{background:linear-gradient(135deg,#1a0d0d 0%,#0d0d0d 100%)}
+.wv4{background:linear-gradient(135deg,#0d1218 0%,#0a0a0a 100%)}
+.print3d-visual{background:linear-gradient(160deg,#0a0a0a 0%,#121a12 45%,#0a1520 100%)}
+.svc-vis-arch{background:linear-gradient(165deg,#0a0a0a 0%,#151820 50%,#0a1210 100%)}
+.svc-vis-led{background:linear-gradient(165deg,#0a0a12 0%,#121a28 40%,#0b1520 100%)}
+.svc-vis-engr{background:linear-gradient(165deg,#121210 0%,#1a1810 50%,#0a0a0a 100%)}
+.svc-vis-proto{background:linear-gradient(165deg,#0a0a0a 0%,#142018 50%,#0a0a0a 100%)}
+.svc-vis-gad{background:linear-gradient(165deg,#161410 0%,#0a0a0a 50%,#15120a 100%)}
+.nav-dropdown-inner{max-height:min(420px,70vh);overflow-y:auto}
+
+/* ANIMATED GRID LINES IN VISUALS */
+.grid-vis{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(4,1fr);gap:1px;width:100%;height:100%;background:rgba(255,255,255,0.04);position:absolute;inset:0}
+.grid-vis-cell{background:var(--bg2)}
+
+/* STATUS BADGE */
+.status{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);border:1px solid rgba(200,255,87,0.3);border-radius:100px;padding:3px 10px}
+.status-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:pulse 2s ease-in-out infinite}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+.nav-links,.nav-cta .btn-ghost{display:none}
+.nav-menu-btn{display:flex}
+.nav-lang{margin-right:4px}
+.hero-h1{font-size:clamp(40px,10vw,80px)}
+.hero-metrics{grid-template-columns:1fr}
+.services-grid{grid-template-columns:1fr}
+.process-steps{grid-template-columns:1fr 1fr}
+.work-grid{grid-template-columns:1fr}
+.testi-grid{grid-template-columns:1fr}
+.footer-top{grid-template-columns:1fr 1fr}
+.about-story{grid-template-columns:1fr}
+.service-full{grid-template-columns:1fr}
+.pricing-grid{grid-template-columns:1fr}
+.contact-grid{grid-template-columns:1fr}
+.blog-featured{grid-template-columns:1fr}
+.blog-grid{grid-template-columns:1fr 1fr}
+.portfolio-grid{grid-template-columns:1fr 1fr}
+.team-grid{grid-template-columns:1fr 1fr}
+.cta-banner{margin:0;border-radius:0}
+.form-row{grid-template-columns:1fr}
+.footer-top{grid-template-columns:1fr}
+.hero-sub-row{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:600px){
+.section,.section-sm,.section-full{padding-left:20px;padding-right:20px}
+.hero{padding-left:20px;padding-right:20px}
+.blog-grid{grid-template-columns:1fr}
+.portfolio-grid{grid-template-columns:1fr}
+.team-grid{grid-template-columns:1fr}
+.process-steps{grid-template-columns:1fr}
+.values-grid{grid-template-columns:1fr}
+.cta-banner{padding:48px 24px}
+.contact-form{padding:28px 20px}
+#nav{padding:0 20px}
+}
+
+/* Hover reveal arrow */
+.link-arrow{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--accent);transition:gap 0.2s}
+.link-arrow:hover{gap:14px}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+
+/* Mobile nav overlay */
+#mobile-nav{position:fixed;inset:0;z-index:999;background:rgba(8,8,8,0.98);display:none;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+#mobile-nav.open{display:flex}
+#mobile-nav .mobile-lang{position:absolute;top:28px;left:50%;transform:translateX(-50%)}
+#mobile-nav a{font-family:var(--font-head);font-size:36px;font-weight:800;letter-spacing:-0.04em;color:var(--text);transition:color 0.2s}
+#mobile-nav a:hover{color:var(--accent)}
+#mobile-nav a.mobile-nav-sub{font-size:17px;font-weight:600;letter-spacing:0.02em;color:var(--text3);padding-left:8px;margin-top:-12px;margin-bottom:4px}
+#mobile-nav a.mobile-nav-sub:hover{color:var(--accent)}
+.mobile-close{position:absolute;top:28px;right:28px;font-size:28px;color:var(--text2);cursor:pointer}
+
+/* COUNTER ANIMATION */
+@keyframes count-up{from{opacity:0}to{opacity:1}}
+
+/* ANIMATED BORDER */
+.ab{position:relative}
+.ab::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(45deg,var(--accent),transparent,var(--accent));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity 0.3s}
+.ab:hover::before{opacity:1}
+
+/* CURSOR RING */
+#cursor-ring{pointer-events:none;position:fixed;width:20px;height:20px;border:1.5px solid var(--accent);border-radius:50%;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,width 0.3s,height 0.3s,opacity 0.3s;opacity:0;mix-blend-mode:difference}
+
+</style>
+</head>
+<body>
+
+<div id="cursor-ring"></div>
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">Zenith<span>Lab</span></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div class="loader-label" data-i18n="loader_label">Trwa ładowanie strony...</div>
+</div>
+<!-- MOBILE NAV -->
+<div id="mobile-nav">
+<span class="mobile-close" onclick="closeMobileNav()">✕</span>
+<div class="nav-lang mobile-lang" role="group" aria-label="Język">
+<button type="button" class="nav-lang-btn active" data-lang="pl" onclick="setLang('pl');closeMobileNav()">PL</button>
+<span class="nav-lang-sep" aria-hidden="true">/</span>
+<button type="button" class="nav-lang-btn" data-lang="en" onclick="setLang('en');closeMobileNav()">EN</button>
+</div>
+<a href="#" onclick="showPage('home');closeMobileNav()" data-i18n="nav_home">Strona główna</a>
+<a href="#" onclick="showPage('about');closeMobileNav()" data-i18n="nav_about">O nas</a>
+<a href="#" onclick="showPage('services');closeMobileNav()" data-i18n="nav_services">Usługi</a>
+<a href="#" class="mobile-nav-sub" onclick="showPage('print3d');closeMobileNav()" data-i18n="nav_print3d">Druk 3D</a>
+<a href="#" class="mobile-nav-sub" onclick="showPage('archmodels');closeMobileNav()" data-i18n="nav_archmodels">Makiety architektoniczne</a>
+<a href="#" class="mobile-nav-sub" onclick="showPage('led');closeMobileNav()" data-i18n="nav_led">Kasetony LED</a>
+<a href="#" class="mobile-nav-sub" onclick="showPage('engraving');closeMobileNav()" data-i18n="nav_engraving">Grawerowanie</a>
+<a href="#" class="mobile-nav-sub" onclick="showPage('prototypes');closeMobileNav()" data-i18n="nav_prototypes">Prototypy produktów</a>
+<a href="#" class="mobile-nav-sub" onclick="showPage('gadgets');closeMobileNav()" data-i18n="nav_gadgets">Gadżety reklamowe</a>
+<a href="#" onclick="showPage('portfolio');closeMobileNav()" data-i18n="nav_portfolio">Realizacje</a>
+<a href="#" onclick="showPage('pricing');closeMobileNav()" data-i18n="nav_pricing">Cennik</a>
+<a href="#" onclick="showPage('blog');closeMobileNav()" data-i18n="nav_blog">Blog</a>
+<a href="#" onclick="showPage('contact');closeMobileNav()" data-i18n="nav_contact">Kontakt</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+<div class="nav-inner">
+<div class="nav-logo" onclick="showPage('home')" style="cursor:pointer">
+<span class="nav-logo-dot"></span>Zenith Lab
+</div>
+<div class="nav-links">
+<a href="#" onclick="showPage('home');return false" class="active" id="nav-home" data-i18n="nav_home">Strona główna</a>
+<a href="#" onclick="showPage('about');return false" id="nav-about" data-i18n="nav_about">O nas</a>
+<div class="nav-item-dropdown">
+<a href="#" onclick="showPage('services');return false" class="nav-dropdown-trigger" id="nav-services" data-i18n="nav_services">Usługi</a>
+<div class="nav-dropdown-menu" role="menu">
+<div class="nav-dropdown-inner">
+<a href="#" role="menuitem" onclick="showPage('print3d');return false" id="nav-print3d" data-i18n="nav_print3d">Druk 3D</a>
+<a href="#" role="menuitem" onclick="showPage('archmodels');return false" id="nav-archmodels" data-i18n="nav_archmodels">Makiety architektoniczne</a>
+<a href="#" role="menuitem" onclick="showPage('led');return false" id="nav-led" data-i18n="nav_led">Kasetony LED</a>
+<a href="#" role="menuitem" onclick="showPage('engraving');return false" id="nav-engraving" data-i18n="nav_engraving">Grawerowanie</a>
+<a href="#" role="menuitem" onclick="showPage('prototypes');return false" id="nav-prototypes" data-i18n="nav_prototypes">Prototypy produktów</a>
+<a href="#" role="menuitem" onclick="showPage('gadgets');return false" id="nav-gadgets" data-i18n="nav_gadgets">Gadżety reklamowe</a>
+</div>
+</div>
+</div>
+<a href="#" onclick="showPage('portfolio');return false" id="nav-portfolio" data-i18n="nav_portfolio">Realizacje</a>
+<a href="#" onclick="showPage('pricing');return false" id="nav-pricing" data-i18n="nav_pricing">Cennik</a>
+<a href="#" onclick="showPage('blog');return false" id="nav-blog" data-i18n="nav_blog">Blog</a>
+</div>
+<div class="nav-lang" role="group" aria-label="Język">
+<button type="button" class="nav-lang-btn active" data-lang="pl" onclick="setLang('pl')">PL</button>
+<span class="nav-lang-sep" aria-hidden="true">/</span>
+<button type="button" class="nav-lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+</div>
+<div class="nav-cta">
+<a class="btn-ghost" href="#" onclick="showPage('contact');return false" data-i18n="nav_talk">Porozmawiajmy</a>
+<a class="btn-primary" href="#" onclick="showPage('contact');return false" data-i18n="nav_project">Rozpocznij projekt</a>
+</div>
+<div class="nav-menu-btn" onclick="document.getElementById('mobile-nav').classList.add('open')" style="cursor:pointer">
+<span></span><span></span><span></span>
+</div>
+</div>
+</nav>
+
+<!-- ============ HOME PAGE ============ -->
+<div class="page active" id="page-home">
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-grid-bg"></div>
+<div class="hero-glow"></div>
+<div class="hero-glow2"></div>
+<div class="hero-inner">
+<div class="hero-badge reveal">
+<span class="hero-badge-dot"></span>
+<span data-i18n="hero_badge">Przyjmujemy nowe projekty — III kw. 2025</span>
+</div>
+<h1 class="hero-h1">
+<span class="line reveal reveal-delay-1" data-i18n-html="hero_h1_line1">Tworzymy<br><span class="outline-word">produkty</span></span>
+<span class="line reveal reveal-delay-2" data-i18n-html="hero_h1_line2"><span class="accent-word">które</span></span>
+<span class="line reveal reveal-delay-3" data-i18n="hero_h1_line3">się sprzedają.</span>
+</h1>
+<div class="hero-sub-row">
+<p class="hero-subtext reveal reveal-delay-4" data-i18n="hero_sub">Zenith Lab tworzy premiumowe strony, systemy UI i produkty cyfrowe, dzięki którym ambitne marki nie da się przeoczyć.</p>
+<div class="hero-actions reveal reveal-delay-4">
+<a class="btn-xl" href="#" onclick="showPage('portfolio');return false"><span data-i18n="hero_btn_work">Zobacz realizacje</span> <span class="btn-xl-arrow">→</span></a>
+<a class="btn-outline-xl" href="#" onclick="showPage('contact');return false" data-i18n="hero_btn_talk">Porozmawiajmy</a>
+</div>
+</div>
+<div class="hero-metrics reveal">
+<div class="hero-metric"><div class="hero-metric-num"><span id="c1">0</span>+</div><div class="hero-metric-label" data-i18n="hero_metric1">Projektów wdrożonych</div></div>
+<div class="hero-metric"><div class="hero-metric-num"><span id="c2">0</span>x</div><div class="hero-metric-label" data-i18n="hero_metric2">Śr. wzrost konwersji</div></div>
+<div class="hero-metric"><div class="hero-metric-num"><span id="c3">0</span>%</div><div class="hero-metric-label" data-i18n="hero_metric3">Utrzymanie klientów</div></div>
+</div>
+</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+<div class="marquee-track">
+<span class="marquee-item"><span data-i18n="marquee_1">Projektowanie stron</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_2">Strategia UI / UX</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_3">Development pod wydajność</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_4">Systemy automatyzacji</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_5">Identyfikacja wizualna</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_6">Produkty cyfrowe</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_7">Konsulting CRO</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_1">Projektowanie stron</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_2">Strategia UI / UX</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_3">Development pod wydajność</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_4">Systemy automatyzacji</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_5">Identyfikacja wizualna</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_6">Produkty cyfrowe</span> <span class="dot">·</span></span>
+<span class="marquee-item"><span data-i18n="marquee_7">Konsulting CRO</span> <span class="dot">·</span></span>
+</div>
+</div>
+
+<!-- SERVICES PREVIEW -->
+<div class="section">
+<div class="section-label reveal" data-i18n="sec_what">Co robimy</div>
+<h2 class="section-h2 reveal" data-i18n-html="sec_what_h2">Dla marek,<br>które nie chcą znikać w tłumie.</h2>
+<p class="section-sub reveal" data-i18n="sec_what_sub">Każda usługa jest zaprojektowana pod mierzalny efekt — nie tylko pod ładne piksele.</p>
+<div class="services-grid reveal">
+<div class="service-card ab" onclick="showPage('services')">
+<div class="service-num">01 / 04</div>
+<div class="service-icon">⬡</div>
+<div class="service-title" data-i18n="svc_card1_title">Projektowanie stron</div>
+<div class="service-desc" data-i18n="svc_card1_desc">Precyzyjne interfejsy, które prowadzą użytkowników do działania. Każdy piksel ma intencję — każdy flow ma strategię.</div>
+<div class="service-tags"><span class="tag">Figma</span><span class="tag">Design Systems</span><span class="tag" data-i18n="svc_tag_proto">Prototypy</span></div>
+</div>
+<div class="service-card ab" onclick="showPage('services')">
+<div class="service-num">02 / 04</div>
+<div class="service-icon">◈</div>
+<div class="service-title" data-i18n="svc_card2_title">Development</div>
+<div class="service-desc" data-i18n="svc_card2_desc">Next.js, TypeScript i wydajność „edge”. Strony szybkie, dobrze pozycjonowane i skalowalne bez tarcia.</div>
+<div class="service-tags"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Headless CMS</span></div>
+</div>
+<div class="service-card ab" onclick="showPage('services')">
+<div class="service-num">03 / 04</div>
+<div class="service-icon">◎</div>
+<div class="service-title" data-i18n="svc_card3_title">Systemy UX / UI</div>
+<div class="service-desc" data-i18n="svc_card3_desc">Research, mapy ścieżek i design systemy, które sprawiają, że złożone produkty wydają się oczywiste.</div>
+<div class="service-tags"><span class="tag">Research</span><span class="tag">Wireframes</span><span class="tag">UI Kits</span></div>
+</div>
+<div class="service-card ab" onclick="showPage('services')">
+<div class="service-num">04 / 04</div>
+<div class="service-icon">⟳</div>
+<div class="service-title" data-i18n="svc_card4_title">Automatyzacja</div>
+<div class="service-desc" data-i18n="svc_card4_desc">Usuń powtarzalną pracę dzięki inteligentnym workflow. Od integracji CRM po pipeline’y z AI — systemy działają, kiedy Ty śpisz.</div>
+<div class="service-tags"><span class="tag">Make</span><span class="tag">n8n</span><span class="tag">Zapier</span><span class="tag">AI</span></div>
+</div>
+</div>
+</div>
+
+<!-- PROCESS -->
+<div class="process-section">
+<div class="process-inner">
+<div class="section-label reveal" data-i18n="proc_label">Nasz proces</div>
+<h2 class="section-h2 reveal" data-i18n-html="proc_h2">Uporządkowana precyzja.<br>Zero zgadywania.</h2>
+<div class="process-steps">
+<div class="process-step reveal">
+<div class="step-num">01</div>
+<div class="step-title" data-i18n="proc_t1">Discovery</div>
+<div class="step-desc" data-i18n="proc_d1">Mapujemy rynek, odbiorców, konkurencję i miejsca utraty konwersji. Strategia przed pikselami.</div>
+</div>
+<div class="process-step reveal reveal-delay-1">
+<div class="step-num">02</div>
+<div class="step-title" data-i18n="proc_t2">Design</div>
+<div class="step-desc" data-i18n="proc_d2">Odważne koncepcje, szczegółowe prototypy i kompletne systemy dopasowane do DNA marki.</div>
+</div>
+<div class="process-step reveal reveal-delay-2">
+<div class="step-num">03</div>
+<div class="step-title" data-i18n="proc_t3">Build</div>
+<div class="step-desc" data-i18n="proc_d3">Kod produkcyjny, wydajność, fundamenty SEO i płynna integracja CMS.</div>
+</div>
+<div class="process-step reveal reveal-delay-3">
+<div class="step-num">04</div>
+<div class="step-title" data-i18n="proc_t4">Launch i skala</div>
+<div class="step-desc" data-i18n="proc_d4">QA, wdrożenie etapowe i analiza po starcie — żeby dalej optymalizować.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- CASE STUDIES PREVIEW -->
+<div class="section">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;flex-wrap:gap">
+<div>
+<div class="section-label reveal" data-i18n="work_label">Wybrane realizacje</div>
+<h2 class="section-h2 reveal" data-i18n-html="work_h2">Wyniki, które<br>mówią same za siebie.</h2>
+</div>
+<a class="link-arrow reveal" href="#" onclick="showPage('portfolio');return false" data-i18n="work_all">Wszystkie projekty</a>
+</div>
+<div class="work-grid reveal">
+<div class="work-card" onclick="showPage('portfolio')">
+<div class="work-card-img wv1">
+<div class="grid-vis"></div>
+<svg viewBox="0 0 200 80" width="200" style="position:relative;z-index:1">
+<rect x="10" y="20" width="80" height="6" rx="3" fill="rgba(200,255,87,0.6)"/>
+<rect x="10" y="34" width="120" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+<rect x="10" y="46" width="90" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+<rect x="10" y="60" width="60" height="12" rx="6" fill="rgba(200,255,87,0.9)"/>
+<circle cx="160" cy="40" r="28" fill="none" stroke="rgba(200,255,87,0.3)" stroke-width="1.5"/>
+<circle cx="160" cy="40" r="18" fill="rgba(200,255,87,0.1)" stroke="rgba(200,255,87,0.5)" stroke-width="1"/>
+</svg>
+</div>
+<div class="work-card-inner">
+<div class="work-tag" data-i18n="work1_tag">SaaS / Fintech</div>
+<div class="work-title">Vertex Finance</div>
+<div class="work-desc" data-i18n="work1_desc">Pełny rebrand i redesign platformy dla fintechu po Serii A — wzrost aktywacji o 68%.</div>
+<div class="work-arrow">↗</div>
+</div>
+</div>
+<div class="work-card" onclick="showPage('portfolio')">
+<div class="work-card-img wv2">
+<div class="grid-vis"></div>
+<svg viewBox="0 0 200 80" width="200" style="position:relative;z-index:1">
+<rect x="20" y="15" width="160" height="50" rx="8" fill="none" stroke="rgba(77,159,255,0.5)" stroke-width="1"/>
+<rect x="30" y="25" width="60" height="8" rx="4" fill="rgba(77,159,255,0.5)"/>
+<rect x="30" y="40" width="100" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+<rect x="30" y="50" width="80" height="4" rx="2" fill="rgba(255,255,255,0.12)"/>
+<circle cx="155" cy="40" r="12" fill="rgba(77,159,255,0.3)" stroke="rgba(77,159,255,0.6)" stroke-width="1"/>
+</svg>
+</div>
+<div class="work-card-inner">
+<div class="work-tag" data-i18n="work2_tag">E-commerce / moda</div>
+<div class="work-title">Maison Soleil</div>
+<div class="work-desc" data-i18n="work2_desc">Luksusowy sklep DTC z immersyjną prezentacją produktów — 3,2× lepszy ROAS po wdrożeniu.</div>
+<div class="work-arrow">↗</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section-full" style="background:var(--bg2);border-top:1px solid var(--border)">
+<div class="section" style="padding-top:0;padding-bottom:0">
+<div class="section-label reveal" data-i18n="testi_label">Opinie klientów</div>
+<h2 class="section-h2 reveal" style="margin-bottom:48px" data-i18n-html="testi_h2">Zaufali nam ludzie,<br>którzy grają o wynik.</h2>
+<div class="testi-grid">
+<div class="testi-card reveal ab">
+<div class="testi-quote" data-i18n="testi_q1">„Zenith Lab dostarczył stronę, jakiej nie było u konkurencji. W pierwszym miesiącu zamknęliśmy trzech klientów enterprise właśnie dzięki wiarygodności. Warte każdego grosza.”</div>
+<div class="testi-author"><div class="testi-avatar">MH</div><div><div class="testi-name">Marcus Holt</div><div class="testi-role" data-i18n="testi_r1">CEO, Vertex Finance</div></div></div>
+</div>
+<div class="testi-card reveal reveal-delay-1 ab">
+<div class="testi-quote" data-i18n="testi_q2">„Myśleliśmy, że problemem jest ruch. Okazało się, że konwersja. Zenith przebudował całą architekturę — przychód +210% w 90 dni.”</div>
+<div class="testi-author"><div class="testi-avatar">SL</div><div><div class="testi-name">Sophia Laurent</div><div class="testi-role" data-i18n="testi_r2">Founder, Maison Soleil</div></div></div>
+</div>
+<div class="testi-card reveal reveal-delay-2 ab">
+<div class="testi-quote" data-i18n="testi_q3">„To nie agencja — to partnerzy strategiczni, którzy przy okazji budują piękne rzeczy. Automatyzacja, którą wdrożyli, oszczędza nam 40 godzin tygodniowo.”</div>
+<div class="testi-author"><div class="testi-avatar">AK</div><div><div class="testi-name">Amir Khalil</div><div class="testi-role" data-i18n="testi_r3">CTO, Orbitron Systems</div></div></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- CTA -->
+<div style="padding:80px 40px;max-width:1400px;margin:0 auto">
+<div class="cta-banner reveal">
+<div class="hero-glow" style="opacity:0.5"></div>
+<div class="status" style="margin:0 auto 24px"><span class="status-dot"></span> <span data-i18n="cta_status">Przyjmujemy 3 projekty w tym kwartale</span></div>
+<h2 class="cta-h2" data-i18n-html="cta_h2">Gotowi zbudować<br>coś <span style="color:var(--accent)">niezapomnianego?</span></h2>
+<p class="cta-sub" data-i18n="cta_sub">U większości klientów ROI widać w 60 dni. Porozmawiajmy o Twoim przypadku.</p>
+<div class="cta-actions">
+<a class="btn-xl" href="#" onclick="showPage('contact');return false"><span data-i18n="nav_project">Rozpocznij projekt</span> <span class="btn-xl-arrow">→</span></a>
+<a class="btn-outline-xl" href="#" onclick="showPage('pricing');return false" data-i18n="cta_pricing">Zobacz cennik</a>
+</div>
+</div>
+</div>
+
+</div><!-- /home page -->
+
+<!-- ============ ABOUT PAGE ============ -->
+<div class="page" id="page-about">
+<div class="about-hero">
+<div class="section-label reveal" data-i18n="about_label">O nas</div>
+<h1 class="section-h2 reveal" style="font-size:clamp(48px,7vw,96px);margin-bottom:24px" data-i18n-html="about_h1">Nie podążamy za<br>schematem.<br><span style="color:var(--accent)">My go piszemy.</span></h1>
+<p style="font-size:18px;color:var(--text2);max-width:600px;font-weight:300;line-height:1.8" class="reveal" data-i18n="about_lead">Założone w 2019 roku Zenith Lab to zdalna agencja cyfrowa dla firm, które wiedzą, że design to najsilniejsza przewaga konkurencyjna.</p>
+</div>
+<div class="about-story">
+<div class="story-text reveal">
+<p data-i18n="about_p1">Zenith Lab powstał, bo mieliśmy dość oglądania, jak świetne firmy giną pod zwykłymi stronami wyglądającymi jak u wszystkich. Sieć była pełna myślenia „szablon najpierw” — tanio, szybko, bez charakteru.</p>
+<p data-i18n="about_p2">Zbudowaliśmy więc coś przeciwnego. Studio, które traktuje każdy projekt jak jedyny w swoim rodzaju wyzwanie kreatywne i strategiczne. Gdzie pierwsza rozmowa to audyt, nie pitch. Gdzie „wystarczająco dobrze” to porażka.</p>
+<p data-i18n="about_p3">Dziś pracujemy z wyselekcjonowanymi, ambitnymi markami — od startupów przed startem po liderów rynku — które wierzą, że premiumowa obecność online to nie koszt, tylko inwestycja z efektem procentu składanego.</p>
+<p data-i18n="about_p4">Nasz zespół to design, engineering, strategia i automatyzacja. Nie przerzucamy pracy między działami — pracujemy w ciasnych pętlach, dowozimy szybciej i iterujemy mądrzej. Każda decyzja opiera się na danych i estetyce bez kompromisów.</p>
+</div>
+<div class="story-aside reveal reveal-delay-1">
+<div class="values-grid">
+<div class="value-card">
+<div class="value-icon">⬡</div>
+<div class="value-title" data-i18n="val_t1">Precyzja</div>
+<div class="value-desc" data-i18n="val_d1">Każdy piksel ma uzasadnienie. Każda decyzja stoi danymi. Bez przypadków.</div>
+</div>
+<div class="value-card">
+<div class="value-icon">⟳</div>
+<div class="value-title" data-i18n="val_t2">Tempo</div>
+<div class="value-desc" data-i18n="val_d2">Poruszamy się szybko, bez ucinania rogów. Najpierw strategia, potem realizacja w tempie.</div>
+</div>
+<div class="value-card">
+<div class="value-icon">◎</div>
+<div class="value-title" data-i18n="val_t3">Klarowność</div>
+<div class="value-desc" data-i18n="val_d3">Złożone problemy sprowadzamy do jasnych, skutecznych doświadczeń cyfrowych.</div>
+</div>
+<div class="value-card">
+<div class="value-icon">◈</div>
+<div class="value-title" data-i18n="val_t4">Wpływ</div>
+<div class="value-desc" data-i18n="val_d4">Sukces mierzymy przychodem, retencją i reputacją — nie tylko estetyką.</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- MISSION -->
+<div class="section-full" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:80px">
+<div style="max-width:900px;margin:0 auto;padding:80px 40px;text-align:center">
+<div class="section-label reveal" style="justify-content:center;margin-bottom:32px" data-i18n="mission_label">Misja</div>
+<p style="font-family:var(--font-head);font-size:clamp(24px,3.5vw,44px);font-weight:800;letter-spacing:-0.04em;line-height:1.1" class="reveal" data-i18n="mission_quote">„Sprawiać, że ambitne marki nie da się zignorować — łącząc rygorystyczną strategię z designem, który nie zgadza się na przeciętność.”</p>
+</div>
+</div>
+
+<!-- TEAM -->
+<div style="padding:0 40px;max-width:1400px;margin:0 auto">
+<div class="section-label reveal" style="margin-bottom:16px" data-i18n="team_label">Zespół</div>
+<h2 class="section-h2 reveal" style="margin-bottom:48px" data-i18n="team_h2">Zbudowany przez perfekcjonistów.</h2>
+</div>
+<div class="team-grid">
+<div class="team-card reveal ab">
+<div class="team-avatar">NV</div>
+<div class="team-name">Nora Vance</div>
+<div class="team-role" data-i18n="team_r1">Founder &amp; Creative Director</div>
+<div class="team-bio" data-i18n="team_b1">10 lat budowania marek cyfrowych dla startupów i Fortune 500. Obsesja na punkcie przepaści między „dobrze” a „nie do zapomnienia”.</div>
+</div>
+<div class="team-card reveal reveal-delay-1 ab">
+<div class="team-avatar">KM</div>
+<div class="team-name">Kai Matsuda</div>
+<div class="team-role" data-i18n="team_r2">Head of Engineering</div>
+<div class="team-bio" data-i18n="team_b2">Były inżynier Vercel. Budował platformy dla 10M+ użytkowników. Wierzy, że wydajność to decyzja designowa.</div>
+</div>
+<div class="team-card reveal reveal-delay-2 ab">
+<div class="team-avatar">IL</div>
+<div class="team-name">Isla Leclerc</div>
+<div class="team-role" data-i18n="team_r3">Lead UX Strategist</div>
+<div class="team-bio" data-i18n="team_b3">Psycholog poznawczy, który został UX designerem. Specjalizuje się w redukcji tarcia i budowaniu „delightu” użytkownika w skali.</div>
+</div>
+</div>
+</div>
+
+<!-- ============ SERVICES PAGE ============ -->
+<div class="page" id="page-services">
+<div class="services-page">
+<div class="section-label reveal" data-i18n="page_services_label">Usługi</div>
+<h1 class="section-h2 reveal" style="font-size:clamp(48px,7vw,96px);margin-bottom:24px" data-i18n-html="page_services_h1">Co robimy<br>i dlaczego to <span style="color:var(--accent)">działa.</span></h1>
+<p class="section-sub reveal" style="margin-bottom:80px" data-i18n="page_services_sub">Cztery filary. Jedno spójne podejście. Zaprojektowane pod konwersję Twojego rynku docelowego w lojalnych klientów.</p>
+
+<div class="service-full">
+<div class="service-visual">
+<div class="grid-vis" style="border-radius:var(--r)"></div>
+<svg viewBox="0 0 320 280" width="280" style="position:relative;z-index:1">
+<rect x="20" y="20" width="280" height="240" rx="12" fill="none" stroke="rgba(200,255,87,0.2)" stroke-width="1"/>
+<rect x="36" y="40" width="120" height="10" rx="5" fill="rgba(200,255,87,0.7)"/>
+<rect x="36" y="58" width="200" height="6" rx="3" fill="rgba(255,255,255,0.2)"/>
+<rect x="36" y="72" width="160" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+<rect x="36" y="100" width="250" height="100" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+<rect x="50" y="114" width="80" height="60" rx="6" fill="rgba(200,255,87,0.12)" stroke="rgba(200,255,87,0.3)" stroke-width="1"/>
+<rect x="148" y="114" width="80" height="28" rx="4" fill="rgba(255,255,255,0.08)"/>
+<rect x="148" y="148" width="60" height="10" rx="3" fill="rgba(255,255,255,0.06)"/>
+<rect x="36" y="220" width="80" height="24" rx="12" fill="rgba(200,255,87,0.8)"/>
+<rect x="128" y="220" width="60" height="24" rx="12" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+</svg>
+</div>
+<div>
+<div class="sv-label" data-i18n="sv_l1">01 — Projektowanie stron</div>
+<h3 class="sv-h3" data-i18n="sv_h1">Design, który przyciąga uwagę i prowadzi do działania.</h3>
+<p class="sv-desc" data-i18n="sv_d1">Podchodzimy do designu jak do narzędzia konwersji. Każdy układ, kolor i typografia służą mierzalnemu celowi — formularzom, zakupom lub umówionym rozmowom.</p>
+<ul class="sv-list">
+<li data-i18n="sv1_li1">Projektowanie stron od zera (nigdy szablonów)</li>
+<li data-i18n="sv1_li2">Pełny design system Figma i biblioteka komponentów</li>
+<li data-i18n="sv1_li3">Layouty mobile-first zgodne z dostępnością</li>
+<li data-i18n="sv1_li4">Interaktywne prototypy pod decyzje stakeholderów</li>
+<li data-i18n="sv1_li5">Motion i specyfikacja mikrointerakcji</li>
+</ul>
+<a class="btn-xl" href="#" onclick="showPage('contact');return false" style="display:inline-flex" data-i18n="sv_btn1">Omów projekt →</a>
+</div>
+</div>
+
+<div class="service-full reverse">
+<div class="service-visual">
+<div class="grid-vis" style="border-radius:var(--r)"></div>
+<svg viewBox="0 0 320 280" width="280" style="position:relative;z-index:1">
+<rect x="20" y="40" width="140" height="200" rx="8" fill="none" stroke="rgba(77,159,255,0.3)" stroke-width="1"/>
+<rect x="32" y="55" width="116" height="8" rx="4" fill="rgba(77,159,255,0.5)"/>
+<rect x="32" y="72" width="90" height="5" rx="2.5" fill="rgba(255,255,255,0.2)"/>
+<rect x="32" y="85" width="70" height="5" rx="2.5" fill="rgba(255,255,255,0.15)"/>
+<rect x="32" y="100" width="100" height="5" rx="2.5" fill="rgba(255,255,255,0.12)"/>
+<rect x="32" y="115" width="80" height="5" rx="2.5" fill="rgba(255,255,255,0.1)"/>
+<rect x="170" y="40" width="130" height="92" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+<text x="185" y="70" fill="rgba(200,255,87,0.8)" font-size="10" font-family="monospace">const</text>
+<text x="185" y="88" fill="rgba(255,255,255,0.4)" font-size="10" font-family="monospace">site.launch()</text>
+<text x="185" y="106" fill="rgba(77,159,255,0.6)" font-size="10" font-family="monospace">→ 98 score</text>
+<rect x="170" y="148" width="130" height="92" rx="8" fill="rgba(77,159,255,0.06)" stroke="rgba(77,159,255,0.2)" stroke-width="1"/>
+<rect x="185" y="168" width="60" height="6" rx="3" fill="rgba(77,159,255,0.4)"/>
+<rect x="185" y="182" width="100" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+<rect x="185" y="194" width="80" height="4" rx="2" fill="rgba(255,255,255,0.1)"/>
+<rect x="185" y="206" width="90" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
+</svg>
+</div>
+<div>
+<div class="sv-label" data-i18n="sv_l2">02 — Development</div>
+<h3 class="sv-h3" data-i18n="sv_h2">Kod, który działa tak dobrze, jak wygląda.</h3>
+<p class="sv-desc" data-i18n="sv_d2">Budujemy na nowoczesnym stacku — Next.js, TypeScript, infrastruktura edge. Strony z wynikiem 95+ w Core Web Vitals i gotowe do skalowania wraz z biznesem.</p>
+<ul class="sv-list">
+<li data-i18n="sv2_li1">Next.js App Router + TypeScript (strict)</li>
+<li data-i18n="sv2_li2">Integracja headless CMS (Sanity, Contentful, Payload)</li>
+<li data-i18n="sv2_li3">Wdrożenia edge i czas ładowania poniżej sekundy</li>
+<li data-i18n="sv2_li4">Pełna architektura SEO technicznego</li>
+<li data-i18n="sv2_li5">Animacje na zamówienie (Framer Motion)</li>
+<li data-i18n="sv2_li6">E-commerce: Shopify lub rozwiązania custom</li>
+</ul>
+<a class="btn-xl" href="#" onclick="showPage('contact');return false" style="display:inline-flex" data-i18n="sv_btn2">Zacznij build →</a>
+</div>
+</div>
+
+<div class="service-full">
+<div class="service-visual">
+<div class="grid-vis" style="border-radius:var(--r)"></div>
+<svg viewBox="0 0 320 280" width="280" style="position:relative;z-index:1">
+<circle cx="160" cy="140" r="80" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+<circle cx="160" cy="140" r="50" fill="none" stroke="rgba(200,255,87,0.2)" stroke-width="1" stroke-dasharray="8 4"/>
+<circle cx="160" cy="140" r="20" fill="rgba(200,255,87,0.15)" stroke="rgba(200,255,87,0.5)" stroke-width="1.5"/>
+<circle cx="160" cy="70" r="12" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+<circle cx="222" cy="116" r="12" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+<circle cx="200" cy="196" r="12" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+<circle cx="118" cy="196" r="12" fill="rgba(77,159,255,0.3)" stroke="rgba(77,159,255,0.6)" stroke-width="1"/>
+<circle cx="98" cy="116" r="12" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+<line x1="160" y1="82" x2="160" y2="120" stroke="rgba(200,255,87,0.3)" stroke-width="1"/>
+<line x1="210" y1="124" x2="176" y2="132" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<line x1="192" y1="187" x2="172" y2="156" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<line x1="128" y1="187" x2="148" y2="156" stroke="rgba(77,159,255,0.3)" stroke-width="1"/>
+<line x1="110" y1="124" x2="144" y2="132" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+</svg>
+</div>
+<div>
+<div class="sv-label" data-i18n="sv_l3">03 — Systemy UX / UI</div>
+<h3 class="sv-h3" data-i18n="sv_h3">Doświadczenia, których użytkownik nie zauważa — bo po prostu działają.</h3>
+<p class="sv-desc" data-i18n="sv_d3">Najlepsze UX jest niewidoczne. Mapujemy ścieżki, wykrywamy tarcie i projektujemy flow, które wydają się oczywiste. Od dashboardów SaaS po aplikacje B2C — upraszczamy złożone produkty.</p>
+<ul class="sv-list">
+<li data-i18n="sv3_li1">Research, wywiady i analiza behawioralna</li>
+<li data-i18n="sv3_li2">Architektura informacji i mapowanie flow</li>
+<li data-i18n="sv3_li3">Biblioteka komponentów UI (Figma + kod)</li>
+<li data-i18n="sv3_li4">Testy użyteczności i iteracje</li>
+<li data-i18n="sv3_li5">Audyt dostępności (WCAG 2.1 AA)</li>
+</ul>
+<a class="btn-xl" href="#" onclick="showPage('contact');return false" style="display:inline-flex" data-i18n="sv_btn3">Poznaj strategię UX →</a>
+</div>
+</div>
+
+<div class="service-full reverse">
+<div class="service-visual">
+<div class="grid-vis" style="border-radius:var(--r)"></div>
+<svg viewBox="0 0 320 280" width="280" style="position:relative;z-index:1">
+<rect x="30" y="80" width="80" height="40" rx="6" fill="rgba(200,255,87,0.15)" stroke="rgba(200,255,87,0.4)" stroke-width="1"/>
+<text x="70" y="105" text-anchor="middle" fill="rgba(200,255,87,0.9)" font-size="10" font-family="sans-serif">Trigger</text>
+<rect x="120" y="80" width="80" height="40" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+<text x="160" y="105" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10" font-family="sans-serif">Process</text>
+<rect x="210" y="80" width="80" height="40" rx="6" fill="rgba(77,159,255,0.12)" stroke="rgba(77,159,255,0.4)" stroke-width="1"/>
+<text x="250" y="105" text-anchor="middle" fill="rgba(77,159,255,0.9)" font-size="10" font-family="sans-serif">Output</text>
+<line x1="110" y1="100" x2="120" y2="100" stroke="rgba(200,255,87,0.5)" stroke-width="1.5" marker-end="url(#arr)"/>
+<line x1="200" y1="100" x2="210" y2="100" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+<rect x="60" y="160" width="80" height="40" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="100" y="185" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9" font-family="sans-serif">CRM Update</text>
+<rect x="180" y="160" width="80" height="40" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="220" y="185" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="9" font-family="sans-serif">Email Send</text>
+<line x1="160" y1="120" x2="100" y2="160" stroke="rgba(200,255,87,0.2)" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="250" y1="120" x2="220" y2="160" stroke="rgba(77,159,255,0.2)" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="120" y="30" width="80" height="30" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+<text x="160" y="50" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="sans-serif">New Lead</text>
+<line x1="160" y1="60" x2="160" y2="80" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+</svg>
+</div>
+<div>
+<div class="sv-label" data-i18n="sv_l4">04 — Automatyzacja</div>
+<h3 class="sv-h3" data-i18n="sv_h4">Twój biznes o 3:00 w nocy — bez Ciebie.</h3>
+<p class="sv-desc" data-i18n="sv_d4">Projektujemy inteligentne automatyzacje, które usuwają powtarzalną pracę, ograniczają błędy ludzkie i skalują operację bez dokładania etatów. Od prostych Zapi po pełne pipeline’y z AI.</p>
+<ul class="sv-list">
+<li data-i18n="sv4_li1">Automatyzacja CRM i lejka sprzedaży (HubSpot, Salesforce)</li>
+<li data-i18n="sv4_li2">Scoring leadów i sekwencje nurture z AI</li>
+<li data-i18n="sv4_li3">Architektura workflow w n8n / Make</li>
+<li data-i18n="sv4_li4">Integracje API w całym stacku</li>
+<li data-i18n="sv4_li5">Dashboardy raportowe, które same się aktualizują</li>
+</ul>
+<a class="btn-xl" href="#" onclick="showPage('contact');return false" style="display:inline-flex" data-i18n="sv_btn4">Automatyzuj biznes →</a>
+</div>
+</div>
+
+</div>
+</div><!-- /services page -->
+
+<!-- ============ PRINT 3D PAGE ============ -->
+<div class="page" id="page-print3d">
+<div class="services-page">
+<div class="section-label reveal" data-i18n="print3d_label">Druk addytywny</div>
+<h1 class="section-h2 reveal" style="font-size:clamp(48px,7vw,96px);margin-bottom:24px" data-i18n-html="print3d_h1">Fizyczne produkty<br>z <span style="color:var(--accent)">milimetryczną</span> precyzją.</h1>
+<p class="section-sub reveal" style="margin-bottom:80px" data-i18n="print3d_lead">Projektujemy, przygotowujemy pliki i drukujemy prototypy oraz małe serie — od koncepcji po gotowy detal w Twoich rękach.</p>
+
+<div class="service-full">
+<div class="service-visual print3d-visual">
+<div class="grid-vis" style="border-radius:var(--r)"></div>
+<svg viewBox="0 0 320 280" width="280" style="position:relative;z-index:1">
+<path d="M160 40 L240 85 L240 175 L160 220 L80 175 L80 85 Z" fill="none" stroke="rgba(200,255,87,0.35)" stroke-width="1.2"/>
+<path d="M160 70 L215 100 L215 160 L160 190 L105 160 L105 100 Z" fill="rgba(200,255,87,0.06)" stroke="rgba(200,255,87,0.45)" stroke-width="1"/>
+<path d="M160 100 L190 118 L190 150 L160 168 L130 150 L130 118 Z" fill="rgba(200,255,87,0.15)" stroke="rgba(200,255,87,0.5)" stroke-width="1"/>
+<rect x="40" y="200" width="240" height="4" rx="2" fill="rgba(255,255,255,0.08)"/>
+<rect x="50" y="208" width="28" height="6" rx="3" fill="rgba(200,255,87,0.6)"/>
+<rect x="90" y="208" width="28" height="6" rx="3" fill="rgba(200,255,87,0.35)"/>
+<rect x="130" y="208" width="28" height="6" rx="3" fill="rgba(200,255,87,0.2)"/>
+<text x="160" y="248" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="10" font-family="monospace">FDM · SLA · precyzja</text>
+</svg>
+</div>
+<div>
+<div class="sv-label" data-i18n="print3d_sv_label">01 — Druk 3D</div>
+<h3 class="sv-h3" data-i18n="print3d_h2">Prototypy i małe serie, które da się dotknąć.</h3>
+<p class="sv-desc" data-i18n="print3d_desc">Łączymy przygotowanie modelu, dobór materiału i parametrów wydruku z kontrolą jakości końcowej. Idealne na walidację designu, prezentacje, gadżety premium i spersonalizowane elementy.</p>
+<ul class="sv-list">
+<li data-i18n="print3d_li1">Przygotowanie i optymalizacja plików pod konkretną technologię</li>
+<li data-i18n="print3d_li2">FDM / SLA — dobór pod budżet, termin i wytrzymałość</li>
+<li data-i18n="print3d_li3">Prototypy funkcjonalne, obudowy, detale brandingowe</li>
+<li data-i18n="print3d_li4">Małe serie i spójność wymiarów między partiami</li>
+<li data-i18n="print3d_li5">Post-processing: szlif, podkład, malowanie (na życzenie)</li>
+</ul>
+<a class="btn-xl" href="#" onclick="showPage('contact');return false" style="display:inline-flex" data-i18n="print3d_cta">Zapytaj o wycenę →</a>
+</div>
+</div>
+
+<div class="section-sm" style="padding-top:40px">
+<div class="section-label reveal" data-i18n="print3d_faq_label">FAQ</div>
+<div class="values-grid">
+<div class="value-card reveal ab">
+<div class="value-icon">⏱</div>
+<div class="value-title" data-i18n="print3d_f1t">Realizacja</div>
+<div class="value-desc" data-i18n="print3d_f1d">Proste prototypy często w kilka dni roboczych — dokładny termin po pliku i ilości.</div>
+</div>
+<div class="value-card reveal reveal-delay-1 ab">
+<div class="value-icon">◈</div>
+<div class="value-title" data-i18n="print3d_f2t">Format</div>
+<div class="value-desc" data-i18n="print3d_f2d">Pracujemy na STEP lub meshach — doradzimy, jeśli model wymaga poprawek pod druk.</div>
+</div>
+</div>
+</div>
+
+</div>
+</div><!-- /print3d page -->
+
+<!-- ============ ARCHITECTURAL MODELS PAGE ============ -->
+<div class="page" id="page-archmodels">
+<div class="services-page">
+<div class="section-label reveal" data-i18n="arch_label">Prezentacja i sprzedaż</div>
+<h1 class="section-h2 reveal" style="font-size:clamp(48px,7vw,96px);margin-bottom:24px" data-i18n-html="arch_h1">Makiety, które<br><span style="color:var(--accent)">sprzedają</span> wizję.</h1>
+<p class="section-sub reveal" style="margin-bottom:80px" data-i18n="arch_lead">Skala, detal i materiał dobrane pod pitch inwestorski, konkurs lub showroom dewelopera — od koncepcji po transport i montaż.</p>
+<div class="service-full">
+<div class="service-visual svc-vis-arch">
+<div class="grid-vis" style="border-radius:var(--r)"></div>
+<svg viewBox="0 0 320 280" width="280" style="position:relative;z-index:1">
+<rect x="60" y="160" width="200" height="8" fill="rgba(255,255,255,0.06)"/>
+<path d="M80 160 L160 80 L240 160 Z" fill="none" stroke="rgba(200,255,87,0.4)" stroke-width="1.2"/>
+<rect x="120" y="120" width="80" height="40" fill="rgba(200,255,87,0.08)" stroke="rgba(200,255,87,0.35)" stroke-width="1"/>
+<rect x="100" y="100" width="120" height="20" fill="rgba(77,159,255,0.12)" stroke="rgba(77,159,255,0.35)" stroke-width="1"/>
+<line x1="160" y1="80" x2="160" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="160" y="230" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="10" font-family="monospace">skala · detal · oświetlenie</text>
+</svg>
+</div>
+<div>
+<div class="sv-label" data-i18n="arch_sv_label">Makiety architektoniczne</div>
+<h3 class="sv-h3" data-i18n="arch_h2">Od bryły po detale elewacji i otoczenia.</h3>
+<p class="sv-desc" data-i18n="arch_desc">Budujemy makiety prezentacyjne i konkursowe: modele urbanistyczne, kompleksy mieszkaniowe, wnętrza oraz detale z zachowaniem czytelnej hierarchii formy.</p>
+<ul class="sv-list">
+<li data-i18n="arch_li1">Dobór skali i podziału na strefy (teren, zabudowa, komunikacja)</li>
+<li data-i18n="arch_li2">Materiały: karton, plexi, drewno, druk 3D — pod budżet i efekt</li>
+<li data-i18n="arch_li3">Oświetlenie LED i podkład pod wizualizacje nocne</li>
+<li data-i18n="arch_li4">Pokrowce transportowe, instrukcja montażu na miejscu</li>
+<li data-i18n="arch_li5">Iteracje po uwagach od architekta lub inwestora</li>
+</ul>
+<a class="btn-xl" href="#" onclick="showPage('contact');return false" style="display:inline-flex" data-i18n="arch_cta">Wyceń makietę →</a>
+</div>
+</div>
+<div class="section-sm" style="padding-top:40px">
+<div class="section-label reveal" data-i18n="arch_faq_label">Na start</div>
+<div class="values-grid">
+<div class="value-card reveal ab"><div class="value-icon">◎</div><div class="value-title" data-i18n="arch_f1t">Dokumentacja</div><div class="value-desc" data-i18n="arch_f1d">Najlepiej: plany PDF/DWG lub model 3D — ustalimy skalę i zakres detalu.</div></div>
+<div class="value-card reveal reveal-delay-1 ab"><div class="value-icon">⏱</div><div class="value-title" data-i18n="arch_f2t">Termin</div><div class="value-desc" data-i18n="arch_f2d">Średnie projekty zwykle 2–4 tygodnie — potwierdzamy po briefie.</div></div>
+</div>
+</div>
+</div>
+</div><!-- /archmodels page -->
+
+<!-- ============ LED LIGHTBOXES PAGE ============ -->
+<div class="page" id="page-led">
+<div class="services-page">
+<div class="section-label reveal" data-i18n="led_label">Światło i obecność marki</div>
+<h1 class="section-h2 reveal" style="font-size:clamp(48px,7vw,96px);margin-bottom:24px" data-i18n-html="led_h1">Kasetony LED,<br>które <span style="color:var(--accent)">widać z daleka.</span></h1>
+<p class="section-sub reveal" style="margin-bottom:80px" data-i18n="led_lead">Projektujemy i produkujemy kasetony podświetlane — od gabarytu po montaż, z równomiernym światłem i kolorem zgodnym z brand bookiem.</p>
+<div class="service-full">
+<div class="service-visual svc-vis-led">
+<div class="grid-vis" style="border-radius:var(--r)"></div>
+<svg viewBox="0 0 320 280" width="280" style="position:relative;z-index:1">
+<rect x="50" y="60" width="220" height="120" rx="8" fill="rgba(200,255,87,0.12)" stroke="rgba(200,255,87,0.5)" stroke-width="2"/>
+<rect x="70" y="85" width="180" height="70" rx="4" fill="rgba(200,255,87,0.25)"/>
+<rect x="60" y="200" width="200" height="6" fill="rgba(255,255,255,0.1)"/>
+<circle cx="100" cy="210" r="4" fill="rgba(77,159,255,0.6)"/>
+<circle cx="160" cy="210" r="4" fill="rgba(77,159,255,0.6)"/>
+<circle cx="220" cy="210" r="4" fill="rgba(77,159,255,0.6)"/>
+<text x="160" y="250" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="10" font-family="monospace">LED · dyfuzyjne · outdoor</text>
+</svg>
+</div>
+<div>
+<div class="sv-label" data-i18n="led_sv_label">Kasetony LED</div>
+<h3 class="sv-h3" data-i18n="led_h2">Jednolite podświetlenie, trwała obudowa.</h3>
+<p class="sv-desc" data-i18n="led_desc">Łączymy projekt graficzny z konstrukcją aluminiową lub kompozytową, doborem modułów LED i zasilaczy. Montaż na elewacji, w lobby lub na stoisku eventowym.</p>
+<ul class="sv-list">
+<li data-i18n="led_li1">Wymiary i kształt na zamówienie (kaseton, totem, lightbox)</li>
+<li data-i18n="led_li2">Barwa światła i CRI dopasowane do identyfikacji</li>
+<li data-i18n="led_li3">Klasy szczelności pod outdoor lub wnętrza</li>
+<li data-i18n="led_li4">Okablowanie, zasilanie, instrukcja serwisu</li>
+<li data-i18n="led_li5">Koordynacja z drukiem na płasko / dibond</li>
+</ul>
+<a class="btn-xl" href="#" onclick="showPage('contact');return false" style="display:inline-flex" data-i18n="led_cta">Zapytaj o kaseton →</a>
+</div>
+</div>
+<div class="section-sm" style="padding-top:40px">
+<div class="section-label reveal" data-i18n="led_faq_label">Montaż</div>
+<div class="values-grid">
+<div class="value-card reveal ab"><div class="value-icon">◈</div><div class="value-title" data-i18n="led_f1t">Lokalizacja</div><div class="value-desc" data-i18n="led_f1d">Dobieramy moc i typ mocowania do podłoża — ściana, słup, wiszące.</div></div>
+<div class="value-card reveal reveal-delay-1 ab"><div class="value-icon">◎</div><div class="value-title" data-i18n="led_f2t">Serwis</div><div class="value-desc" data-i18n="led_f2d">Modułowa konstrukcja ułatwia wymianę sekcji bez demontażu całości.</div></div>
+</div>
+</div>
+</div>
+</div><!-- /led page -->
+
+<!-- ============ ENGRAVING PAGE ============ -->
+<div class="page" id="page-engraving">
+<div class="services-page">
+<div class="section-label reveal" data-i18n="engr_label">Trwały detal</div>
+<h1 class="section-h2 reveal" style="font-size:clamp(48px,7vw,96px);margin-bottom:24px" data-i18n-html="engr_h1">Grawer,<br>który <span style="color:var(--accent)">zostaje na lata.</span></h1>
+<p class="section-sub reveal" style="margin-bottom:80px" data-i18n="engr_lead">Laser, CNC i precyzyjne obróbki na metalu, drewnie, szkle i tworzywach — pod nagrody, biżuterię firmową i identyfikatory.</p>
+<div class="service-full">
+<div class="service-visual svc-vis-engr">
+<div class="grid-vis" style="border-radius:var(--r)"></div>
+<svg viewBox="0 0 320 280" width="280" style="position:relative;z-index:1">
+<rect x="80" y="70" width="160" height="100" rx="6" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+<path d="M100 120 Q160 90 220 120" fill="none" stroke="rgba(200,255,87,0.6)" stroke-width="2"/>
+<path d="M110 140 L210 140" stroke="rgba(200,255,87,0.35)" stroke-width="1.5"/>
+<path d="M120 155 L200 155" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="160" y="220" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="10" font-family="monospace">laser · CNC · personalizacja</text>
+</svg>
+</div>
+<div>
+<div class="sv-label" data-i18n="engr_sv_label">Grawerowanie</div>
+<h3 class="sv-h3" data-i18n="engr_h2">Spójna typografia i głębokość graweru.</h3>
+<p class="sv-desc" data-i18n="engr_desc">Przygotowujemy pliki pod konkretną maszynę, testujemy na próbkach i pilnujemy powtarzalności w serii — od pojedynczych sztuk po setki egzemplarzy.</p>
+<ul class="sv-list">
+<li data-i18n="engr_li1">Laser na metalu, drewnie, skórze, akrylu</li>
+<li data-i18n="engr_li2">Frezowanie i grawer CNC na grubszych materiałach</li>
+<li data-i18n="engr_li3">Personalizacja: imiona, numery, QR, logotypy</li>
+<li data-i18n="engr_li4">Próbki materiałowe przed pełną serią</li>
+<li data-i18n="engr_li5">Pakowanie prezentowe na życzenie</li>
+</ul>
+<a class="btn-xl" href="#" onclick="showPage('contact');return false" style="display:inline-flex" data-i18n="engr_cta">Wyślij zapytanie →</a>
+</div>
+</div>
+<div class="section-sm" style="padding-top:40px">
+<div class="section-label reveal" data-i18n="engr_faq_label">Pliki</div>
+<div class="values-grid">
+<div class="value-card reveal ab"><div class="value-icon">⬡</div><div class="value-title" data-i18n="engr_f1t">Wektory</div><div class="value-desc" data-i18n="engr_f1d">Najlepiej AI, EPS lub SVG — raster przetwarzamy po akceptacji jakości.</div></div>
+<div class="value-card reveal reveal-delay-1 ab"><div class="value-icon">◈</div><div class="value-title" data-i18n="engr_f2t">Serie</div><div class="value-desc" data-i18n="engr_f2d">Ustalamy tolerancje i szablony, żeby każda sztuka wyglądała tak samo.</div></div>
+</div>
+</div>
+</div>
+</div><!-- /engraving page -->
+
+<!-- ============ PRODUCT PROTOTYPES PAGE ============ -->
+<div class="page" id="page-prototypes">
+<div class="services-page">
+<div class="section-label reveal" data-i18n="proto_label">Walidacja przed produkcją</div>
+<h1 class="section-h2 reveal" style="font-size:clamp(48px,7vw,96px);margin-bottom:24px" data-i18n-html="proto_h1">Prototypy<br><span style="color:var(--accent)">pod testy</span> i pitch.</h1>
+<p class="section-sub reveal" style="margin-bottom:80px" data-i18n="proto_lead">Skracamy drogę od pomysłu do tooling: szybkie modele wyglądowe i funkcjonalne, pomiary, iteracje z zespołem R&amp;D.</p>
+<div class="service-full">
+<div class="service-visual svc-vis-proto">
+<div class="grid-vis" style="border-radius:var(--r)"></div>
+<svg viewBox="0 0 320 280" width="280" style="position:relative;z-index:1">
+<ellipse cx="160" cy="130" rx="90" ry="45" fill="none" stroke="rgba(200,255,87,0.35)" stroke-width="1.2"/>
+<rect x="100" y="100" width="120" height="60" rx="12" fill="rgba(200,255,87,0.1)" stroke="rgba(200,255,87,0.4)" stroke-width="1"/>
+<circle cx="130" cy="130" r="8" fill="rgba(77,159,255,0.4)"/>
+<circle cx="190" cy="130" r="8" fill="rgba(77,159,255,0.25)"/>
+<text x="160" y="220" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="10" font-family="monospace">ergonomia · montaż · koszt</text>
+</svg>
+</div>
+<div>
+<div class="sv-label" data-i18n="proto_sv_label">Prototypy produktów</div>
+<h3 class="sv-h3" data-i18n="proto_h2">Od pierwszego kliknięcia do obiektu w ręku.</h3>
+<p class="sv-desc" data-i18n="proto_desc">Łączymy druk 3D, obróbkę CNC i ręczny montaż prototypów, żebyś mógł testować UX, pakowanie i komunikację z rynkiem przed skalowaniem.</p>
+<ul class="sv-list">
+<li data-i18n="proto_li1">Warianty materiałowe i kolorystyczne A/B</li>
+<li data-i18n="proto_li2">Prototypy wyglądowe vs. funkcjonalne z docelowymi tolerancjami</li>
+<li data-i18n="proto_li3">Dokumentacja pomiarowa dla dostawcy form</li>
+<li data-i18n="proto_li4">Krótkie pętle iteracji po feedbacku</li>
+<li data-i18n="proto_li5">Wsparcie przy pierwszej małej serii pilotażowej</li>
+</ul>
+<a class="btn-xl" href="#" onclick="showPage('contact');return false" style="display:inline-flex" data-i18n="proto_cta">Opisz produkt →</a>
+</div>
+</div>
+<div class="section-sm" style="padding-top:40px">
+<div class="section-label reveal" data-i18n="proto_faq_label">R&amp;D</div>
+<div class="values-grid">
+<div class="value-card reveal ab"><div class="value-icon">◎</div><div class="value-title" data-i18n="proto_f1t">NDA</div><div class="value-desc" data-i18n="proto_f1d">Na życzenie podpisujemy poufność przed wysłaniem plików.</div></div>
+<div class="value-card reveal reveal-delay-1 ab"><div class="value-icon">⏱</div><div class="value-title" data-i18n="proto_f2t">Iteracje</div><div class="value-desc" data-i18n="proto_f2d">Pakiet kilku rund korekt wyceniamy osobno — bez niespodzianek.</div></div>
+</div>
+</div>
+</div>
+</div><!-- /prototypes page -->
+
+<!-- ============ PROMO GADGETS PAGE ============ -->
+<div class="page" id="page-gadgets">
+<div class="services-page">
+<div class="section-label reveal" data-i18n="gad_label">Merch i event</div>
+<h1 class="section-h2 reveal" style="font-size:clamp(48px,7vw,96px);margin-bottom:24px" data-i18n-html="gad_h1">Gadżety,<br>które <span style="color:var(--accent)">pamiętają</span> markę.</h1>
+<p class="section-sub reveal" style="margin-bottom:80px" data-i18n="gad_lead">Dobieramy przedmioty, znakowanie i pakowanie pod targi, zespół sprzedaży oraz kampanie mailingowe — z kontrolą jakości i terminów.</p>
+<div class="service-full">
+<div class="service-visual svc-vis-gad">
+<div class="grid-vis" style="border-radius:var(--r)"></div>
+<svg viewBox="0 0 320 280" width="280" style="position:relative;z-index:1">
+<rect x="70" y="80" width="80" height="100" rx="10" fill="rgba(200,255,87,0.08)" stroke="rgba(200,255,87,0.35)" stroke-width="1"/>
+<rect x="170" y="90" width="90" height="50" rx="6" fill="rgba(77,159,255,0.12)" stroke="rgba(77,159,255,0.35)" stroke-width="1"/>
+<circle cx="215" cy="200" r="28" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+<circle cx="215" cy="200" r="12" fill="rgba(200,255,87,0.2)"/>
+<text x="160" y="255" text-anchor="middle" fill="rgba(255,255,255,0.25)" font-size="10" font-family="monospace">nadruki · grawer · zestawy</text>
+</svg>
+</div>
+<div>
+<div class="sv-label" data-i18n="gad_sv_label">Gadżety reklamowe</div>
+<h3 class="sv-h3" data-i18n="gad_h2">Od katalogu po spersonalizowany zestaw.</h3>
+<p class="sv-desc" data-i18n="gad_desc">Łączymy dobór produktów z technikami znakowania: tampodruk, sitodruk, laser, haft. Zależy nam, żeby merch był używany, nie odkładany do szuflady.</p>
+<ul class="sv-list">
+<li data-i18n="gad_li1">Selekcja gadżetów pod budżet i profil odbiorcy</li>
+<li data-i18n="gad_li2">Mockupy i próbki przed pełną serią</li>
+<li data-i18n="gad_li3">Pakowanie: pudełka, kartki, personalizacja imienna</li>
+<li data-i18n="gad_li4">Logistyka: wysyłka do biur lub paczki direct mail</li>
+<li data-i18n="gad_li5">Magazynowanie i uzupełnianie stanów (na życzenie)</li>
+</ul>
+<a class="btn-xl" href="#" onclick="showPage('contact');return false" style="display:inline-flex" data-i18n="gad_cta">Zapytaj o zestaw →</a>
+</div>
+</div>
+<div class="section-sm" style="padding-top:40px">
+<div class="section-label reveal" data-i18n="gad_faq_label">Minimum</div>
+<div class="values-grid">
+<div class="value-card reveal ab"><div class="value-icon">◈</div><div class="value-title" data-i18n="gad_f1t">Nakłady</div><div class="value-desc" data-i18n="gad_f1d">Realizujemy od małych partii po tysiące sztuk — minima zależą od produktu.</div></div>
+<div class="value-card reveal reveal-delay-1 ab"><div class="value-icon">◎</div><div class="value-title" data-i18n="gad_f2t">Brand book</div><div class="value-desc" data-i18n="gad_f2d">Przyjmujemy oficjalne kolory Pantone i pliki wektorowe logo.</div></div>
+</div>
+</div>
+</div>
+</div><!-- /gadgets page -->
+
+<!-- ============ PORTFOLIO PAGE ============ -->
+<div class="page" id="page-portfolio">
+<div class="portfolio-page">
+<div class="section-label reveal" data-i18n="port_label">Realizacje</div>
+<h1 class="section-h2 reveal" style="font-size:clamp(48px,7vw,96px);margin-bottom:24px" data-i18n-html="port_h1">Projekty, które<br>przesunęły <span style="color:var(--accent)">wynik.</span></h1>
+<p class="section-sub reveal" data-i18n="port_sub">Każdy projekt to partnerski układ z jasnym celem biznesowym. Oto co zbudowaliśmy — i co przyniosło.</p>
+<div class="portfolio-filters reveal">
+<button class="filter-btn active" data-i18n="filt_all">Wszystkie</button>
+<button class="filter-btn" data-i18n="filt_saas">SaaS</button>
+<button class="filter-btn" data-i18n="filt_ecom">E-commerce</button>
+<button class="filter-btn" data-i18n="filt_startup">Startup</button>
+<button class="filter-btn" data-i18n="filt_ent">Enterprise</button>
+</div>
+<div class="portfolio-grid">
+<div class="portfolio-item reveal ab">
+<div class="portfolio-img wv1"><div class="grid-vis"></div><svg viewBox="0 0 180 120" width="160" style="position:relative;z-index:1"><rect x="10" y="20" width="80" height="8" rx="4" fill="rgba(200,255,87,0.7)"/><rect x="10" y="36" width="120" height="5" rx="2.5" fill="rgba(255,255,255,0.2)"/><rect x="10" y="50" width="90" height="5" rx="2.5" fill="rgba(255,255,255,0.15)"/><rect x="10" y="66" width="55" height="20" rx="10" fill="rgba(200,255,87,0.8)"/><circle cx="145" cy="60" r="30" fill="none" stroke="rgba(200,255,87,0.3)" stroke-width="1.5"/></svg></div>
+<div class="portfolio-details"><div class="portfolio-cat" data-i18n="pitem1_cat">SaaS · Fintech</div><div class="portfolio-title">Vertex Finance</div><div class="portfolio-client" data-i18n="pitem1_res">+68% wskaźnik aktywacji</div></div>
+</div>
+<div class="portfolio-item reveal reveal-delay-1 ab">
+<div class="portfolio-img wv2"><div class="grid-vis"></div><svg viewBox="0 0 180 120" width="160" style="position:relative;z-index:1"><rect x="20" y="15" width="140" height="90" rx="8" fill="none" stroke="rgba(77,159,255,0.4)" stroke-width="1"/><rect x="30" y="28" width="50" height="8" rx="4" fill="rgba(77,159,255,0.6)"/><rect x="30" y="44" width="90" height="5" rx="2.5" fill="rgba(255,255,255,0.2)"/><rect x="30" y="58" width="70" height="5" rx="2.5" fill="rgba(255,255,255,0.12)"/><rect x="30" y="76" width="45" height="18" rx="9" fill="rgba(77,159,255,0.6)"/></svg></div>
+<div class="portfolio-details"><div class="portfolio-cat" data-i18n="pitem2_cat">E-commerce · moda</div><div class="portfolio-title">Maison Soleil</div><div class="portfolio-client" data-i18n="pitem2_res">3,2× wzrost ROAS</div></div>
+</div>
+<div class="portfolio-item reveal reveal-delay-2 ab">
+<div class="portfolio-img wv3"><div class="grid-vis"></div><svg viewBox="0 0 180 120" width="160" style="position:relative;z-index:1"><circle cx="90" cy="60" r="40" fill="none" stroke="rgba(255,100,100,0.4)" stroke-width="1"/><circle cx="90" cy="60" r="24" fill="rgba(255,100,100,0.1)" stroke="rgba(255,100,100,0.3)" stroke-width="1"/><circle cx="90" cy="60" r="8" fill="rgba(255,100,100,0.5)"/></svg></div>
+<div class="portfolio-details"><div class="portfolio-cat" data-i18n="pitem3_cat">SaaS · analityka</div><div class="portfolio-title">Orbitron Systems</div><div class="portfolio-client" data-i18n="pitem3_res">+210% wzrost przychodu</div></div>
+</div>
+<div class="portfolio-item reveal ab">
+<div class="portfolio-img wv4"><div class="grid-vis"></div><svg viewBox="0 0 180 120" width="160" style="position:relative;z-index:1"><rect x="15" y="20" width="65" height="80" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/><rect x="100" y="20" width="65" height="36" rx="6" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/><rect x="100" y="65" width="65" height="35" rx="6" fill="rgba(200,255,87,0.08)" stroke="rgba(200,255,87,0.3)" stroke-width="1"/></svg></div>
+<div class="portfolio-details"><div class="portfolio-cat" data-i18n="pitem4_cat">Startup · healthtech</div><div class="portfolio-title">Lumora Health</div><div class="portfolio-client" data-i18n="pitem4_res">2,4 mln USD po starcie</div></div>
+</div>
+<div class="portfolio-item reveal reveal-delay-1 ab">
+<div class="portfolio-img wv1"><div class="grid-vis"></div><svg viewBox="0 0 180 120" width="160" style="position:relative;z-index:1"><rect x="10" y="30" width="160" height="60" rx="8" fill="none" stroke="rgba(200,255,87,0.2)" stroke-width="1"/><rect x="25" y="45" width="40" height="6" rx="3" fill="rgba(200,255,87,0.6)"/><rect x="25" y="59" width="80" height="4" rx="2" fill="rgba(255,255,255,0.2)"/><rect x="25" y="71" width="60" height="4" rx="2" fill="rgba(255,255,255,0.12)"/><rect x="130" y="47" width="24" height="24" rx="12" fill="rgba(200,255,87,0.3)"/></svg></div>
+<div class="portfolio-details"><div class="portfolio-cat" data-i18n="pitem5_cat">Enterprise · prawo</div><div class="portfolio-title">Apex Partners</div><div class="portfolio-client" data-i18n="pitem5_res">+55% leadów</div></div>
+</div>
+<div class="portfolio-item reveal reveal-delay-2 ab">
+<div class="portfolio-img wv2"><div class="grid-vis"></div><svg viewBox="0 0 180 120" width="160" style="position:relative;z-index:1"><path d="M90 20 L150 55 L150 100 L30 100 L30 55 Z" fill="none" stroke="rgba(77,159,255,0.4)" stroke-width="1"/><path d="M90 40 L130 63 L130 95 L50 95 L50 63 Z" fill="rgba(77,159,255,0.08)"/><circle cx="90" cy="70" r="14" fill="rgba(77,159,255,0.3)" stroke="rgba(77,159,255,0.6)" stroke-width="1"/></svg></div>
+<div class="portfolio-details"><div class="portfolio-cat" data-i18n="pitem6_cat">E-commerce · architektura</div><div class="portfolio-title">Struktura Studio</div><div class="portfolio-client" data-i18n="pitem6_res">4,1× konwersja sklepu</div></div>
+</div>
+</div>
+</div>
+</div><!-- /portfolio -->
+
+<!-- ============ PRICING PAGE ============ -->
+<div class="page" id="page-pricing">
+<div class="pricing-page">
+<div class="section-label reveal" data-i18n="price_label">Cennik</div>
+<h1 class="section-h2 reveal" style="font-size:clamp(48px,7vw,96px);margin-bottom:24px" data-i18n-html="price_h1">Przejrzysty cennik.<br><span style="color:var(--accent)">Bez niespodzianek.</span></h1>
+<p class="section-sub reveal" data-i18n="price_sub">Projekty liczone rzeczowo — pod to, czego naprawdę potrzebujesz, a nie pod nadęte pakiety „żeby wcisnąć upsell”.</p>
+<div class="pricing-grid">
+<div class="pricing-card reveal ab">
+<div class="pricing-name" data-i18n="pr_tier1">Launchpad</div>
+<div class="pricing-price"><sup>$</sup>4,800</div>
+<div class="pricing-period" data-i18n="pr_period">Jednorazowa opłata projektowa</div>
+<div class="pricing-divider"></div>
+<ul class="pricing-features">
+<li><span class="feat-check">✓</span> <span data-i18n="pr1_f1">Projekt + wdrożenie strony do 5 podstron</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr1_f2">Responsywność mobile-first</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr1_f3">Fundamenty SEO</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr1_f4">Integracja CMS</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr1_f5">30 dni wsparcia po starcie</span></li>
+<li><span class="feat-cross">—</span> <span class="feat-off" data-i18n="pr1_x1">Animacje na zamówienie</span></li>
+<li><span class="feat-cross">—</span> <span class="feat-off" data-i18n="pr1_x2">Optymalizacja konwersji</span></li>
+<li><span class="feat-cross">—</span> <span class="feat-off" data-i18n="pr1_x3">Abonament utrzymaniowy</span></li>
+</ul>
+<a class="btn-pricing btn-pricing-ghost" href="#" onclick="showPage('contact');return false" data-i18n="pr_btn_go">Zacznij</a>
+</div>
+<div class="pricing-card featured reveal reveal-delay-1">
+<div class="pricing-badge" data-i18n="pr_badge">Najpopularniejszy</div>
+<div class="pricing-name" style="color:var(--accent)">Elevation</div>
+<div class="pricing-price"><sup>$</sup>12,000</div>
+<div class="pricing-period" data-i18n="pr_period">Jednorazowa opłata projektowa</div>
+<div class="pricing-divider" style="background:rgba(200,255,87,0.2)"></div>
+<ul class="pricing-features">
+<li><span class="feat-check">✓</span> <span data-i18n="pr2_f1">Do 15 stron, pełny design system</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr2_f2">Animacje i interakcje na zamówienie</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr2_f3">Optymalizacja współczynnika konwersji</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr2_f4">Wydajność pod 95+ w Lighthouse</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr2_f5">Gotowość pod e-commerce</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr2_f6">Analytics + mapy ciepła</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr2_f7">60 dni wsparcia po starcie</span></li>
+<li><span class="feat-cross">—</span> <span class="feat-off" data-i18n="pr2_x1">Abonament utrzymaniowy</span></li>
+</ul>
+<a class="btn-pricing btn-pricing-accent" href="#" onclick="showPage('contact');return false" data-i18n="pr_btn_conv">Porozmawiajmy</a>
+</div>
+<div class="pricing-card reveal reveal-delay-2 ab">
+<div class="pricing-name" data-i18n="pr_tier3">Partnership</div>
+<div class="pricing-price"><sup>$</sup>3,500<span style="font-size:20px" data-i18n="pr_mo">/mc</span></div>
+<div class="pricing-period" data-i18n="pr_period2">Abonament (min. 3 miesiące)</div>
+<div class="pricing-divider"></div>
+<ul class="pricing-features">
+<li><span class="feat-check">✓</span> <span data-i18n="pr3_f1">Wszystko z Elevation</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr3_f2">Comiesięczne godziny designu i dev</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr3_f3">Budowy systemów automatyzacji</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr3_f4">Comiesięczne przeglądy wydajności</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr3_f5">Priorytet + Slack</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr3_f6">Testy CRO i iteracje</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr3_f7">Kwartalne audyty marki</span></li>
+<li><span class="feat-check">✓</span> <span data-i18n="pr3_f8">Dedykowany zespół</span></li>
+</ul>
+<a class="btn-pricing btn-pricing-ghost" href="#" onclick="showPage('contact');return false" data-i18n="pr_btn_part">Aplikuj o Partnership</a>
+</div>
+</div>
+<div class="pricing-custom reveal" style="margin-top:20px">
+<div class="section-label" style="justify-content:center;margin-bottom:16px" data-i18n="pr_ent_label">Enterprise</div>
+<h3 style="font-family:var(--font-head);font-size:28px;font-weight:800;letter-spacing:-0.03em;margin-bottom:12px" data-i18n="pr_ent_h">Złożone potrzeby? Ustalmy zakres porządnie.</h3>
+<p style="font-size:15px;color:var(--text2);margin-bottom:28px;max-width:500px;margin-left:auto;margin-right:auto" data-i18n="pr_ent_p">Systemy wielomarkowe, przebudowy platform, integracje AI i długoterminowe programy transformacji cyfrowej — robiliśmy to.</p>
+<a class="btn-xl" href="#" onclick="showPage('contact');return false" style="display:inline-flex" data-i18n="pr_ent_btn">Porozmawiaj z zespołem →</a>
+</div>
+<div style="margin-top:60px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:36px;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center" class="reveal">
+<div><div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--accent);margin-bottom:4px" data-i18n="pr_stat_n1">14 dni</div><div style="font-size:13px;color:var(--text2)" data-i18n="pr_stat1">Średni czas od briefu do pierwszych makiet</div></div>
+<div><div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--accent);margin-bottom:4px">100%</div><div style="font-size:13px;color:var(--text2)" data-i18n="pr_stat2">Projektów na czas lub przed terminem</div></div>
+<div><div style="font-family:var(--font-head);font-size:28px;font-weight:800;color:var(--accent);margin-bottom:4px" data-i18n="pr_stat_n3">4,9 / 5</div><div style="font-size:13px;color:var(--text2)" data-i18n="pr_stat3">Średnia satysfakcji klientów</div></div>
+</div>
+</div>
+</div><!-- /pricing -->
+
+<!-- ============ CONTACT PAGE ============ -->
+<div class="page" id="page-contact">
+<div class="contact-page">
+<div class="contact-grid">
+<div class="contact-info reveal">
+<div class="section-label" style="margin-bottom:16px" data-i18n="contact_label">Kontakt</div>
+<h2 class="section-h2" style="font-size:clamp(36px,5vw,64px)" data-i18n-html="contact_h2">Zbudujmy coś,<br>o czym warto <span style="color:var(--accent)">porozmawiać.</span></h2>
+<p data-i18n="contact_lead">Opowiedz o projekcie. Odpowiemy w 24 godziny z rzetelną oceną i — jeśli pasujemy — ofertą, która ma sens biznesowy.</p>
+<div class="contact-details">
+<div class="contact-detail">
+<div class="cd-icon">✉</div>
+<div><div class="cd-label" data-i18n="cd_email">E-mail</div><div class="cd-val">hello@zenithlab.studio</div></div>
+</div>
+<div class="contact-detail">
+<div class="cd-icon">⌚</div>
+<div><div class="cd-label" data-i18n="cd_time">Czas odpowiedzi</div><div class="cd-val" data-i18n="cd_time_val">W 24 godziny robocze</div></div>
+</div>
+<div class="contact-detail">
+<div class="cd-icon">◎</div>
+<div><div class="cd-label" data-i18n="cd_avail">Dostępność</div><div class="cd-val" data-i18n="cd_avail_val">3 wolne sloty projektowe — III kw. 2025</div></div>
+</div>
+</div>
+</div>
+<div class="contact-form reveal reveal-delay-1">
+<div style="margin-bottom:32px"><h3 style="font-family:var(--font-head);font-size:22px;font-weight:700;margin-bottom:6px" data-i18n="form_h">Rozpocznij projekt</h3><p style="font-size:14px;color:var(--text2)" data-i18n="form_intro">Wypełnij brief — im więcej szczegółów, tym lepsza odpowiedź.</p></div>
+<div class="form-row">
+<div class="form-group"><label class="form-label" data-i18n="form_fn">Imię</label><input type="text" class="form-input" data-i18n-placeholder="form_ph_fn" placeholder="Jan"></div>
+<div class="form-group"><label class="form-label" data-i18n="form_ln">Nazwisko</label><input type="text" class="form-input" data-i18n-placeholder="form_ph_ln" placeholder="Kowalski"></div>
+</div>
+<div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" data-i18n-placeholder="form_ph_mail" placeholder="ty@firma.pl"></div>
+<div class="form-group"><label class="form-label" data-i18n="form_co">Firma / strona</label><input type="text" class="form-input" data-i18n-placeholder="form_ph_co" placeholder="firma.pl"></div>
+<div class="form-group">
+<label class="form-label" data-i18n="form_type">Typ projektu</label>
+<select class="form-input" id="form-type">
+<option value="" data-i18n="form_opt0">Wybierz usługę…</option>
+<option value="1" data-i18n="form_opt1">Web design + development</option>
+<option value="2" data-i18n="form_opt2">System UX / UI</option>
+<option value="3" data-i18n="form_opt3">Automatyzacja i systemy</option>
+<option value="4" data-i18n="form_opt4">Pełny abonament Partnership</option>
+<option value="5" data-i18n="form_opt5">Coś innego</option>
+</select>
+</div>
+<div class="form-group">
+<label class="form-label" data-i18n="form_budget">Budget</label>
+<select class="form-input" id="form-budget">
+<option value="" data-i18n="form_bopt0">Wybierz przedział…</option>
+<option data-i18n="form_bopt1">$4 800 – $8 000</option>
+<option data-i18n="form_bopt2">$8 000 – $15 000</option>
+<option data-i18n="form_bopt3">$15 000 – $30 000</option>
+<option data-i18n="form_bopt4">$30 000+</option>
+</select>
+</div>
+<div class="form-group"><label class="form-label" data-i18n="form_msg">Opisz projekt</label><textarea class="form-input" data-i18n-placeholder="form_ph_msg" placeholder="Jaki jest cel? Jaki problem rozwiązujesz? Jak wygląda sukces?"></textarea></div>
+<button class="form-btn" onclick="handleFormSubmit(this)"><span data-i18n="form_send">Wyślij brief</span> <span>→</span></button>
+</div>
+</div>
+</div>
+</div><!-- /contact -->
+
+<!-- ============ BLOG PAGE ============ -->
+<div class="page" id="page-blog">
+<div class="blog-page">
+<div class="section-label reveal" data-i18n="blog_label">Dziennik</div>
+<h1 class="section-h2 reveal" style="font-size:clamp(48px,7vw,96px);margin-bottom:48px" data-i18n-html="blog_h1">Myśli na głos<br>o <span style="color:var(--accent)">rzemiośle cyfrowym.</span></h1>
+<div class="blog-featured reveal">
+<div class="blog-feat-img wv1"><div class="grid-vis"></div><svg viewBox="0 0 300 200" width="260" style="position:relative;z-index:1"><rect x="20" y="30" width="260" height="140" rx="12" fill="none" stroke="rgba(200,255,87,0.2)" stroke-width="1"/><rect x="36" y="50" width="140" height="12" rx="6" fill="rgba(200,255,87,0.7)"/><rect x="36" y="70" width="220" height="6" rx="3" fill="rgba(255,255,255,0.2)"/><rect x="36" y="84" width="180" height="6" rx="3" fill="rgba(255,255,255,0.15)"/><rect x="36" y="98" width="200" height="6" rx="3" fill="rgba(255,255,255,0.12)"/><rect x="36" y="130" width="80" height="24" rx="12" fill="rgba(200,255,87,0.8)"/></svg></div>
+<div class="blog-feat-content">
+<div class="blog-date" data-i18n="blog_feat_date">12 czerwca 2025 · 8 min czytania</div>
+<h2 class="blog-title" data-i18n="blog_feat_title">Dlaczego tracisz klientów, zanim zdążą przeczytać choć słowo.</h2>
+<p class="blog-excerpt" data-i18n="blog_feat_exc">Pierwsze wrażenie w sieci powstaje w 50 milisekundach. To za mało na czytanie — ledwie na odczucie. O co naprawdę chodzi w tej połowie sekundy i jak ją wygrać.</p>
+<div class="blog-meta">
+<div class="blog-author"><div class="blog-author-av">NV</div>Nora Vance</div>
+<a class="read-more" href="#" data-i18n="blog_read">Czytaj artykuł →</a>
+</div>
+</div>
+</div>
+<div class="blog-grid">
+<div class="blog-card reveal ab">
+<div class="blog-card-img wv2"><div class="grid-vis"></div></div>
+<div class="blog-card-content">
+<div class="blog-card-cat" data-i18n="bc1_cat">Development</div>
+<div class="blog-card-title" data-i18n="bc1_t">Next.js App Router: wzorce wydajności, które naprawdę mają znaczenie w produkcji.</div>
+<div class="blog-card-exc" data-i18n="bc1_e">Porównaliśmy 12 strategii pobierania danych na pięciu projektach. Tak wyglądały liczby.</div>
+<div class="blog-card-meta"><span>Kai Matsuda</span><span data-i18n="bc1_m">4 cze · 6 min</span></div>
+</div>
+</div>
+<div class="blog-card reveal reveal-delay-1 ab">
+<div class="blog-card-img wv3"><div class="grid-vis"></div></div>
+<div class="blog-card-content">
+<div class="blog-card-cat" data-i18n="bc2_cat">Strategia UX</div>
+<div class="blog-card-title" data-i18n="bc2_t">CTA za 50 000 $: jak zmiana jednego przycisku potroiła miesięczny przychód klienta.</div>
+<div class="blog-card-exc" data-i18n="bc2_e">Case study: specyficzność, hierarchia kontrastu i słowo „free” — i czemu najważniejszy był placement.</div>
+<div class="blog-card-meta"><span>Isla Leclerc</span><span data-i18n="bc2_m">28 maj · 5 min</span></div>
+</div>
+</div>
+<div class="blog-card reveal reveal-delay-2 ab">
+<div class="blog-card-img wv4"><div class="grid-vis"></div></div>
+<div class="blog-card-content">
+<div class="blog-card-cat" data-i18n="bc3_cat">Automatyzacja</div>
+<div class="blog-card-title" data-i18n="bc3_t">W pełni zautomatyzowany onboarding klienta z n8n i Notion.</div>
+<div class="blog-card-exc" data-i18n="bc3_e">Jak odzyskaliśmy 40 godzin miesięcznie dla firmy konsultingowej bez jednej linii backendu. Pełny workflow.</div>
+<div class="blog-card-meta"><span>Kai Matsuda</span><span data-i18n="bc3_m">19 maj · 7 min</span></div>
+</div>
+</div>
+<div class="blog-card reveal ab">
+<div class="blog-card-img wv1"><div class="grid-vis"></div></div>
+<div class="blog-card-content">
+<div class="blog-card-cat" data-i18n="bc4_cat">Design</div>
+<div class="blog-card-title" data-i18n="bc4_t">Tryb ciemny to nie funkcja — to komunikat pozycjonowania.</div>
+<div class="blog-card-exc" data-i18n="bc4_e">Dlaczego marki na szczycie rynku domyślnie wybierają czerń. I co psychologicznie komunikuje ciemny interfejs zanim przeczytasz słowo.</div>
+<div class="blog-card-meta"><span>Nora Vance</span><span data-i18n="bc4_m">10 maj · 4 min</span></div>
+</div>
+</div>
+<div class="blog-card reveal reveal-delay-1 ab">
+<div class="blog-card-img wv2"><div class="grid-vis"></div></div>
+<div class="blog-card-content">
+<div class="blog-card-cat" data-i18n="bc5_cat">Strategia</div>
+<div class="blog-card-title" data-i18n="bc5_t">Wycena usług od 10 000 $+: zmiany na stronie, które robią wrażenie wiarygodnej.</div>
+<div class="blog-card-exc" data-i18n="bc5_e">Jest wizualny język premium pricing. Jeśli strona go nie mówi, klienci zakotwiczą w tym, co widzą — nie w cenie. Słownik.</div>
+<div class="blog-card-meta"><span>Nora Vance</span><span data-i18n="bc5_m">2 maj · 6 min</span></div>
+</div>
+</div>
+<div class="blog-card reveal reveal-delay-2 ab">
+<div class="blog-card-img wv3"><div class="grid-vis"></div></div>
+<div class="blog-card-content">
+<div class="blog-card-cat" data-i18n="bc6_cat">Development</div>
+<div class="blog-card-title" data-i18n="bc6_t">Core Web Vitals w 2025: techniczny przewodnik dla developerów z agencji.</div>
+<div class="blog-card-exc" data-i18n="bc6_e">INP jest czynnikiem rankingu. Checklista, którą przechodzimy w każdym projekcie Zenith Lab — od LCP po budżet interakcji.</div>
+<div class="blog-card-meta"><span>Kai Matsuda</span><span data-i18n="bc6_m">24 kwi · 9 min</span></div>
+</div>
+</div>
+</div>
+</div>
+</div><!-- /blog -->
+
+<!-- ============ 404 PAGE ============ -->
+<div class="page" id="page-404">
+<div class="page-404">
+<div class="hero-glow" style="top:50%;transform:translateY(-50%)"></div>
+<div class="e404-num">404</div>
+<h2 class="e404-title" data-i18n="e404_t">Zabłądziłeś poza mapę.</h2>
+<p class="e404-sub" data-i18n="e404_s">Ta strona nie istnieje — ale wymarzona witryna może już tak.</p>
+<a class="btn-xl" href="#" onclick="showPage('home');return false" style="display:inline-flex"><span data-i18n="e404_btn">Wróć na stronę główną</span> <span class="btn-xl-arrow">→</span></a>
+</div>
+</div><!-- /404 -->
+
+<!-- FOOTER -->
+<footer id="footer">
+<div class="footer-inner">
+<div class="footer-top">
+<div class="footer-brand">
+<div class="nav-logo" style="margin-bottom:0"><span class="nav-logo-dot"></span>Zenith Lab</div>
+<p data-i18n="foot_tagline">Budujemy premiumową obecność cyfrową dla marek, które nie chcą być przeciętne. Strategia na pierwszym miejscu. Design z obsesją. Efekty na licznikach.</p>
+<div class="footer-social">
+<a class="social-btn" href="#" title="Twitter">𝕏</a>
+<a class="social-btn" href="#" title="LinkedIn">in</a>
+<a class="social-btn" href="#" title="Dribbble">⬡</a>
+<a class="social-btn" href="#" title="Instagram">◎</a>
+</div>
+</div>
+<div class="footer-col">
+<h4 data-i18n="foot_h1">Usługi</h4>
+<ul>
+<li><a href="#" onclick="showPage('services');return false" data-i18n="foot_s1">Projektowanie stron</a></li>
+<li><a href="#" onclick="showPage('services');return false" data-i18n="foot_s2">Development</a></li>
+<li><a href="#" onclick="showPage('services');return false" data-i18n="foot_s3">Systemy UX / UI</a></li>
+<li><a href="#" onclick="showPage('services');return false" data-i18n="foot_s4">Automatyzacja</a></li>
+<li><a href="#" onclick="showPage('print3d');return false" data-i18n="nav_print3d">Druk 3D</a></li>
+<li><a href="#" onclick="showPage('archmodels');return false" data-i18n="nav_archmodels">Makiety architektoniczne</a></li>
+<li><a href="#" onclick="showPage('led');return false" data-i18n="nav_led">Kasetony LED</a></li>
+<li><a href="#" onclick="showPage('engraving');return false" data-i18n="nav_engraving">Grawerowanie</a></li>
+<li><a href="#" onclick="showPage('prototypes');return false" data-i18n="nav_prototypes">Prototypy produktów</a></li>
+<li><a href="#" onclick="showPage('gadgets');return false" data-i18n="nav_gadgets">Gadżety reklamowe</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 data-i18n="foot_h2">Firma</h4>
+<ul>
+<li><a href="#" onclick="showPage('about');return false" data-i18n="nav_about">O nas</a></li>
+<li><a href="#" onclick="showPage('portfolio');return false" data-i18n="foot_work">Realizacje</a></li>
+<li><a href="#" onclick="showPage('blog');return false" data-i18n="blog_label">Dziennik</a></li>
+<li><a href="#" onclick="showPage('pricing');return false" data-i18n="nav_pricing">Cennik</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4 data-i18n="foot_h3">Kontakt</h4>
+<ul>
+<li><a href="#" onclick="showPage('contact');return false" data-i18n="nav_project">Rozpocznij projekt</a></li>
+<li><a href="mailto:hello@zenithlab.studio">hello@zenithlab.studio</a></li>
+<li><a href="#">LinkedIn</a></li>
+<li><a href="#" data-i18n="foot_priv">Polityka prywatności</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-copy" data-i18n="foot_copy">© 2025 Zenith Lab Studio Ltd. Wszelkie prawa zastrzeżone.</div>
+<div class="footer-bottom-links">
+<a href="#" data-i18n="foot_l1">Prywatność</a>
+<a href="#" data-i18n="foot_l2">Regulamin</a>
+<a href="#" data-i18n="foot_l3">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "zenith-lab-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.3"
+  }
+}

@@ -1,0 +1,55 @@
+<div id="cursor-ring"></div>
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-logo">Zenith<span>Lab</span></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div class="loader-label">Trwa ładowanie strony...</div>
+</div>
+<!-- MOBILE NAV -->
+<div id="mobile-nav">
+<span class="mobile-close" onclick="closeMobileNav()">✕</span>
+<a href="index.html" onclick="closeMobileNav()">Strona główna</a>
+<a href="print3d.html" class="mobile-nav-sub" onclick="closeMobileNav()">Druk 3D</a>
+<a href="archmodels.html" class="mobile-nav-sub" onclick="closeMobileNav()">Makiety architektoniczne</a>
+<a href="led.html" class="mobile-nav-sub" onclick="closeMobileNav()">Kasetony LED</a>
+<a href="engraving.html" class="mobile-nav-sub" onclick="closeMobileNav()">Grawerowanie</a>
+<a href="prototypes.html" class="mobile-nav-sub" onclick="closeMobileNav()">Prototypy produktów</a>
+<a href="gadgets.html" class="mobile-nav-sub" onclick="closeMobileNav()">Gadżety reklamowe</a>
+<a href="portfolio.html" onclick="closeMobileNav()">Realizacje</a>
+<a href="blog.html" onclick="closeMobileNav()">Blog</a>
+<a href="contact.html" onclick="closeMobileNav()">Kontakt</a>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+<div class="nav-inner">
+<a href="index.html" class="nav-logo" style="cursor:pointer">
+<span class="nav-logo-dot"></span>Zenith Lab
+</a>
+<div class="nav-links">
+<a href="index.html" class="nav-link-main" data-n="home">Strona główna</a>
+<div class="nav-item-dropdown">
+<span class="nav-dropdown-trigger" data-n="services">Usługi</span>
+<div class="nav-dropdown-menu" role="menu">
+<div class="nav-dropdown-inner">
+<a href="print3d.html" role="menuitem" data-n="print3d">Druk 3D</a>
+<a href="archmodels.html" role="menuitem" data-n="archmodels">Makiety architektoniczne</a>
+<a href="led.html" role="menuitem" data-n="led">Kasetony LED</a>
+<a href="engraving.html" role="menuitem" data-n="engraving">Grawerowanie</a>
+<a href="prototypes.html" role="menuitem" data-n="prototypes">Prototypy produktów</a>
+<a href="gadgets.html" role="menuitem" data-n="gadgets">Gadżety reklamowe</a>
+</div>
+</div>
+</div>
+<a href="portfolio.html" class="nav-link-main" data-n="portfolio">Realizacje</a>
+<a href="blog.html" class="nav-link-main" data-n="blog">Blog</a>
+</div>
+<div class="nav-cta">
+<a class="btn-ghost" href="contact.html">Porozmawiajmy</a>
+<a class="btn-primary" href="contact.html">Rozpocznij projekt</a>
+</div>
+<div class="nav-menu-btn" onclick="document.getElementById('mobile-nav').classList.add('open')" style="cursor:pointer">
+<span></span><span></span><span></span>
+</div>
+</div>
+</nav>
