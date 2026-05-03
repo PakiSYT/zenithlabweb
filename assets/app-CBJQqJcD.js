@@ -1,4 +1,4 @@
-(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))i(o);new MutationObserver(o=>{for(const t of o)if(t.type==="childList")for(const r of t.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&i(r)}).observe(document,{childList:!0,subtree:!0});function n(o){const t={};return o.integrity&&(t.integrity=o.integrity),o.referrerPolicy&&(t.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?t.credentials="include":o.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function i(o){if(o.ep)return;o.ep=!0;const t=n(o);fetch(o.href,t)}})();const T=`<div id="cursor-ring"></div>
+(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const o of document.querySelectorAll('link[rel="modulepreload"]'))i(o);new MutationObserver(o=>{for(const t of o)if(t.type==="childList")for(const r of t.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&i(r)}).observe(document,{childList:!0,subtree:!0});function n(o){const t={};return o.integrity&&(t.integrity=o.integrity),o.referrerPolicy&&(t.referrerPolicy=o.referrerPolicy),o.crossOrigin==="use-credentials"?t.credentials="include":o.crossOrigin==="anonymous"?t.credentials="omit":t.credentials="same-origin",t}function i(o){if(o.ep)return;o.ep=!0;const t=n(o);fetch(o.href,t)}})();const B=`<div id="cursor-ring"></div>
 <!-- LOADER -->
 <div id="loader">
   <div class="loader-logo">Zenith<span>Lab</span></div>
@@ -6,19 +6,29 @@
   <div class="loader-label">Trwa ładowanie strony...</div>
 </div>
 <!-- MOBILE NAV -->
-<div id="mobile-nav">
-<span class="mobile-close" onclick="closeMobileNav()">✕</span>
-<a href="index.html" onclick="closeMobileNav()">Strona główna</a>
-<a href="print3d.html" class="mobile-nav-sub" onclick="closeMobileNav()">Druk 3D</a>
-<a href="archmodels.html" class="mobile-nav-sub" onclick="closeMobileNav()">Makiety architektoniczne</a>
-<a href="led.html" class="mobile-nav-sub" onclick="closeMobileNav()">Kasetony LED</a>
-<a href="engraving.html" class="mobile-nav-sub" onclick="closeMobileNav()">Grawerowanie</a>
-<a href="prototypes.html" class="mobile-nav-sub" onclick="closeMobileNav()">Prototypy produktów</a>
-<a href="gadgets.html" class="mobile-nav-sub" onclick="closeMobileNav()">Gadżety reklamowe</a>
-<a href="portfolio.html" onclick="closeMobileNav()">Realizacje</a>
-<a href="blog.html" onclick="closeMobileNav()">Blog</a>
-<a href="contact.html" onclick="closeMobileNav()">Kontakt</a>
-</div>
+<div id="mobile-nav-backdrop" onclick="closeMobileNav()"></div>
+<nav id="mobile-nav" aria-label="Menu mobilne">
+  <div class="mobile-nav-header">
+    <span class="nav-logo"><span class="nav-logo-dot"></span>Zenith Lab</span>
+    <button class="mobile-close" onclick="closeMobileNav()" aria-label="Zamknij menu">✕</button>
+  </div>
+  <div class="mobile-nav-body">
+    <a href="index.html" onclick="closeMobileNav()">Strona główna</a>
+    <div class="mobile-nav-section-label">Usługi</div>
+    <a href="print3d.html" class="mobile-nav-sub" onclick="closeMobileNav()">Druk 3D</a>
+    <a href="archmodels.html" class="mobile-nav-sub" onclick="closeMobileNav()">Makiety architektoniczne</a>
+    <a href="led.html" class="mobile-nav-sub" onclick="closeMobileNav()">Kasetony LED</a>
+    <a href="engraving.html" class="mobile-nav-sub" onclick="closeMobileNav()">Grawerowanie</a>
+    <a href="prototypes.html" class="mobile-nav-sub" onclick="closeMobileNav()">Prototypy produktów</a>
+    <a href="gadgets.html" class="mobile-nav-sub" onclick="closeMobileNav()">Gadżety reklamowe</a>
+    <div class="mobile-nav-divider"></div>
+    <a href="portfolio.html" onclick="closeMobileNav()">Realizacje</a>
+    <a href="blog.html" onclick="closeMobileNav()">Blog</a>
+  </div>
+  <div class="mobile-nav-footer">
+    <a class="btn-primary" href="contact.html" onclick="closeMobileNav()" style="display:block;text-align:center;padding:14px 20px;border-radius:10px">Porozmawiajmy →</a>
+  </div>
+</nav>
 
 <!-- NAV -->
 <nav id="nav">
@@ -82,6 +92,9 @@
 <ul>
 <li><a href="portfolio.html">Realizacje</a></li>
 <li><a href="blog.html">Blog</a></li>
+<li><a href="regulamin.html">Regulamin</a></li>
+<li><a href="privacy.html">Polityka prywatności</a></li>
+<li><a href="cookies.html">Cookies</a></li>
 </ul>
 </div>
 <div class="footer-col">
@@ -89,23 +102,23 @@
 <ul>
 <li><a href="contact.html">Rozpocznij projekt</a></li>
 <li><a href="mailto:kontakt@zenithlab.pl">kontakt@zenithlab.pl</a></li>
-<li><a href="tel:+123456789">+48 123 456 789</a></li>
+<li><a href="tel:+48530177581">+48 530 177 581</a></li>
 <li><a href="#">LinkedIn</a></li>
-<li><a href="#">Polityka prywatności</a></li>
+<li><a href="privacy.html">Polityka prywatności</a></li>
 </ul>
 </div>
 </div>
 <div class="footer-bottom">
 <div class="footer-copy">© 2026 Zenith Lab. Wszelkie prawa zastrzeżone.</div>
 <div class="footer-bottom-links">
-<a href="#">Prywatność</a>
-<a href="#">Regulamin</a>
-<a href="#">Cookies</a>
+<a href="privacy.html">Prywatność</a>
+<a href="regulamin.html">Regulamin</a>
+<a href="cookies.html">Cookies</a>
 </div>
 </div>
 </div>
 </footer>
-`,K=`<div class="page" id="page-home">
+`,R=`<div class="page" id="page-home">
 
 <!-- HERO -->
 <section class="hero">
@@ -303,15 +316,15 @@
 </div>
 
 </div>
-`,R=`<div class="page" id="page-print3d">
+`,K=`<div class="page" id="page-print3d">
 <div class="services-page">
 <div class="section-label reveal">Druk addytywny</div>
 <h1 class="section-h2 reveal" style="font-size:clamp(38px,4.5vw,72px);margin-bottom:24px">Fizyczne produkty<br>z <span style="color:var(--accent)">milimetryczną</span> precyzją.</h1>
 <p class="section-sub reveal" style="margin-bottom:80px">Uzupełniamy pracownię Zenith Lab o druk addytywny: prototypy, detale do makiet i małe serie — od pliku po gotowy element gotowy do obróbki lub montażu.</p>
 
 <div class="service-full">
-<div class="service-visual" data-imgs='["img/portfolio/orzel.jpg","img/portfolio/druk.jpg","img/portfolio/druk2.jpg","img/portfolio/druk5.jpg","img/portfolio/druk6.jpg","img/portfolio/figurka.jpg","img/portfolio/figura zeus.jpg"]'>
-<img class="svc-visual-img" src="img/portfolio/orzel.jpg" alt="Druk 3D i prototypy" loading="eager">
+<div class="service-visual" data-imgs='["img/portfolio/figurka_nbp.jpg","img/portfolio/orzel.jpg","img/portfolio/druk.jpg","img/portfolio/druk2.jpg","img/portfolio/druk5.jpg","img/portfolio/druk6.jpg","img/portfolio/figurka.jpg","img/portfolio/figura zeus.jpg"]'>
+<img class="svc-visual-img" src="img/portfolio/figurka_nbp.jpg" alt="Druk 3D i prototypy" loading="eager">
 <div class="svc-zoom-hint">⊕ Powiększ</div>
 </div>
 <div>
@@ -413,7 +426,7 @@
 </div>
 </div>
 </div>
-`,H=`<div class="page" id="page-engraving">
+`,U=`<div class="page" id="page-engraving">
 <div class="services-page">
 <div class="section-label reveal">Grawer i cięcie</div>
 <h1 class="section-h2 reveal" style="font-size:clamp(38px,4.5vw,72px);margin-bottom:24px">Laser CNC:<br>plexi, drewno, szkło,<br><span style="color:var(--accent)">sklejka i więcej.</span></h1>
@@ -446,7 +459,7 @@
 </div>
 </div>
 </div>
-`,U=`<div class="page" id="page-prototypes">
+`,_=`<div class="page" id="page-prototypes">
 <div class="services-page">
 <div class="section-label reveal">Walidacja przed produkcją</div>
 <h1 class="section-h2 reveal" style="font-size:clamp(38px,4.5vw,72px);margin-bottom:24px">Prototypy<br><span style="color:var(--accent)">pod testy</span> i pitch.</h1>
@@ -479,7 +492,7 @@
 </div>
 </div>
 </div>
-`,V=`<div class="page" id="page-gadgets">
+`,H=`<div class="page" id="page-gadgets">
 <div class="services-page">
 <div class="section-label reveal">Gadżety i merch</div>
 <h1 class="section-h2 reveal" style="font-size:clamp(38px,4.5vw,72px);margin-bottom:24px">Stojaki, wizytówki,<br>breloki <span style="color:var(--accent)">NFC i nie tylko.</span></h1>
@@ -514,7 +527,7 @@
 </div>
 </div>
 </div>
-`,$=`<div class="page" id="page-portfolio">
+`,V=`<div class="page" id="page-portfolio">
     <div class="portfolio-page">
 
         <div class="section-label reveal">Realizacje</div>
@@ -541,7 +554,7 @@
 
             <div class="portfolio-item ab reveal" data-filter="Druk 3D" data-project="0">
                 <div class="portfolio-img pf-card-trigger">
-                    <img src="img/portfolio/orzel.jpg" alt="Figurka orła" loading="lazy">
+                    <img src="img/portfolio/orzel.jpg" alt="Figurka NBP dla animatora" loading="lazy">
                     <div class="pf-img-overlay">
                         <span class="pf-zoom-icon">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -555,7 +568,7 @@
                                 <rect x="3" y="3" width="18" height="18" rx="2" />
                                 <circle cx="8.5" cy="8.5" r="1.5" />
                                 <polyline points="21 15 16 10 5 21" /></svg>
-                            3 zdjęcia
+                            4 zdjęcia
                         </span>
                     </div>
                 </div>
@@ -664,7 +677,7 @@
                                 <rect x="3" y="3" width="18" height="18" rx="2" />
                                 <circle cx="8.5" cy="8.5" r="1.5" />
                                 <polyline points="21 15 16 10 5 21" /></svg>
-                            9 zdjęć
+                            12 zdjęć
                         </span>
                     </div>
                 </div>
@@ -727,6 +740,62 @@
                     <div class="portfolio-cat">Prototyp · gadżet</div>
                     <div class="portfolio-title">Lampka nocna, obudowa głosnika</div>
                     <div class="portfolio-client">Prototyp funkcjonalny</div>
+                </div>
+            </div>
+
+
+            <div class="portfolio-item ab reveal reveal-delay-2" data-filter="soccerball" data-project="7">
+                <div class="portfolio-img pf-card-trigger">
+                    <img src="img/portfolio/soccerball.jpeg" alt="Gra soccerball" loading="lazy">
+                    <div class="pf-img-overlay">
+                        <span class="pf-zoom-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                <line x1="11" y1="8" x2="11" y2="14" />
+                                <line x1="8" y1="11" x2="14" y2="11" /></svg>
+                        </span>
+                        <span class="pf-img-count">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <circle cx="8.5" cy="8.5" r="1.5" />
+                                <polyline points="21 15 16 10 5 21" /></svg>
+                            3 zdjęcia
+                        </span>
+                    </div>
+                </div>
+                <div class="portfolio-details">
+                    <div class="portfolio-cat">Gadżety · event</div>
+                    <div class="portfolio-title">Gadżety eventowe</div>
+                    <div class="portfolio-client">Produkty promocyjne dla wydarzeń</div>
+                </div>
+            </div>
+
+
+              <div class="portfolio-item ab reveal reveal-delay-2" data-filter="puchary" data-project="8">
+                <div class="portfolio-img pf-card-trigger">
+                    <img src="img/portfolio/figurka_nbp.jpg" alt="figurka nbp" loading="lazy">
+                    <div class="pf-img-overlay">
+                        <span class="pf-zoom-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                                <line x1="11" y1="8" x2="11" y2="14" />
+                                <line x1="8" y1="11" x2="14" y2="11" /></svg>
+                        </span>
+                        <span class="pf-img-count">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <circle cx="8.5" cy="8.5" r="1.5" />
+                                <polyline points="21 15 16 10 5 21" /></svg>
+                            5 zdjęć
+                        </span>
+                    </div>
+                </div>
+                <div class="portfolio-details">
+                    <div class="portfolio-cat">Puchary · Nagrody</div>
+                    <div class="portfolio-title">Gadżety eventowe</div>
+                    <div class="portfolio-client">Produkty promocyjne dla wydarzeń</div>
                 </div>
             </div>
 
@@ -1223,7 +1292,7 @@
         }
     </style>
 
-</div>`,_=`<div class="page" id="page-contact">
+</div>`,X=`<div class="page" id="page-contact">
 <div class="contact-page">
 <div class="contact-grid">
 <div class="contact-info reveal">
@@ -1281,78 +1350,129 @@
 </div>
 </div>
 </div>
-`,X=`<div class="page" id="page-blog">
+`,$=`<div class="page" id="page-blog">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Blog Zenith Lab",
+  "description": "Praktyczna wiedza z pracowni: dobór materiałów pod laser CNC, projektowanie makiet architektonicznych, podświetlenie LED, druk 3D i gadżety z NFC.",
+  "url": "https://zenithlab.pl/blog.html",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Zenith Lab",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://zenithlab.pl/img/sygnet.png"
+    }
+  }
+}
+<\/script>
+
 <div class="blog-page">
-<div class="section-label reveal">Blog</div>
-<h1 class="section-h2 reveal" style="font-size:clamp(48px,7vw,96px);margin-bottom:48px">Z pracowni:<br>materiały, laser<br>i <span style="color:var(--accent)">makiety.</span></h1>
-<div class="blog-featured reveal">
-<div class="blog-feat-img" style="overflow:hidden;padding:0;background:var(--bg3)"><img src="img/portfolio/stolik grawer.jpg" alt="Drewno, sklejka czy plexi?" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'"></div>
-<div class="blog-feat-content">
-<div class="blog-date">Marzec 2026 · 7 min czytania</div>
-<h2 class="blog-title">Drewno, sklejka czy plexi? Jak dobrać materiał pod grawer i cięcie laserem.</h2>
-<p class="blog-excerpt">Krótko o tym, co wpływa na jakość krawędzi, kontrast graweru i trwałość przy myciu — np. przy deskach do krojenia lub tabliczkach.</p>
-<div class="blog-meta">
-<div class="blog-author"><div class="blog-author-av">ZL</div>Zenith Lab</div>
-<a class="read-more" href="#">Wkrótce pełny wpis →</a>
-</div>
-</div>
-</div>
-<div class="blog-grid">
-<div class="blog-card reveal ab">
-<div class="blog-card-img" style="overflow:hidden;padding:0;background:var(--bg3)"><img src="img/portfolio/orzel.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
-<div class="blog-card-content">
-<div class="blog-card-cat">Makiety</div>
-<div class="blog-card-title">Skala i poziom detalu: co warto ustalić przed wyceną makiety deweloperskiej.</div>
-<div class="blog-card-exc">Checklista pytań do architekta i inwestora — żeby model był czytelny na pierwszym spotkaniu.</div>
-<div class="blog-card-meta"><span>Zenith Lab</span><span>luty 2026 · 5 min</span></div>
-</div>
-</div>
-<div class="blog-card reveal reveal-delay-1 ab">
-<div class="blog-card-img" style="overflow:hidden;padding:0;background:var(--bg3)"><img src="img/portfolio/magnes.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
-<div class="blog-card-content">
-<div class="blog-card-cat">Kasetony LED</div>
-<div class="blog-card-title">Jednolite podświetlenie logo: co decyduje o „równym” świetle bez plam.</div>
-<div class="blog-card-exc">Moduły, dyfuzja, zasilanie i dobór barwy — w skrócie dla zamawiających, nie tylko dla elektryków.</div>
-<div class="blog-card-meta"><span>Zenith Lab</span><span>sty 2026 · 6 min</span></div>
-</div>
-</div>
-<div class="blog-card reveal reveal-delay-2 ab">
-<div class="blog-card-img" style="overflow:hidden;padding:0;background:var(--bg3)"><img src="img/portfolio/stolik grawer.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
-<div class="blog-card-content">
-<div class="blog-card-cat">Gadżety</div>
-<div class="blog-card-title">Breloczek NFC: co może dziać po skanowaniu i jak to sensownie zaplanować.</div>
-<div class="blog-card-exc">Od wizytówki elektronicznej po kampanię — bez przepłacania za technologię, której nikt nie użyje.</div>
-<div class="blog-card-meta"><span>Zenith Lab</span><span>gru 2025 · 4 min</span></div>
-</div>
-</div>
-<div class="blog-card reveal ab">
-<div class="blog-card-img" style="overflow:hidden;padding:0;background:var(--bg3)"><img src="img/portfolio/orzel.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
-<div class="blog-card-content">
-<div class="blog-card-cat">Laser CNC</div>
-<div class="blog-card-title">Szkło w laserze: kiedy się sprawdza, a kiedy lepiej wybrać inną technikę.</div>
-<div class="blog-card-exc">Bezpieczeństwo, koszt strat materiałowych i jakość krawędzi — praktycznie z pracowni.</div>
-<div class="blog-card-meta"><span>Zenith Lab</span><span>lis 2025 · 5 min</span></div>
-</div>
-</div>
-<div class="blog-card reveal reveal-delay-1 ab">
-<div class="blog-card-img" style="overflow:hidden;padding:0;background:var(--bg3)"><img src="img/portfolio/magnes.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
-<div class="blog-card-content">
-<div class="blog-card-cat">Prototypy</div>
-<div class="blog-card-title">Druk 3D przed formą wtryskową: co warto sprawdzić w prototypie.</div>
-<div class="blog-card-exc">Tolerancje, montaż śrub, „klik” obudowy — jak przygotować się do droższej produkcji.</div>
-<div class="blog-card-meta"><span>Zenith Lab</span><span>paź 2025 · 7 min</span></div>
-</div>
-</div>
-<div class="blog-card reveal reveal-delay-2 ab">
-<div class="blog-card-img" style="overflow:hidden;padding:0;background:var(--bg3)"><img src="img/portfolio/stolik grawer.jpg" alt="" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"></div>
-<div class="blog-card-content">
-<div class="blog-card-cat">Warsztat</div>
-<div class="blog-card-title">Pakowanie makiet i delikatnych elementów szklanych — co dostajesz w zestawie.</div>
-<div class="blog-card-exc">Instrukcja montażu, zabezpieczenia w transporcie i pierwsze uruchomienie oświetlenia.</div>
-<div class="blog-card-meta"><span>Zenith Lab</span><span>wrz 2025 · 4 min</span></div>
-</div>
-</div>
-</div>
+  <div class="section-label reveal">Blog</div>
+  <h1 class="section-h2 reveal" style="font-size:clamp(40px,6vw,80px);margin-bottom:16px">Z pracowni:<br>materiały, laser<br>i <span style="color:var(--accent)">makiety.</span></h1>
+  <p class="section-sub reveal" style="margin-bottom:56px">Praktyczna wiedza o produkcji fizycznej — dobór materiałów, technologie i przykłady z realizacji.</p>
+
+  <!-- FEATURED -->
+  <a class="blog-featured reveal" href="blog-material.html" style="text-decoration:none;display:grid;cursor:pointer">
+    <div class="blog-feat-img" style="overflow:hidden;padding:0;background:var(--bg3)">
+      <img src="img/portfolio/grawer.jpg" alt="Drewno, sklejka czy plexi? Dobór materiału pod laser CNC" loading="eager" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div class="blog-feat-content">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <span class="blog-cat-pill" style="background:rgba(200,255,87,0.12);color:var(--accent);border:1px solid rgba(200,255,87,0.25);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase">Laser CNC</span>
+        <span class="blog-cat-pill" style="background:rgba(200,255,87,0.12);color:var(--accent);border:1px solid rgba(200,255,87,0.25);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase">Wyróżniony</span>
+      </div>
+      <div class="blog-date">Marzec 2026 · 7 min czytania</div>
+      <h2 class="blog-title">Drewno, sklejka czy plexi? Jak dobrać materiał pod grawer i cięcie laserem CNC.</h2>
+      <p class="blog-excerpt">Co wpływa na jakość krawędzi, kontrast graweru i trwałość przy myciu — praktyczny przewodnik dla zamawiających deski do krojenia, tabliczki i dekoracje.</p>
+      <div class="blog-meta">
+        <div class="blog-author"><div class="blog-author-av">ZL</div>Zenith Lab</div>
+        <span class="read-more" style="color:var(--accent);font-size:13px;font-weight:600">Czytaj artykuł →</span>
+      </div>
+    </div>
+  </a>
+
+  <!-- GRID -->
+  <div class="blog-grid">
+
+    <!-- 1: Makieta architektoniczna -->
+    <a class="blog-card reveal ab" href="blog-archmodel.html" style="text-decoration:none;cursor:pointer">
+      <div class="blog-card-img" style="overflow:hidden;padding:0;background:var(--bg3)">
+        <img src="img/portfolio/makietaaglowne.jpeg" alt="Makieta architektoniczna deweloperska — skala i detal" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-cat">Makiety</div>
+        <div class="blog-card-title">Makieta architektoniczna: skala, detal i materiał — co ustalić przed zamówieniem.</div>
+        <div class="blog-card-exc">Kompletna checklista dla inwestora i biura architektonicznego — żeby model był czytelny na pierwszym spotkaniu z klientem.</div>
+        <div class="blog-card-meta"><span>Zenith Lab</span><span>luty 2026 · 5 min</span></div>
+      </div>
+    </a>
+
+    <!-- 2: Kasetony LED -->
+    <a class="blog-card reveal reveal-delay-1 ab" href="blog-led-light.html" style="text-decoration:none;cursor:pointer">
+      <div class="blog-card-img" style="overflow:hidden;padding:0;background:var(--bg3)">
+        <img src="img/portfolio/polexpert.jpg" alt="Jednolite podświetlenie LED w kaszetonie — bez plam" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-cat">Kasetony LED</div>
+        <div class="blog-card-title">Jednolite podświetlenie logo: co decyduje o „równym" świetle bez plam.</div>
+        <div class="blog-card-exc">Moduły, dyfuzja, zasilanie i dobór barwy — w skrócie dla zamawiających, nie tylko dla elektryków.</div>
+        <div class="blog-card-meta"><span>Zenith Lab</span><span>sty 2026 · 6 min</span></div>
+      </div>
+    </a>
+
+    <!-- 3: NFC -->
+    <a class="blog-card reveal reveal-delay-2 ab" href="blog-nfc.html" style="text-decoration:none;cursor:pointer">
+      <div class="blog-card-img" style="overflow:hidden;padding:0;background:var(--bg3)">
+        <img src="img/portfolio/magnes.jpg" alt="Breloczek NFC z grawerem — zastosowania i planowanie" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-cat">Gadżety</div>
+        <div class="blog-card-title">Breloczek NFC z grawerem: co może dziać się po skanowaniu i jak to zaplanować.</div>
+        <div class="blog-card-exc">Od wizytówki elektronicznej po kampanię eventową — bez przepłacania za technologię, której nikt nie użyje.</div>
+        <div class="blog-card-meta"><span>Zenith Lab</span><span>gru 2025 · 4 min</span></div>
+      </div>
+    </a>
+
+    <!-- 4: Druk 3D -->
+    <a class="blog-card reveal ab" href="blog-3dproto.html" style="text-decoration:none;cursor:pointer">
+      <div class="blog-card-img" style="overflow:hidden;padding:0;background:var(--bg3)">
+        <img src="img/portfolio/druk.jpg" alt="Druk 3D przed formą wtryskową — co warto sprawdzić" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-cat">Prototypy</div>
+        <div class="blog-card-title">Druk 3D przed formą wtryskową: co warto sprawdzić w prototypie.</div>
+        <div class="blog-card-exc">Tolerancje, montaż śrub, „klik" obudowy — jak przygotować się do droższej produkcji i uniknąć kosztownych iteracji.</div>
+        <div class="blog-card-meta"><span>Zenith Lab</span><span>paź 2025 · 7 min</span></div>
+      </div>
+    </a>
+
+    <!-- 5: Szkło w laserze -->
+    <a class="blog-card reveal reveal-delay-1 ab" href="blog-glass.html" style="text-decoration:none;cursor:pointer">
+      <div class="blog-card-img" style="overflow:hidden;padding:0;background:var(--bg3)">
+        <img src="img/portfolio/grawer2.jpg" alt="Grawerowanie szkła laserem CO2 — efekty i ograniczenia" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div class="blog-card-content">
+        <div class="blog-card-cat">Laser CNC</div>
+        <div class="blog-card-title">Grawerowanie szkła laserem CO₂: efekty, ograniczenia i kiedy to ma sens.</div>
+        <div class="blog-card-exc">Bezpieczeństwo, koszt strat materiałowych i jakość powierzchni — praktycznie z pracowni, bez teorii.</div>
+        <div class="blog-card-meta"><span>Zenith Lab</span><span>lis 2025 · 5 min</span></div>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- CTA -->
+  <div style="margin-top:80px;padding:56px 40px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;text-align:center" class="reveal">
+    <div class="section-label" style="margin-bottom:16px">Masz projekt?</div>
+    <h2 style="font-family:var(--font-head);font-size:clamp(28px,4vw,44px);font-weight:700;margin-bottom:16px;line-height:1.15">Zróbmy razem coś,<br><span style="color:var(--accent)">co da się dotknąć.</span></h2>
+    <p style="color:var(--fg2);max-width:480px;margin:0 auto 32px;line-height:1.65">Wyślij zdjęcie inspiracji, szkic lub plik — wycenimy materiał, technologię i termin.</p>
+    <a class="btn-xl" href="contact.html"><span>Napisz do nas</span> <span class="btn-xl-arrow">→</span></a>
+  </div>
+
 </div>
 </div>
 `,Y=`<!-- FILE: src/pages/blog-material.html -->
@@ -1490,7 +1610,7 @@
     <div class="article-related">
       <div class="section-label">Więcej z bloga</div>
 
-      <div class="blog-card" onclick="window.location.href='blog-archmodel.html'" style="cursor:pointer;">
+      <div class="blog-card" onclick="navigatePage('blog-archmodel');return false" style="cursor:pointer;">
         <div class="blog-card-img-wrap">
           <img src="img/portfolio/makietaaglowne.jpeg" alt="Makiety architektoniczne">
         </div>
@@ -1501,7 +1621,7 @@
         </div>
       </div>
 
-      <div class="blog-card" onclick="window.location.href='blog-led-light.html'" style="cursor:pointer;">
+      <div class="blog-card" onclick="navigatePage('blog-led-light');return false" style="cursor:pointer;">
         <div class="blog-card-img-wrap">
           <img src="img/portfolio/polexpert.jpg" alt="Kaseton LED podświetlenie">
         </div>
@@ -1652,7 +1772,7 @@
     <div class="article-related">
       <div class="section-label">Więcej z bloga</div>
 
-      <div class="blog-card" onclick="window.location.href='blog-material.html'" style="cursor:pointer;">
+      <div class="blog-card" onclick="navigatePage('blog-material');return false" style="cursor:pointer;">
         <div class="blog-card-img-wrap">
           <img src="img/portfolio/grawer.jpg" alt="Grawer laserowy CNC materiały">
         </div>
@@ -1663,7 +1783,7 @@
         </div>
       </div>
 
-      <div class="blog-card" onclick="window.location.href='blog-led-light.html'" style="cursor:pointer;">
+      <div class="blog-card" onclick="navigatePage('blog-led-light');return false" style="cursor:pointer;">
         <div class="blog-card-img-wrap">
           <img src="img/portfolio/polexpert.jpg" alt="Kaseton LED podświetlenie">
         </div>
@@ -1678,7 +1798,7 @@
 
   </div>
 </div>
-`,ee=`<!-- FILE: src/pages/blog-led-light.html -->
+`,aa=`<!-- FILE: src/pages/blog-led-light.html -->
 <div class="page" id="page-blog-led-light">
 
   <script type="application/ld+json">
@@ -1814,7 +1934,7 @@
     <div class="article-related">
       <div class="section-label">Więcej z bloga</div>
 
-      <div class="blog-card" onclick="window.location.href='blog-archmodel.html'" style="cursor:pointer;">
+      <div class="blog-card" onclick="navigatePage('blog-archmodel');return false" style="cursor:pointer;">
         <div class="blog-card-img-wrap">
           <img src="img/portfolio/makietaaglowne.jpeg" alt="Makiety architektoniczne">
         </div>
@@ -1825,7 +1945,7 @@
         </div>
       </div>
 
-      <div class="blog-card" onclick="window.location.href='blog-nfc.html'" style="cursor:pointer;">
+      <div class="blog-card" onclick="navigatePage('blog-nfc');return false" style="cursor:pointer;">
         <div class="blog-card-img-wrap">
           <img src="img/portfolio/breloki-nfc.jpg" alt="Breloki NFC gadżety reklamowe">
         </div>
@@ -1840,7 +1960,7 @@
 
   </div>
 </div>
-`,ae=`<!-- FILE: src/pages/blog-nfc.html -->
+`,ea=`<!-- FILE: src/pages/blog-nfc.html -->
 <div class="page" id="page-blog-nfc">
 
   <script type="application/ld+json">
@@ -1980,7 +2100,7 @@
           <div class="article-tag">Materiały</div>
           <h3 class="blog-card-title">Drewno, sklejka czy plexi — co wybrać pod laser?</h3>
           <p class="blog-card-excerpt">Porównanie właściwości, cen i efektów grawerowania najpopularniejszych materiałów w Zenith Lab.</p>
-          <a class="blog-card-link" href="#" data-target="blog-material">Czytaj więcej →</a>
+          <a class="blog-card-link" href="blog-material.html">Czytaj więcej →</a>
         </div>
       </div>
 
@@ -1992,14 +2112,14 @@
           <div class="article-tag">Reklama</div>
           <h3 class="blog-card-title">Kasetony LED — kiedy warto i jak je dobrze zaprojektować</h3>
           <p class="blog-card-excerpt">Rodzaje podświetlenia, materiały lica, montaż — wszystko, co musisz wiedzieć przed zamówieniem kasetonu.</p>
-          <a class="blog-card-link" href="#" data-target="blog-led-light">Czytaj więcej →</a>
+          <a class="blog-card-link" href="blog-led-light.html">Czytaj więcej →</a>
         </div>
       </div>
     </div>
 
   </div>
 </div>
-`,ne=`<!-- FILE: src/pages/blog-3dproto.html -->
+`,na=`<!-- FILE: src/pages/blog-3dproto.html -->
 <div class="page" id="page-blog-3dproto">
 
   <script type="application/ld+json">
@@ -2141,7 +2261,7 @@
           <div class="article-tag">Materiały</div>
           <h3 class="blog-card-title">Drewno, sklejka czy plexi — co wybrać pod laser?</h3>
           <p class="blog-card-excerpt">Porównanie właściwości, cen i efektów grawerowania najpopularniejszych materiałów w Zenith Lab.</p>
-          <a class="blog-card-link" href="#" data-target="blog-material">Czytaj więcej →</a>
+          <a class="blog-card-link" href="blog-material.html">Czytaj więcej →</a>
         </div>
       </div>
 
@@ -2153,14 +2273,14 @@
           <div class="article-tag">Makiety</div>
           <h3 class="blog-card-title">Makiety architektoniczne — jak powstają i kiedy warto je zamówić</h3>
           <p class="blog-card-excerpt">Od modelu CAD do fizycznej makiety w skali — materiały, technologie i harmonogram realizacji.</p>
-          <a class="blog-card-link" href="#" data-target="blog-archmodel">Czytaj więcej →</a>
+          <a class="blog-card-link" href="blog-archmodel.html">Czytaj więcej →</a>
         </div>
       </div>
     </div>
 
   </div>
 </div>
-`,ie=`<!-- FILE: src/pages/blog-glass.html -->
+`,ia=`<!-- FILE: src/pages/blog-glass.html -->
 <div class="page" id="page-blog-glass">
 
   <script type="application/ld+json">
@@ -2296,7 +2416,7 @@
           <div class="article-tag">Materiały</div>
           <h3 class="blog-card-title">Drewno, sklejka czy plexi — co wybrać pod laser?</h3>
           <p class="blog-card-excerpt">Porównanie właściwości, cen i efektów grawerowania najpopularniejszych materiałów w Zenith Lab.</p>
-          <a class="blog-card-link" href="#" data-target="blog-material">Czytaj więcej →</a>
+          <a class="blog-card-link" href="blog-material.html">Czytaj więcej →</a>
         </div>
       </div>
 
@@ -2308,14 +2428,417 @@
           <div class="article-tag">Prototypy</div>
           <h3 class="blog-card-title">Druk 3D przed formą wtryskową — co sprawdzić w prototypie</h3>
           <p class="blog-card-excerpt">Jak prototyp FDM lub SLA oszczędza tysiące złotych przed produkcją seryjną — praktyczny poradnik.</p>
-          <a class="blog-card-link" href="#" data-target="blog-3dproto">Czytaj więcej →</a>
+          <a class="blog-card-link" href="blog-3dproto.html">Czytaj więcej →</a>
         </div>
       </div>
     </div>
 
   </div>
 </div>
-`,oe=`<div class="page" id="page-404">
+`,oa=`<div class="page" id="page-regulamin">
+<div class="legal-page">
+
+  <div class="legal-header">
+    <div class="section-label">Dokumenty prawne</div>
+    <h1 class="legal-h1">Regulamin świadczenia usług</h1>
+    <p class="legal-intro">Poniższy regulamin określa zasady zamawiania i realizacji usług w pracowni Zenith Lab. Prosimy o zapoznanie się z jego treścią przed złożeniem zamówienia.</p>
+    <div class="legal-meta">Obowiązuje od: 1 stycznia 2026 &nbsp;·&nbsp; Wersja 1.0</div>
+  </div>
+
+  <div class="legal-body">
+
+    <section class="legal-section">
+      <h2>§ 1. Postanowienia ogólne</h2>
+      <ol>
+        <li>Niniejszy Regulamin określa zasady świadczenia usług przez pracownię Zenith Lab, zwaną dalej „Wykonawcą" lub „Zenith Lab", na rzecz klientów zwanych dalej „Zamawiającymi".</li>
+        <li>Zenith Lab prowadzi działalność w zakresie produkcji fizycznej, obejmującej m.in. makiety architektoniczne, cięcie i grawerowanie laserem CNC, druk 3D, kasetony LED podświetlane oraz gadżety reklamowe.</li>
+        <li>Złożenie zamówienia jest równoznaczne z akceptacją niniejszego Regulaminu.</li>
+        <li>W sprawach nieuregulowanych niniejszym Regulaminem zastosowanie mają przepisy Kodeksu Cywilnego oraz inne powszechnie obowiązujące przepisy prawa polskiego.</li>
+      </ol>
+    </section>
+
+    <section class="legal-section">
+      <h2>§ 2. Zakres usług</h2>
+      <ol>
+        <li>Zenith Lab świadczy usługi w następującym zakresie:
+          <ul>
+            <li>Projektowanie i wykonywanie makiet architektonicznych deweloperskich i prezentacyjnych;</li>
+            <li>Cięcie i grawerowanie materiałów (drewno, sklejka, plexi, szkło, MDF) przy użyciu lasera CO₂;</li>
+            <li>Druk 3D metodami FDM i SLA oraz obróbka podrukowa;</li>
+            <li>Produkcja kaszetów LED podświetlanych z logo lub grafiką;</li>
+            <li>Wykonywanie gadżetów reklamowych: wizytówki, stojaki, breloki NFC, nagrody i puchary;</li>
+            <li>Prototypowanie produktów i małe serie.</li>
+          </ul>
+        </li>
+        <li>Szczegółowy zakres każdego zlecenia ustalany jest indywidualnie przed wystawieniem wyceny.</li>
+        <li>Wykonawca zastrzega sobie prawo do odmowy realizacji zlecenia bez podania przyczyny.</li>
+      </ol>
+    </section>
+
+    <section class="legal-section">
+      <h2>§ 3. Składanie zamówień i wycena</h2>
+      <ol>
+        <li>Zamówienia przyjmowane są drogą elektroniczną przez formularz kontaktowy na stronie zenithlab.pl, pocztą e-mail lub telefonicznie.</li>
+        <li>Do przygotowania wyceny Zamawiający powinien dostarczyć:
+          <ul>
+            <li>Opis przedmiotu zamówienia (wymiary, materiał, technologia, ilość);</li>
+            <li>Pliki projektowe w formatach: DXF, SVG, AI, PDF, STL, OBJ lub podobnych;</li>
+            <li>Informacje o pożądanym terminie realizacji;</li>
+            <li>Ewentualne próbki lub zdjęcia poglądowe.</li>
+          </ul>
+        </li>
+        <li>Wycena przygotowywana jest bezpłatnie w terminie do 3 dni roboczych od otrzymania kompletnych materiałów.</li>
+        <li>Wycena ważna jest przez 14 dni od daty jej przesłania.</li>
+        <li>Zaakceptowanie wyceny przez Zamawiającego (pisemnie lub e-mailem) stanowi zawarcie umowy o dzieło.</li>
+        <li>Wykonawca zastrzega możliwość zmiany wyceny w przypadku istotnej zmiany zakresu zlecenia przez Zamawiającego po zawarciu umowy.</li>
+      </ol>
+    </section>
+
+    <section class="legal-section">
+      <h2>§ 4. Płatności</h2>
+      <ol>
+        <li>Ceny podane w wycenie są cenami netto; do podanej kwoty doliczany jest podatek VAT według obowiązującej stawki, o ile Wykonawca jest płatnikiem VAT.</li>
+        <li>Przy zleceniach o wartości przekraczającej 500 zł netto Wykonawca może żądać zaliczki w wysokości do 50% wartości zamówienia, płatnej przed przystąpieniem do realizacji.</li>
+        <li>Pozostała kwota płatna jest przed odbiorem gotowego przedmiotu lub przed jego wysyłką.</li>
+        <li>Akceptowane formy płatności: przelew bankowy, płatność gotówkowa przy odbiorze osobistym (do kwoty określonej przepisami prawa).</li>
+        <li>Fakturę VAT lub paragon fiskalny Wykonawca wystawia na życzenie Zamawiającego.</li>
+        <li>W przypadku opóźnienia w płatności Wykonawca ma prawo naliczać odsetki ustawowe za opóźnienie.</li>
+      </ol>
+    </section>
+
+    <section class="legal-section">
+      <h2>§ 5. Realizacja i terminy</h2>
+      <ol>
+        <li>Termin realizacji ustalany jest indywidualnie i podany jest w wycenie lub potwierdzeniu zamówienia.</li>
+        <li>Termin realizacji liczony jest od dnia:
+          <ul>
+            <li>zaakceptowania wyceny przez Zamawiającego, oraz</li>
+            <li>otrzymania przez Wykonawcę kompletu materiałów niezbędnych do realizacji, oraz</li>
+            <li>zaksięgowania zaliczki na rachunku Wykonawcy (jeśli dotyczy).</li>
+          </ul>
+        </li>
+        <li>Wykonawca informuje o ewentualnych opóźnieniach niezwłocznie po ich stwierdzeniu.</li>
+        <li>Wykonawca nie ponosi odpowiedzialności za opóźnienia spowodowane siłą wyższą ani przez działania lub zaniechania Zamawiającego (np. późne dostarczenie plików, brak odpowiedzi na pytania).</li>
+        <li>Na życzenie Zamawiającego możliwa jest realizacja w trybie ekspresowym — wiąże się to z doliczeniem dodatkowej opłaty ustalonej indywidualnie.</li>
+      </ol>
+    </section>
+
+    <section class="legal-section">
+      <h2>§ 6. Dostawa i odbiór</h2>
+      <ol>
+        <li>Gotowe przedmioty można odebrać osobiście w siedzibie pracowni po uprzednim umówieniu terminu.</li>
+        <li>Na życzenie Zamawiającego Wykonawca może zorganizować wysyłkę kurierską. Koszt wysyłki pokrywa Zamawiający i jest doliczany do faktury lub regulowany oddzielnie.</li>
+        <li>Ryzyko uszkodzenia przedmiotu przechodzi na Zamawiającego z chwilą jego odbioru lub z chwilą przekazania kurierowi (przy wysyłce).</li>
+        <li>Przy wysyłce delikatnych elementów (np. makiet architektonicznych, szkła) Wykonawca stosuje odpowiednie opakowanie ochronne; koszt specjalnego opakowania może zostać doliczony do faktury.</li>
+        <li>Zamawiający zobowiązany jest do sprawdzenia stanu przesyłki w obecności kuriera i w przypadku stwierdzenia uszkodzeń — sporządzenia protokołu szkody.</li>
+      </ol>
+    </section>
+
+    <section class="legal-section">
+      <h2>§ 7. Reklamacje</h2>
+      <ol>
+        <li>Zamawiający ma prawo złożyć reklamację w przypadku niezgodności wykonanego przedmiotu z ustalonym zamówieniem lub wyceny.</li>
+        <li>Reklamacje należy zgłaszać pisemnie (e-mailem na adres kontakt@zenithlab.pl) w terminie 7 dni od daty odbioru przedmiotu, załączając opis niezgodności i dokumentację fotograficzną.</li>
+        <li>Wykonawca rozpatruje reklamacje w terminie do 14 dni roboczych od ich otrzymania.</li>
+        <li>W przypadku uznania reklamacji Wykonawca według własnego wyboru:
+          <ul>
+            <li>nieodpłatnie usunie wadę lub wykona przedmiot ponownie, albo</li>
+            <li>zwróci Zamawiającemu część wynagrodzenia odpowiednią do stopnia niezgodności.</li>
+          </ul>
+        </li>
+        <li>Reklamacja nie przysługuje w przypadkach:
+          <ul>
+            <li>różnic estetycznych wynikających z właściwości materiału (np. usłojenie drewna, naturalne przebarwienia);</li>
+            <li>wad wynikających z błędów w plikach dostarczonych przez Zamawiającego;</li>
+            <li>uszkodzeń powstałych po wydaniu przedmiotu z winy Zamawiającego.</li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section class="legal-section">
+      <h2>§ 8. Własność intelektualna</h2>
+      <ol>
+        <li>Pliki projektowe dostarczone przez Zamawiającego pozostają jego własnością intelektualną.</li>
+        <li>Zamawiający oświadcza, że posiada prawa do dostarczonych materiałów i ponosi pełną odpowiedzialność za ewentualne naruszenie praw osób trzecich.</li>
+        <li>Wykonawca może wykorzystywać zdjęcia wykonanych przedmiotów w celach marketingowych (portfolio, media społecznościowe, strona internetowa), o ile Zamawiający nie zastrzeże inaczej w pisemnym oświadczeniu złożonym przed realizacją.</li>
+        <li>Projekty i szablony przygotowane przez Zenith Lab na potrzeby zlecenia stanowią własność Wykonawcy, chyba że strony pisemnie postanowią inaczej.</li>
+      </ol>
+    </section>
+
+    <section class="legal-section">
+      <h2>§ 9. Odpowiedzialność</h2>
+      <ol>
+        <li>Łączna odpowiedzialność Wykonawcy za szkody wyrządzone Zamawiającemu nie może przekroczyć wartości danego zlecenia.</li>
+        <li>Wykonawca nie ponosi odpowiedzialności za szkody pośrednie ani utracone korzyści Zamawiającego.</li>
+        <li>Wykonawca nie odpowiada za opóźnienia lub niemożność realizacji spowodowaną niedostępnością materiałów u dostawców, awariami urządzeń z przyczyn niezawinionych ani innymi okolicznościami niezależnymi od Wykonawcy.</li>
+      </ol>
+    </section>
+
+    <section class="legal-section">
+      <h2>§ 10. Zmiany Regulaminu</h2>
+      <ol>
+        <li>Zenith Lab zastrzega sobie prawo do zmiany niniejszego Regulaminu. Zmiany wchodzą w życie z dniem ich publikacji na stronie zenithlab.pl.</li>
+        <li>Do zamówień złożonych przed zmianą Regulaminu stosuje się wersję obowiązującą w dniu złożenia zamówienia.</li>
+      </ol>
+    </section>
+
+    <section class="legal-section">
+      <h2>§ 11. Kontakt</h2>
+      <p>W sprawie zamówień, wycen oraz wszelkich pytań dotyczących Regulaminu prosimy o kontakt:</p>
+      <ul>
+        <li>E-mail: <a href="mailto:kontakt@zenithlab.pl">kontakt@zenithlab.pl</a></li>
+        <li>Telefon: <a href="tel:+48530177581">+48 530 177 581</a></li>
+        <li>Formularz kontaktowy: <a href="contact.html">zenithlab.pl/kontakt</a></li>
+      </ul>
+    </section>
+
+    <div class="legal-footer-links">
+      <a href="privacy.html">Polityka prywatności</a>
+      <span class="legal-sep">·</span>
+      <a href="cookies.html">Polityka cookies</a>
+      <span class="legal-sep">·</span>
+      <a href="contact.html">Kontakt</a>
+    </div>
+
+  </div>
+</div>
+</div>
+`,ta=`<div class="page" id="page-privacy">
+<div class="legal-page">
+
+  <div class="legal-header">
+    <div class="section-label">Dokumenty prawne</div>
+    <h1 class="legal-h1">Polityka prywatności</h1>
+    <p class="legal-intro">Dbamy o Twoje dane osobowe i przetwarzamy je zgodnie z Rozporządzeniem (UE) 2016/679 (RODO) oraz obowiązującymi przepisami polskiego prawa. Poniżej opisujemy, jakie dane zbieramy, w jakim celu i jakie masz prawa.</p>
+    <div class="legal-meta">Obowiązuje od: 1 stycznia 2026 &nbsp;·&nbsp; Wersja 1.0</div>
+  </div>
+
+  <div class="legal-body">
+
+    <section class="legal-section">
+      <h2>1. Administrator danych osobowych</h2>
+      <p>Administratorem Twoich danych osobowych jest:</p>
+      <div class="legal-callout">
+        <strong>Zenith Lab</strong><br>
+        ul. Środkowa 1D, 96-300 Korytów A<br>
+        E-mail: <a href="mailto:kontakt@zenithlab.pl">kontakt@zenithlab.pl</a><br>
+        Tel.: <a href="tel:+48530177581">+48 530 177 581</a>
+      </div>
+      <p>W sprawach dotyczących przetwarzania danych osobowych możesz kontaktować się bezpośrednio z Administratorem pod wskazanymi powyżej danymi kontaktowymi.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>2. Jakie dane zbieramy</h2>
+      <p>Zbieramy wyłącznie dane niezbędne do realizacji celu, w jakim zostały nam przekazane:</p>
+      <ul>
+        <li><strong>Dane kontaktowe:</strong> imię, nazwisko, adres e-mail, numer telefonu — podawane przez Ciebie dobrowolnie w formularzu kontaktowym lub korespondencji;</li>
+        <li><strong>Dane firmowe:</strong> nazwa firmy, NIP, adres — wymagane do wystawienia faktury VAT;</li>
+        <li><strong>Dane adresowe:</strong> adres dostawy — wymagany przy wysyłce zamówienia;</li>
+        <li><strong>Treść korespondencji:</strong> wiadomości e-mail, opisy projektów, pliki projektowe przesłane w celu wyceny lub realizacji zlecenia;</li>
+        <li><strong>Dane techniczne:</strong> adres IP, typ przeglądarki, czas wizyty — zbierane automatycznie przez serwer hostingowy i ewentualnie narzędzia analityczne (patrz Polityka cookies).</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <h2>3. Cele i podstawy prawne przetwarzania</h2>
+      <div class="legal-table-wrap">
+        <table class="legal-table">
+          <thead>
+            <tr><th>Cel przetwarzania</th><th>Podstawa prawna (RODO)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Obsługa zapytań i przygotowanie wyceny</td><td>Art. 6 ust. 1 lit. b — działania przedumowne</td></tr>
+            <tr><td>Realizacja zamówienia i umowy</td><td>Art. 6 ust. 1 lit. b — wykonanie umowy</td></tr>
+            <tr><td>Wystawianie faktur i dokumentacji księgowej</td><td>Art. 6 ust. 1 lit. c — obowiązek prawny</td></tr>
+            <tr><td>Marketing bezpośredni (newsletter, oferty)</td><td>Art. 6 ust. 1 lit. a — zgoda (opcjonalnie)</td></tr>
+            <tr><td>Obrona przed roszczeniami / dochodzenie roszczeń</td><td>Art. 6 ust. 1 lit. f — prawnie uzasadniony interes</td></tr>
+            <tr><td>Analiza statystyczna ruchu na stronie</td><td>Art. 6 ust. 1 lit. f — prawnie uzasadniony interes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="legal-section">
+      <h2>4. Okres przechowywania danych</h2>
+      <ul>
+        <li><strong>Dane związane z realizacją zlecenia</strong> — przechowywane przez 5 lat od końca roku, w którym zamówienie zostało zrealizowane (wymogi podatkowe i rachunkowe);</li>
+        <li><strong>Dokumentacja księgowa (faktury)</strong> — przez 5 lat, licząc od końca roku kalendarzowego, w którym upłynął termin płatności podatku;</li>
+        <li><strong>Zapytania, które nie przekształciły się w zlecenie</strong> — przez 12 miesięcy od ostatniej korespondencji;</li>
+        <li><strong>Dane przetwarzane na podstawie zgody</strong> — do czasu cofnięcia zgody;</li>
+        <li><strong>Dane w celach obrony przed roszczeniami</strong> — do czasu przedawnienia roszczeń (co do zasady 3 lata od zdarzenia).</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <h2>5. Odbiorcy danych</h2>
+      <p>Twoje dane mogą być udostępniane następującym kategoriom odbiorców:</p>
+      <ul>
+        <li><strong>Firmy kurierskie</strong> — wyłącznie w zakresie danych adresowych, niezbędnych do dostarczenia zamówienia;</li>
+        <li><strong>Biuro rachunkowe / księgowe</strong> — w zakresie danych wymaganych do obsługi dokumentacji finansowej;</li>
+        <li><strong>Dostawcy oprogramowania</strong> (hosting, e-mail, narzędzia CRM) — na podstawie umów powierzenia przetwarzania danych, zgodnie z RODO;</li>
+        <li><strong>Organy publiczne</strong> — wyłącznie gdy obowiązek taki wynika z przepisów prawa (np. organy podatkowe).</li>
+      </ul>
+      <p>Nie sprzedajemy ani nie udostępniamy Twoich danych podmiotom trzecim w celach reklamowych bez Twojej zgody.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>6. Przekazywanie danych poza EOG</h2>
+      <p>Co do zasady nie przekazujemy danych osobowych do krajów spoza Europejskiego Obszaru Gospodarczego. W przypadku korzystania z narzędzi, których serwery zlokalizowane są poza EOG (np. niektóre usługi e-mail lub analityczne), dochodzi do tego wyłącznie w oparciu o odpowiednie mechanizmy zabezpieczające (np. standardowe klauzule umowne zatwierdzone przez Komisję Europejską).</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>7. Twoje prawa</h2>
+      <p>Zgodnie z RODO przysługują Ci następujące prawa:</p>
+      <ul>
+        <li><strong>Prawo dostępu</strong> — możesz uzyskać informację o tym, jakie Twoje dane przetwarzamy;</li>
+        <li><strong>Prawo do sprostowania</strong> — możesz żądać poprawienia nieprawidłowych lub uzupełnienia niekompletnych danych;</li>
+        <li><strong>Prawo do usunięcia</strong> („prawo do bycia zapomnianym") — możesz żądać usunięcia danych w przypadkach przewidzianych w art. 17 RODO;</li>
+        <li><strong>Prawo do ograniczenia przetwarzania</strong> — możesz żądać ograniczenia przetwarzania w przypadkach z art. 18 RODO;</li>
+        <li><strong>Prawo do przenoszenia danych</strong> — dane przetwarzane automatycznie na podstawie zgody lub umowy możesz otrzymać w ustrukturyzowanym formacie;</li>
+        <li><strong>Prawo sprzeciwu</strong> — możesz sprzeciwić się przetwarzaniu danych na podstawie prawnie uzasadnionego interesu Administratora;</li>
+        <li><strong>Prawo do cofnięcia zgody</strong> — w dowolnym momencie, bez wpływu na zgodność z prawem przetwarzania dokonanego przed cofnięciem;</li>
+        <li><strong>Prawo do skargi</strong> — masz prawo wnieść skargę do organu nadzorczego: Prezes Urzędu Ochrony Danych Osobowych, ul. Stawki 2, 00-193 Warszawa.</li>
+      </ul>
+      <p>Aby skorzystać ze swoich praw, skontaktuj się z nami pisemnie pod adresem: <a href="mailto:kontakt@zenithlab.pl">kontakt@zenithlab.pl</a>. Odpowiemy bez zbędnej zwłoki, nie później niż w ciągu 30 dni.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>8. Bezpieczeństwo danych</h2>
+      <p>Stosujemy odpowiednie środki techniczne i organizacyjne w celu ochrony Twoich danych przed nieuprawnionym dostępem, utratą lub zniszczeniem. Dostęp do danych mają wyłącznie osoby upoważnione, zobowiązane do zachowania poufności.</p>
+      <p>Strona internetowa zenithlab.pl korzysta z szyfrowanego połączenia HTTPS, co chroni dane przesyłane przez formularz kontaktowy.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>9. Pliki cookies</h2>
+      <p>Strona internetowa zenithlab.pl korzysta z plików cookies. Szczegółowe informacje na temat stosowanych plików cookies, ich rodzajów oraz sposobu zarządzania nimi znajdziesz w <a href="cookies.html">Polityce cookies</a>.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>10. Zmiany Polityki prywatności</h2>
+      <p>Zastrzegamy sobie prawo do zmiany niniejszej Polityki prywatności w przypadku zmian w przepisach prawa lub zmian w sposobie przetwarzania danych. Aktualna wersja zawsze dostępna jest pod adresem zenithlab.pl/privacy.html. Data ostatniej aktualizacji podana jest na górze dokumentu.</p>
+    </section>
+
+    <div class="legal-footer-links">
+      <a href="regulamin.html">Regulamin</a>
+      <span class="legal-sep">·</span>
+      <a href="cookies.html">Polityka cookies</a>
+      <span class="legal-sep">·</span>
+      <a href="contact.html">Kontakt</a>
+    </div>
+
+  </div>
+</div>
+</div>
+`,ra=`<div class="page" id="page-cookies">
+<div class="legal-page">
+
+  <div class="legal-header">
+    <div class="section-label">Dokumenty prawne</div>
+    <h1 class="legal-h1">Polityka cookies</h1>
+    <p class="legal-intro">Niniejsza Polityka wyjaśnia, czym są pliki cookies, jakie rodzaje stosujemy na stronie zenithlab.pl oraz jak możesz nimi zarządzać.</p>
+    <div class="legal-meta">Obowiązuje od: 1 stycznia 2026 &nbsp;·&nbsp; Wersja 1.0</div>
+  </div>
+
+  <div class="legal-body">
+
+    <section class="legal-section">
+      <h2>1. Czym są pliki cookies?</h2>
+      <p>Pliki cookies (tzw. „ciasteczka") to małe pliki tekstowe zapisywane na urządzeniu końcowym użytkownika (komputerze, smartfonie, tablecie) przez przeglądarkę internetową podczas odwiedzania strony. Cookies pozwalają stronie zapamiętać Twoje preferencje i działania przez pewien czas, dzięki czemu nie musisz ich ponownie wpisywać przy kolejnej wizycie.</p>
+      <p>Pliki cookies mogą być zapisywane przez stronę, którą odwiedzasz (cookies własne), lub przez zewnętrznych dostawców usług (cookies podmiotów trzecich).</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>2. Jakie pliki cookies stosujemy</h2>
+
+      <h3>2.1 Niezbędne (wymagane)</h3>
+      <p>Są konieczne do prawidłowego działania strony i nie mogą zostać wyłączone bez utraty podstawowych funkcjonalności. Nie przechowują żadnych danych osobowych i nie służą celom marketingowym.</p>
+      <div class="legal-table-wrap">
+        <table class="legal-table">
+          <thead><tr><th>Nazwa</th><th>Dostawca</th><th>Cel</th><th>Czas ważności</th></tr></thead>
+          <tbody>
+            <tr><td>zenith_cookie_consent</td><td>zenithlab.pl</td><td>Zapamiętuje wybór zgody na cookies</td><td>12 miesięcy</td></tr>
+            <tr><td>PHPSESSID / session</td><td>zenithlab.pl</td><td>Sesja użytkownika</td><td>Sesja przeglądarki</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2.2 Analityczne (opcjonalne)</h3>
+      <p>Pomagają nam zrozumieć, w jaki sposób użytkownicy korzystają ze strony — jakie strony są najpopularniejsze i jak poruszają się po serwisie. Dane zbierane są w formie zagregowanej i anonimowej.</p>
+      <div class="legal-table-wrap">
+        <table class="legal-table">
+          <thead><tr><th>Nazwa</th><th>Dostawca</th><th>Cel</th><th>Czas ważności</th></tr></thead>
+          <tbody>
+            <tr><td>_ga</td><td>Google Analytics</td><td>Rozróżnia użytkowników (anonimowy identyfikator)</td><td>2 lata</td></tr>
+            <tr><td>_ga_XXXXXX</td><td>Google Analytics</td><td>Utrzymuje stan sesji</td><td>2 lata</td></tr>
+            <tr><td>_gid</td><td>Google Analytics</td><td>Rozróżnia użytkowników (sesja)</td><td>24 godziny</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Google Analytics jest skonfigurowany z anonimizacją adresów IP. Dane zbierane przez Google podlegają <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Polityce prywatności Google</a>.</p>
+
+      <h3>2.3 Marketingowe / funkcjonalne (opcjonalne)</h3>
+      <p>Aktualnie strona zenithlab.pl nie stosuje cookies marketingowych. Jeśli w przyszłości zostaną wdrożone, zaktualizujemy niniejszą Politykę i poprosimy o odrębną zgodę.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>3. Jak zarządzać plikami cookies</h2>
+      <p>Możesz kontrolować cookies na kilka sposobów:</p>
+
+      <h3>3.1 Ustawienia przeglądarki</h3>
+      <p>Każda nowoczesna przeglądarka pozwala zarządzać ustawieniami cookies — blokować je całkowicie, akceptować wybiórczo lub usuwać zapisane pliki. Instrukcje dla popularnych przeglądarek:</p>
+      <ul>
+        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer">Google Chrome</a></li>
+        <li><a href="https://support.mozilla.org/pl/kb/ciasteczka" target="_blank" rel="noopener noreferrer">Mozilla Firefox</a></li>
+        <li><a href="https://support.apple.com/pl-pl/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer">Apple Safari</a></li>
+        <li><a href="https://support.microsoft.com/pl-pl/microsoft-edge/usuwanie-plików-cookie-w-przeglądarce-microsoft-edge" target="_blank" rel="noopener noreferrer">Microsoft Edge</a></li>
+      </ul>
+      <div class="legal-callout legal-callout--warn">
+        <strong>Uwaga:</strong> Wyłączenie wszystkich cookies może wpłynąć na działanie niektórych funkcji strony. Cookies niezbędne są wymagane do podstawowego funkcjonowania serwisu.
+      </div>
+
+      <h3>3.2 Rezygnacja z Google Analytics</h3>
+      <p>Możesz zablokować śledzenie przez Google Analytics, instalując oficjalną wtyczkę do przeglądarki: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>4. Zgoda na cookies</h2>
+      <p>Przy pierwszej wizycie na stronie zenithlab.pl wyświetlamy baner informujący o stosowaniu cookies. Korzystając ze strony bez zmiany ustawień przeglądarki, wyrażasz zgodę na stosowanie plików cookies zgodnie z niniejszą Polityką.</p>
+      <p>Zgodę możesz cofnąć w dowolnym momencie, zmieniając ustawienia swojej przeglądarki lub usuwając zapisane pliki cookies. Cofnięcie zgody nie wpływa na zgodność z prawem przetwarzania dokonanego przed jej cofnięciem.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>5. Linki do zewnętrznych stron</h2>
+      <p>Strona zenithlab.pl może zawierać linki do stron zewnętrznych. Nie ponosimy odpowiedzialności za politykę prywatności ani cookies stosowanych przez te strony. Zalecamy zapoznanie się z polityką każdej odwiedzanej witryny.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>6. Zmiany Polityki cookies</h2>
+      <p>Zastrzegamy sobie prawo do zmiany niniejszej Polityki cookies w związku ze zmianami technologicznymi lub prawnymi. Aktualna wersja zawsze dostępna jest pod adresem zenithlab.pl/cookies.html. O istotnych zmianach poinformujemy poprzez wyraźny komunikat na stronie.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>7. Kontakt</h2>
+      <p>Pytania dotyczące plików cookies lub przetwarzania danych osobowych kieruj na adres:</p>
+      <ul>
+        <li>E-mail: <a href="mailto:kontakt@zenithlab.pl">kontakt@zenithlab.pl</a></li>
+        <li>Telefon: <a href="tel:+48530177581">+48 530 177 581</a></li>
+      </ul>
+      <p>Więcej informacji o przetwarzaniu danych osobowych znajdziesz w <a href="privacy.html">Polityce prywatności</a>.</p>
+    </section>
+
+    <div class="legal-footer-links">
+      <a href="regulamin.html">Regulamin</a>
+      <span class="legal-sep">·</span>
+      <a href="privacy.html">Polityka prywatności</a>
+      <span class="legal-sep">·</span>
+      <a href="contact.html">Kontakt</a>
+    </div>
+
+  </div>
+</div>
+</div>
+`,sa=`<div class="page" id="page-404">
 <div class="page-404">
 <div class="hero-glow" style="top:50%;transform:translateY(-50%)"></div>
 <div class="e404-num">404</div>
@@ -2324,4 +2847,4 @@
 <a class="btn-xl" href="index.html" style="display:inline-flex"><span>Strona główna</span> <span class="btn-xl-arrow">→</span></a>
 </div>
 </div>
-`,N={home:"Zenith Lab — makiety, laser CNC, grawer i druk 3D",print3d:"Druk 3D i prototypy — Zenith Lab",archmodels:"Makiety architektoniczne deweloperskie — Zenith Lab",led:"Kasetony LED podświetlane — Zenith Lab",engraving:"Grawer i cięcie laserem CNC — Zenith Lab",prototypes:"Prototypy produktów — Zenith Lab",gadgets:"Gadżety reklamowe z grawerem — Zenith Lab",portfolio:"Realizacje — makiety, laser, LED, druk 3D — Zenith Lab",contact:"Kontakt — wycena makiety, lasera, druku 3D — Zenith Lab",blog:"Blog — materiały, laser CNC, makiety, LED — Zenith Lab","blog-material":"Drewno, sklejka czy plexi? Dobór materiału pod laser CNC — Zenith Lab","blog-archmodel":"Makieta architektoniczna: skala, detal, materiał — Zenith Lab","blog-led-light":"Jednolite podświetlenie LED w kaszetonie — Zenith Lab","blog-nfc":"Brelok NFC z grawerem — zastosowania i planowanie — Zenith Lab","blog-3dproto":"Druk 3D przed formą wtryskową — co sprawdzić — Zenith Lab","blog-glass":"Grawerowanie szkła laserem CO2 — efekty i ograniczenia — Zenith Lab","not-found":"404 — Zenith Lab"},te="✓ Wysłano — dziękujemy!",x=Object.fromEntries(Object.entries(Object.assign({})).flatMap(([a,n])=>{const i=a.replace(/\\/g,"/").replace(/^(\.\.\/)+/,""),o=[[i,n]];return i.startsWith("img/")&&o.push([`../${i}`,n]),o}));function D(e){return x[e]??x[`../${e}`]??x[e.replace(/^\.\/?/,"")]??e}function re(e){return e.replace(/(src|data-imgs)=("|')([^"']+?)(\2)/g,(a,n,i,o)=>{if(n==="src"&&o.startsWith("img/"))return`${n}=${i}${D(o)}${i}`;if(n==="data-imgs")try{const t=JSON.parse(o);if(!Array.isArray(t))return a;const r=t.map(l=>typeof l=="string"?D(l):l);return`${n}=${i}${JSON.stringify(r)}${i}`}catch{return a}return a})}const C="zenith-main",k={home:K,print3d:R,archmodels:J,led:q,engraving:H,prototypes:U,gadgets:V,portfolio:$,contact:_,blog:X,"blog-material":Y,"blog-archmodel":Q,"blog-led-light":ee,"blog-nfc":ae,"blog-3dproto":ne,"blog-glass":ie,"not-found":oe};function E(){const e=document.documentElement.dataset.zenithPage;return e==="not-found"?"not-found":e&&e in k?e:"home"}function O(){const e=window.location.hash.replace(/^#/,"");return e&&e in k?e:null}function se(e){if(!e||e.startsWith("mailto:")||e.startsWith("tel:")||e.startsWith("http")||!e.endsWith(".html"))return null;const n=(e.replace(/\\/g,"/").split("/").pop()??e).replace(/\.html$/,"");return n==="index"?"home":n==="404"?"not-found":n in k?n:null}function le(){if(document.getElementById(C))return;const e=O()??E();document.body.insertAdjacentHTML("afterbegin",T+`<div id="${C}"></div>`+G),j(e)}function ce(e){const a=e==="print3d"||e==="archmodels"||e==="led"||e==="engraving"||e==="prototypes"||e==="gadgets";document.querySelectorAll("#nav .nav-links a[data-n]").forEach(n=>{n.classList.remove("active");const i=n.getAttribute("data-n");i===e&&n.classList.add("active"),i==="services"&&a&&n.classList.add("active")})}function de(){var e;(e=document.getElementById("mobile-nav"))==null||e.classList.remove("open"),document.body.style.overflow=""}function pe(){var e;(e=document.getElementById("mobile-nav"))==null||e.classList.add("open"),document.body.style.overflow="hidden"}function F(){const e=document.querySelectorAll(".page .reveal:not(.visible)");if(!e.length)return;const a=new IntersectionObserver(n=>{n.forEach(i=>{i.isIntersecting&&i.target instanceof HTMLElement&&(i.target.classList.add("visible"),a.unobserve(i.target))})},{threshold:.12,rootMargin:"0px 0px -40px 0px"});e.forEach(n=>a.observe(n))}function W(e){if(e!=="home")return;[{id:"c1",target:127,duration:1800},{id:"c2",target:6,duration:1400},{id:"c3",target:15,duration:1600}].forEach(({id:n,target:i,duration:o})=>{const t=document.getElementById(n);if(!t)return;const r=t,l=performance.now();function y(d){const c=Math.min((d-l)/o,1),m=1-Math.pow(1-c,3);r.textContent=String(Math.round(m*i)),c<1&&requestAnimationFrame(y)}requestAnimationFrame(y)})}function ye(e){e.disabled=!0,e.innerHTML=te,e.style.background="#1a4a00",e.style.cursor="default"}window.addEventListener("load",()=>{setTimeout(()=>{var e;(e=document.getElementById("loader"))==null||e.classList.add("hide")},1800)});window.addEventListener("scroll",()=>{const e=document.getElementById("nav");e&&e.classList.toggle("scrolled",window.scrollY>40)},{passive:!0});function me(){document.addEventListener("click",e=>{const a=e.target,n=a==null?void 0:a.closest("#page-portfolio .filter-btn");if(!n)return;document.querySelectorAll("#page-portfolio .filter-btn").forEach(o=>o.classList.remove("active")),n.classList.add("active");const i=n.dataset.filter;i&&document.querySelectorAll("#pf-grid .portfolio-item").forEach(o=>{const t=i==="all"||o.dataset.filter===i;o.style.display=t?"":"none"})})}const ze=[{cat:"Figurki 3D · model",title:"Figurki 3D",desc:"Druk 3D z ręcznym wykończeniem",photos:["img/portfolio/orzel.jpg","img/portfolio/hero-background.jpg","img/portfolio/figurka.jpg"]},{cat:"Gadżety · merch",title:"Magnesy personalizowane",desc:"Seria personalizowana dla klienta",photos:["img/portfolio/magnes.jpg"]},{cat:"Grawer · drewno",title:"Stolik z grawerem laserowym",desc:"Grawer dekoracyjny, drewno naturalne",photos:["img/portfolio/stolik grawer.jpg"]},{cat:"Kaseton LED",title:"Logo podświetlane — recepcja",desc:"Równomierne światło, kolor z brand booka",photos:["img/portfolio/polexpert.jpg","img/portfolio/image0 (14).jpg"]},{cat:"Makieta · deweloper",title:"Zagospodarowanie terenu, osiedle mieszkaniowe",desc:"Prezentacja inwestycji w biurze sprzedaży",photos:["img/portfolio/makietaaglowne.jpeg","img/portfolio/makietaa.jpeg","img/portfolio/makietaa2.jpeg","img/portfolio/makietaa3.jpeg","img/portfolio/makietaa4.jpeg","img/portfolio/makietaa5.jpeg","img/portfolio/makieta architektoniczna 2.jpeg","img/portfolio/makieta architektoniczna.jpeg","img/portfolio/makieta architektoniczna 3.jpeg"]},{cat:"Prototyp · gadżet",title:"Lampka nocna, obudowa głosnika",desc:"Prototyp funkcjonalny z elementami docelowymi, do testów użytkowych",photos:["img/portfolio/lampka nocna.jpeg","img/portfolio/obudowa glosnik.jpeg","img/portfolio/obudowa glosnik2.jpeg"]},{cat:"Deski grawerowane · kuchnia",title:"Deski do krojenia z personalizowanym grawerem",desc:"Drewno, laser CNC",photos:["img/portfolio/deska wosp.jpeg","img/portfolio/grawer.jpg"]}],we=ze.map(e=>({...e,photos:e.photos.map(D)})),s={project:null,photo:0};function ge(e){document.body.style.overflow="hidden",requestAnimationFrame(()=>{requestAnimationFrame(()=>{e.classList.add("is-open")})})}function ke(e){const a=we[e];if(!(a!=null&&a.photos.length))return;const n=document.getElementById("zlb"),i=document.getElementById("zlb-track"),o=document.getElementById("zlb-thumbs"),t=document.getElementById("zlb-cat"),r=document.getElementById("zlb-title"),l=document.getElementById("zlb-desc"),y=document.getElementById("zlb-counter");if(!n||!i||!o||!t||!r||!l||!y)return;s.project=a,s.photo=0,t.textContent=a.cat,r.textContent=a.title,l.textContent=a.desc,i.innerHTML="",o.innerHTML="",a.photos.forEach((M,u)=>{const w=document.createElement("img");w.src=M,w.alt=a.title,u===0?(w.loading="eager",w.fetchPriority="high"):w.loading="lazy",u===0&&w.classList.add("zactive"),i.appendChild(w);const v=document.createElement("div");v.className="zlb-thumb"+(u===0?" zactive":""),v.tabIndex=0;const h=document.createElement("img");h.src=M,h.alt="",h.loading=u===0?"eager":"lazy",v.appendChild(h);const B=u;v.addEventListener("click",()=>g(B)),o.appendChild(v)}),A(y);const d=a.photos.length<=1,c=document.getElementById("zlb-prev"),m=document.getElementById("zlb-next");c&&(c.style.display=d?"none":""),m&&(m.style.display=d?"none":"");const z=i.querySelector("img"),f=()=>ge(n);z&&"decode"in z?z.decode().then(f).catch(f):f()}function L(){var e;(e=document.getElementById("zlb"))==null||e.classList.remove("is-open"),document.body.style.overflow="",s.project=null}function A(e){const a=s.project;a&&(e.textContent=`${s.photo+1} / ${a.photos.length}`)}function g(e){var y,d,c,m,z;const a=s.project;if(!a)return;const n=document.getElementById("zlb-track"),i=document.getElementById("zlb-thumbs"),o=document.getElementById("zlb-counter");if(!n||!i||!o)return;const t=n.querySelectorAll("img"),r=i.querySelectorAll(".zlb-thumb"),l=a.photos.length;!l||!t.length||((y=t[s.photo])==null||y.classList.remove("zactive"),(d=r[s.photo])==null||d.classList.remove("zactive"),s.photo=(e%l+l)%l,(c=t[s.photo])==null||c.classList.add("zactive"),(m=r[s.photo])==null||m.classList.add("zactive"),(z=r[s.photo])==null||z.scrollIntoView({behavior:"auto",block:"nearest",inline:"center"}),A(o))}let S=!1;function ue(){S||(S=!0,document.addEventListener("click",e=>{const a=e.target,n=a==null?void 0:a.closest("#page-portfolio .pf-card-trigger");if(n){const o=n.closest(".portfolio-item");if(!o)return;const t=parseInt(o.getAttribute("data-project")??"",10);if(Number.isNaN(t))return;e.preventDefault(),e.stopPropagation(),ke(t);return}const i=document.getElementById("zlb");if(i!=null&&i.classList.contains("is-open")){if(a!=null&&a.closest("#zlb-bg")){L();return}if(a!=null&&a.closest("#zlb-close")){L();return}if(a!=null&&a.closest("#zlb-prev")){g(s.photo-1);return}if(a!=null&&a.closest("#zlb-next")){g(s.photo+1);return}}}),document.addEventListener("keydown",e=>{const a=document.getElementById("zlb");a!=null&&a.classList.contains("is-open")&&(e.key==="Escape"&&L(),e.key==="ArrowLeft"&&g(s.photo-1),e.key==="ArrowRight"&&g(s.photo+1))}))}function ve(){const e=document.getElementById("zlb-stage");if(!e)return;let a=null;e.addEventListener("touchstart",n=>{var i;a=((i=n.touches[0])==null?void 0:i.clientX)??null},{passive:!0}),e.addEventListener("touchend",n=>{var o;if(a===null)return;const i=(((o=n.changedTouches[0])==null?void 0:o.clientX)??a)-a;Math.abs(i)>48&&g(s.photo+(i<0?1:-1)),a=null},{passive:!0})}function be(){const e=document.getElementById("cursor-ring");if(!e)return;const a=e;let n=0,i=0,o=0,t=0,r=!1;document.addEventListener("mousemove",d=>{n=d.clientX,i=d.clientY,r||(a.style.opacity="1",r=!0)},{passive:!0}),document.addEventListener("mouseleave",()=>{a.style.opacity="0"}),document.addEventListener("mouseenter",()=>{r&&(a.style.opacity="1")});function l(){o+=(n-o)*.15,t+=(i-t)*.15,a.style.left=o+"px",a.style.top=t+"px",requestAnimationFrame(l)}l();const y="a,button,.service-card,.work-card,.pricing-card,.portfolio-item,.blog-card,.testi-card,.nav-item-dropdown";document.addEventListener("mouseover",d=>{var m;(m=d.target)!=null&&m.closest(y)&&(a.style.width="36px",a.style.height="36px",a.style.borderColor="rgba(200,255,87,0.7)")}),document.addEventListener("mouseout",d=>{var z;const c=d.relatedTarget;(z=c==null?void 0:c.closest)!=null&&z.call(c,y)||(a.style.width="20px",a.style.height="20px",a.style.borderColor="var(--accent)")})}function j(e){const a=document.getElementById(C);if(!a)return;const n=k[e]?e:"not-found";document.documentElement.dataset.zenithPage=n,window.location.hash=n==="home"?"":`#${n}`,a.innerHTML=re(k[n]??k["not-found"]),document.title=N[n]??N["not-found"],ce(n),F(),n==="portfolio"&&ve(),setTimeout(()=>W(n),600),window.scrollTo({top:0,behavior:"smooth"})}window.navigatePage=j;window.openMobileNav=pe;const p={photos:[],idx:0};function he(){var a,n,i,o;let e=document.getElementById("svc-lb");return e||(e=document.createElement("div"),e.id="svc-lb",e.className="svc-lb",e.setAttribute("role","dialog"),e.setAttribute("aria-modal","true"),e.innerHTML='<div class="svc-lb-bg" id="svc-lb-bg"></div><div class="svc-lb-shell"><div class="svc-lb-stage" id="svc-lb-stage"><div class="svc-lb-track" id="svc-lb-track"></div><button class="svc-lb-arrow svc-lb-prev" id="svc-lb-prev" aria-label="Poprzednie">&#8592;</button><button class="svc-lb-arrow svc-lb-next" id="svc-lb-next" aria-label="Następne">&#8594;</button><button class="svc-lb-close" id="svc-lb-close" aria-label="Zamknij">&#x2715;</button><div class="svc-lb-counter" id="svc-lb-counter"></div></div></div>',document.body.appendChild(e),(a=e.querySelector("#svc-lb-bg"))==null||a.addEventListener("click",P),(n=e.querySelector("#svc-lb-close"))==null||n.addEventListener("click",P),(i=e.querySelector("#svc-lb-prev"))==null||i.addEventListener("click",()=>b(p.idx-1)),(o=e.querySelector("#svc-lb-next"))==null||o.addEventListener("click",()=>b(p.idx+1))),e}function je(e,a=0){p.photos=e,p.idx=a;const n=he(),i=document.getElementById("svc-lb-track");i&&(i.innerHTML="",e.forEach((o,t)=>{const r=document.createElement("img");r.src=o,r.alt="",r.loading=t===0?"eager":"lazy",t===0&&r.classList.add("svc-active"),i.appendChild(r)})),I(),fe(),document.body.style.overflow="hidden",requestAnimationFrame(()=>requestAnimationFrame(()=>n.classList.add("is-open")))}function P(){var e;(e=document.getElementById("svc-lb"))==null||e.classList.remove("is-open"),document.body.style.overflow=""}function b(e){var o,t;const a=p.photos.length,n=(e%a+a)%a,i=document.getElementById("svc-lb-track");if(i){const r=i.querySelectorAll("img");(o=r[p.idx])==null||o.classList.remove("svc-active"),(t=r[n])==null||t.classList.add("svc-active")}p.idx=n,I()}function I(){const e=document.getElementById("svc-lb-counter");e&&(e.textContent=`${p.idx+1} / ${p.photos.length}`)}function fe(){const e=p.photos.length<=1,a=document.getElementById("svc-lb-prev"),n=document.getElementById("svc-lb-next");a&&(a.style.display=e?"none":""),n&&(n.style.display=e?"none":"")}let Z=!1;function xe(){if(Z)return;Z=!0,document.addEventListener("click",a=>{const n=a.target,i=n==null?void 0:n.closest(".service-visual[data-imgs]");if(!i)return;a.preventDefault();let o=[];try{o=JSON.parse(i.dataset.imgs??"[]")}catch{o=[]}o.length&&je(o)}),document.addEventListener("keydown",a=>{const n=document.getElementById("svc-lb");n!=null&&n.classList.contains("is-open")&&(a.key==="Escape"&&P(),a.key==="ArrowLeft"&&b(p.idx-1),a.key==="ArrowRight"&&b(p.idx+1))});let e=null;document.addEventListener("touchstart",a=>{var i;const n=document.getElementById("svc-lb");n!=null&&n.classList.contains("is-open")&&(e=((i=a.touches[0])==null?void 0:i.clientX)??null)},{passive:!0}),document.addEventListener("touchend",a=>{var o;const n=document.getElementById("svc-lb");if(!(n!=null&&n.classList.contains("is-open"))||e===null)return;const i=(((o=a.changedTouches[0])==null?void 0:o.clientX)??e)-e;Math.abs(i)>48&&b(p.idx+(i<0?1:-1)),e=null},{passive:!0})}le();me();ue();xe();be();F();setTimeout(()=>W(E()),600);document.addEventListener("click",e=>{var i;const a=(i=e.target)==null?void 0:i.closest("a[href]");if(!a)return;const n=se(a.getAttribute("href"));n&&(e.preventDefault(),j(n))});window.addEventListener("hashchange",()=>{const e=O();e&&e!==E()&&j(e)});window.closeMobileNav=de;window.handleFormSubmit=ye;
+`,Z={home:"Zenith Lab — makiety, laser CNC, grawer i druk 3D",print3d:"Druk 3D i prototypy — Zenith Lab",archmodels:"Makiety architektoniczne deweloperskie — Zenith Lab",led:"Kasetony LED podświetlane — Zenith Lab",engraving:"Grawer i cięcie laserem CNC — Zenith Lab",prototypes:"Prototypy produktów — Zenith Lab",gadgets:"Gadżety reklamowe z grawerem — Zenith Lab",portfolio:"Realizacje — makiety, laser, LED, druk 3D — Zenith Lab",contact:"Kontakt — wycena makiety, lasera, druku 3D — Zenith Lab",blog:"Blog — materiały, laser CNC, makiety, LED — Zenith Lab","blog-material":"Drewno, sklejka czy plexi? Dobór materiału pod laser CNC — Zenith Lab","blog-archmodel":"Makieta architektoniczna: skala, detal, materiał — Zenith Lab","blog-led-light":"Jednolite podświetlenie LED w kaszetonie — Zenith Lab","blog-nfc":"Brelok NFC z grawerem — zastosowania i planowanie — Zenith Lab","blog-3dproto":"Druk 3D przed formą wtryskową — co sprawdzić — Zenith Lab","blog-glass":"Grawerowanie szkła laserem CO2 — efekty i ograniczenia — Zenith Lab",regulamin:"Regulamin świadczenia usług — Zenith Lab",privacy:"Polityka prywatności — Zenith Lab",cookies:"Polityka cookies — Zenith Lab","not-found":"404 — Zenith Lab"},la="✓ Wysłano — dziękujemy!",x=Object.fromEntries(Object.entries(Object.assign({})).flatMap(([e,n])=>{const i=e.replace(/\\/g,"/").replace(/^(\.\.\/)+/,""),o=[[i,n]];return i.startsWith("img/")&&o.push([`../${i}`,n]),o}));function D(a){return x[a]??x[`../${a}`]??x[a.replace(/^\.\/?/,"")]??a}function ca(a){return a.replace(/(src|data-imgs)=("|')([^"']+?)(\2)/g,(e,n,i,o)=>{if(n==="src"&&o.startsWith("img/"))return`${n}=${i}${D(o)}${i}`;if(n==="data-imgs")try{const t=JSON.parse(o);if(!Array.isArray(t))return e;const r=t.map(l=>typeof l=="string"?D(l):l);return`${n}=${i}${JSON.stringify(r)}${i}`}catch{return e}return e})}const P="zenith-main",k={home:R,print3d:K,archmodels:J,led:q,engraving:U,prototypes:_,gadgets:H,portfolio:V,contact:X,blog:$,"blog-material":Y,"blog-archmodel":Q,"blog-led-light":aa,"blog-nfc":ea,"blog-3dproto":na,"blog-glass":ia,regulamin:oa,privacy:ta,cookies:ra,"not-found":sa};function E(){const a=document.documentElement.dataset.zenithPage;return a==="not-found"?"not-found":a&&a in k?a:"home"}function O(){const a=window.location.hash.replace(/^#/,"");return a&&a in k?a:null}function da(a){if(!a||a.startsWith("mailto:")||a.startsWith("tel:")||a.startsWith("http")||!a.endsWith(".html"))return null;const n=(a.replace(/\\/g,"/").split("/").pop()??a).replace(/\.html$/,"");return n==="index"?"home":n==="404"?"not-found":n in k?n:null}function pa(){if(document.getElementById(P))return;const a=O()??E();document.body.insertAdjacentHTML("afterbegin",B+`<div id="${P}"></div>`+G),j(a)}function za(a){const e=a==="print3d"||a==="archmodels"||a==="led"||a==="engraving"||a==="prototypes"||a==="gadgets";document.querySelectorAll("#nav .nav-links a[data-n]").forEach(n=>{n.classList.remove("active");const i=n.getAttribute("data-n");i===a&&n.classList.add("active"),i==="services"&&e&&n.classList.add("active")})}function ya(){var a,e;(a=document.getElementById("mobile-nav"))==null||a.classList.remove("open"),(e=document.getElementById("mobile-nav-backdrop"))==null||e.classList.remove("open"),document.body.style.overflow=""}function wa(){var a,e;(a=document.getElementById("mobile-nav"))==null||a.classList.add("open"),(e=document.getElementById("mobile-nav-backdrop"))==null||e.classList.add("open"),document.body.style.overflow="hidden"}function W(){const a=document.querySelectorAll(".page .reveal:not(.visible)");if(!a.length)return;const e=new IntersectionObserver(n=>{n.forEach(i=>{i.isIntersecting&&i.target instanceof HTMLElement&&(i.target.classList.add("visible"),e.unobserve(i.target))})},{threshold:.12,rootMargin:"0px 0px -40px 0px"});a.forEach(n=>e.observe(n))}function A(a){if(a!=="home")return;[{id:"c1",target:127,duration:1800},{id:"c2",target:6,duration:1400},{id:"c3",target:15,duration:1600}].forEach(({id:n,target:i,duration:o})=>{const t=document.getElementById(n);if(!t)return;const r=t,l=performance.now();function z(d){const c=Math.min((d-l)/o,1),y=1-Math.pow(1-c,3);r.textContent=String(Math.round(y*i)),c<1&&requestAnimationFrame(z)}requestAnimationFrame(z)})}function ma(a){a.disabled=!0,a.innerHTML=la,a.style.background="#1a4a00",a.style.cursor="default"}window.addEventListener("load",()=>{setTimeout(()=>{var a;(a=document.getElementById("loader"))==null||a.classList.add("hide")},1800)});window.addEventListener("scroll",()=>{const a=document.getElementById("nav");a&&a.classList.toggle("scrolled",window.scrollY>40)},{passive:!0});function ga(){document.addEventListener("click",a=>{const e=a.target,n=e==null?void 0:e.closest("#page-portfolio .filter-btn");if(!n)return;document.querySelectorAll("#page-portfolio .filter-btn").forEach(o=>o.classList.remove("active")),n.classList.add("active");const i=n.dataset.filter;i&&document.querySelectorAll("#pf-grid .portfolio-item").forEach(o=>{const t=i==="all"||o.dataset.filter===i;o.style.display=t?"":"none"})})}const ka=[{cat:"Figurki 3D · model",title:"Figurki 3D",desc:"Druk 3D z ręcznym wykończeniem",photos:["img/portfolio/orzel.jpg","img/portfolio/hero-background.jpg","img/portfolio/figurka.jpg"]},{cat:"Gadżety · merch",title:"Magnesy personalizowane",desc:"Seria personalizowana dla klienta",photos:["img/portfolio/magnes.jpg"]},{cat:"Grawer · drewno",title:"Stolik z grawerem laserowym",desc:"Grawer dekoracyjny, drewno naturalne",photos:["img/portfolio/stolik grawer.jpg"]},{cat:"Kaseton LED",title:"Logo podświetlane — recepcja",desc:"Równomierne światło, kolor z brand booka",photos:["img/portfolio/polexpert.jpg","img/portfolio/image0 (14).jpg"]},{cat:"Makieta · deweloper",title:"Zagospodarowanie terenu, osiedle mieszkaniowe",desc:"Prezentacja inwestycji w biurze sprzedaży",photos:["img/portfolio/makietaaglowne.jpeg","img/portfolio/makietaa.jpeg","img/portfolio/makietaa2.jpeg","img/portfolio/makietaa3.jpeg","img/portfolio/makietaa4.jpeg","img/portfolio/makietaa5.jpeg","img/portfolio/hustawka.jpg","img/portfolio/hustawka2.jpg","img/portfolio/hustawka3.jpg","img/portfolio/makieta architektoniczna 2.jpeg","img/portfolio/makieta architektoniczna.jpeg","img/portfolio/makieta architektoniczna 3.jpeg"]},{cat:"Prototyp · gadżet",title:"Lampka nocna, obudowa głosnika",desc:"Prototyp funkcjonalny z elementami docelowymi, do testów użytkowych",photos:["img/portfolio/lampka nocna.jpeg","img/portfolio/obudowa glosnik.jpeg","img/portfolio/obudowa glosnik2.jpeg"]},{cat:"Deski grawerowane · kuchnia",title:"Deski do krojenia z personalizowanym grawerem",desc:"Drewno, laser CNC",photos:["img/portfolio/deska wosp.jpeg","img/portfolio/grawer.jpg"]},{cat:"Gadżety · event",title:"Gadżety eventowe",desc:"Produkty promocyjne dla wydarzeń",photos:["img/portfolio/soccerball.jpeg","img/portfolio/soccerball2.jpeg","img/portfolio/soccerball3.jpeg"]},{cat:"Puchary · Nagrody",title:"Gadżety eventowe",desc:"Produkty promocyjne dla wydarzeń",photos:["img/portfolio/figurka_nbp.jpg","img/portfolio/puchar tlok.jpeg","img/portfolio/puchar.jpeg","img/portfolio/puchary grawer.jpeg","img/portfolio/puchary.jpg"]}],ua=ka.map(a=>({...a,photos:a.photos.map(D)})),s={project:null,photo:0};function va(a){document.body.style.overflow="hidden",requestAnimationFrame(()=>{requestAnimationFrame(()=>{a.classList.add("is-open")})})}function ba(a){const e=ua[a];if(!(e!=null&&e.photos.length))return;const n=document.getElementById("zlb"),i=document.getElementById("zlb-track"),o=document.getElementById("zlb-thumbs"),t=document.getElementById("zlb-cat"),r=document.getElementById("zlb-title"),l=document.getElementById("zlb-desc"),z=document.getElementById("zlb-counter");if(!n||!i||!o||!t||!r||!l||!z)return;s.project=e,s.photo=0,t.textContent=e.cat,r.textContent=e.title,l.textContent=e.desc,i.innerHTML="",o.innerHTML="",e.photos.forEach((M,u)=>{const m=document.createElement("img");m.src=M,m.alt=e.title,u===0?(m.loading="eager",m.fetchPriority="high"):m.loading="lazy",u===0&&m.classList.add("zactive"),i.appendChild(m);const v=document.createElement("div");v.className="zlb-thumb"+(u===0?" zactive":""),v.tabIndex=0;const h=document.createElement("img");h.src=M,h.alt="",h.loading=u===0?"eager":"lazy",v.appendChild(h);const I=u;v.addEventListener("click",()=>g(I)),o.appendChild(v)}),T(z);const d=e.photos.length<=1,c=document.getElementById("zlb-prev"),y=document.getElementById("zlb-next");c&&(c.style.display=d?"none":""),y&&(y.style.display=d?"none":"");const w=i.querySelector("img"),f=()=>va(n);w&&"decode"in w?w.decode().then(f).catch(f):f()}function L(){var a;(a=document.getElementById("zlb"))==null||a.classList.remove("is-open"),document.body.style.overflow="",s.project=null}function T(a){const e=s.project;e&&(a.textContent=`${s.photo+1} / ${e.photos.length}`)}function g(a){var z,d,c,y,w;const e=s.project;if(!e)return;const n=document.getElementById("zlb-track"),i=document.getElementById("zlb-thumbs"),o=document.getElementById("zlb-counter");if(!n||!i||!o)return;const t=n.querySelectorAll("img"),r=i.querySelectorAll(".zlb-thumb"),l=e.photos.length;!l||!t.length||((z=t[s.photo])==null||z.classList.remove("zactive"),(d=r[s.photo])==null||d.classList.remove("zactive"),s.photo=(a%l+l)%l,(c=t[s.photo])==null||c.classList.add("zactive"),(y=r[s.photo])==null||y.classList.add("zactive"),(w=r[s.photo])==null||w.scrollIntoView({behavior:"auto",block:"nearest",inline:"center"}),T(o))}let N=!1;function ha(){N||(N=!0,document.addEventListener("click",a=>{const e=a.target,n=e==null?void 0:e.closest("#page-portfolio .pf-card-trigger");if(n){const o=n.closest(".portfolio-item");if(!o)return;const t=parseInt(o.getAttribute("data-project")??"",10);if(Number.isNaN(t))return;a.preventDefault(),a.stopPropagation(),ba(t);return}const i=document.getElementById("zlb");if(i!=null&&i.classList.contains("is-open")){if(e!=null&&e.closest("#zlb-bg")){L();return}if(e!=null&&e.closest("#zlb-close")){L();return}if(e!=null&&e.closest("#zlb-prev")){g(s.photo-1);return}if(e!=null&&e.closest("#zlb-next")){g(s.photo+1);return}}}),document.addEventListener("keydown",a=>{const e=document.getElementById("zlb");e!=null&&e.classList.contains("is-open")&&(a.key==="Escape"&&L(),a.key==="ArrowLeft"&&g(s.photo-1),a.key==="ArrowRight"&&g(s.photo+1))}))}function ja(){const a=document.getElementById("zlb-stage");if(!a)return;let e=null;a.addEventListener("touchstart",n=>{var i;e=((i=n.touches[0])==null?void 0:i.clientX)??null},{passive:!0}),a.addEventListener("touchend",n=>{var o;if(e===null)return;const i=(((o=n.changedTouches[0])==null?void 0:o.clientX)??e)-e;Math.abs(i)>48&&g(s.photo+(i<0?1:-1)),e=null},{passive:!0})}function fa(){const a=document.getElementById("cursor-ring");if(!a)return;const e=a;let n=0,i=0,o=0,t=0,r=!1;document.addEventListener("mousemove",d=>{n=d.clientX,i=d.clientY,r||(e.style.opacity="1",r=!0)},{passive:!0}),document.addEventListener("mouseleave",()=>{e.style.opacity="0"}),document.addEventListener("mouseenter",()=>{r&&(e.style.opacity="1")});function l(){o+=(n-o)*.15,t+=(i-t)*.15,e.style.left=o+"px",e.style.top=t+"px",requestAnimationFrame(l)}l();const z="a,button,.service-card,.work-card,.pricing-card,.portfolio-item,.blog-card,.testi-card,.nav-item-dropdown";document.addEventListener("mouseover",d=>{var y;(y=d.target)!=null&&y.closest(z)&&(e.style.width="36px",e.style.height="36px",e.style.borderColor="rgba(200,255,87,0.7)")}),document.addEventListener("mouseout",d=>{var w;const c=d.relatedTarget;(w=c==null?void 0:c.closest)!=null&&w.call(c,z)||(e.style.width="20px",e.style.height="20px",e.style.borderColor="var(--accent)")})}function j(a){const e=document.getElementById(P);if(!e)return;const n=k[a]?a:"not-found";document.documentElement.dataset.zenithPage=n,window.location.hash=n==="home"?"":`#${n}`,e.innerHTML=ca(k[n]??k["not-found"]),document.title=Z[n]??Z["not-found"],za(n),W(),n==="portfolio"&&ja(),setTimeout(()=>A(n),600),window.scrollTo({top:0,behavior:"smooth"})}window.navigatePage=j;window.openMobileNav=wa;const p={photos:[],idx:0};function xa(){var e,n,i,o;let a=document.getElementById("svc-lb");return a||(a=document.createElement("div"),a.id="svc-lb",a.className="svc-lb",a.setAttribute("role","dialog"),a.setAttribute("aria-modal","true"),a.innerHTML='<div class="svc-lb-bg" id="svc-lb-bg"></div><div class="svc-lb-shell"><div class="svc-lb-stage" id="svc-lb-stage"><div class="svc-lb-track" id="svc-lb-track"></div><button class="svc-lb-arrow svc-lb-prev" id="svc-lb-prev" aria-label="Poprzednie">&#8592;</button><button class="svc-lb-arrow svc-lb-next" id="svc-lb-next" aria-label="Następne">&#8594;</button><button class="svc-lb-close" id="svc-lb-close" aria-label="Zamknij">&#x2715;</button><div class="svc-lb-counter" id="svc-lb-counter"></div></div></div>',document.body.appendChild(a),(e=a.querySelector("#svc-lb-bg"))==null||e.addEventListener("click",C),(n=a.querySelector("#svc-lb-close"))==null||n.addEventListener("click",C),(i=a.querySelector("#svc-lb-prev"))==null||i.addEventListener("click",()=>b(p.idx-1)),(o=a.querySelector("#svc-lb-next"))==null||o.addEventListener("click",()=>b(p.idx+1))),a}function La(a,e=0){p.photos=a,p.idx=e;const n=xa(),i=document.getElementById("svc-lb-track");i&&(i.innerHTML="",a.forEach((o,t)=>{const r=document.createElement("img");r.src=o,r.alt="",r.loading=t===0?"eager":"lazy",t===0&&r.classList.add("svc-active"),i.appendChild(r)})),F(),Da(),document.body.style.overflow="hidden",requestAnimationFrame(()=>requestAnimationFrame(()=>n.classList.add("is-open")))}function C(){var a;(a=document.getElementById("svc-lb"))==null||a.classList.remove("is-open"),document.body.style.overflow=""}function b(a){var o,t;const e=p.photos.length,n=(a%e+e)%e,i=document.getElementById("svc-lb-track");if(i){const r=i.querySelectorAll("img");(o=r[p.idx])==null||o.classList.remove("svc-active"),(t=r[n])==null||t.classList.add("svc-active")}p.idx=n,F()}function F(){const a=document.getElementById("svc-lb-counter");a&&(a.textContent=`${p.idx+1} / ${p.photos.length}`)}function Da(){const a=p.photos.length<=1,e=document.getElementById("svc-lb-prev"),n=document.getElementById("svc-lb-next");e&&(e.style.display=a?"none":""),n&&(n.style.display=a?"none":"")}let S=!1;function Pa(){if(S)return;S=!0,document.addEventListener("click",e=>{const n=e.target,i=n==null?void 0:n.closest(".service-visual[data-imgs]");if(!i)return;e.preventDefault();let o=[];try{o=JSON.parse(i.dataset.imgs??"[]")}catch{o=[]}o.length&&La(o)}),document.addEventListener("keydown",e=>{const n=document.getElementById("svc-lb");n!=null&&n.classList.contains("is-open")&&(e.key==="Escape"&&C(),e.key==="ArrowLeft"&&b(p.idx-1),e.key==="ArrowRight"&&b(p.idx+1))});let a=null;document.addEventListener("touchstart",e=>{var i;const n=document.getElementById("svc-lb");n!=null&&n.classList.contains("is-open")&&(a=((i=e.touches[0])==null?void 0:i.clientX)??null)},{passive:!0}),document.addEventListener("touchend",e=>{var o;const n=document.getElementById("svc-lb");if(!(n!=null&&n.classList.contains("is-open"))||a===null)return;const i=(((o=e.changedTouches[0])==null?void 0:o.clientX)??a)-a;Math.abs(i)>48&&b(p.idx+(i<0?1:-1)),a=null},{passive:!0})}pa();ga();ha();Pa();fa();W();setTimeout(()=>A(E()),600);document.addEventListener("click",a=>{var i;const e=(i=a.target)==null?void 0:i.closest("a[href]");if(!e)return;const n=da(e.getAttribute("href"));n&&(a.preventDefault(),j(n))});window.addEventListener("hashchange",()=>{const a=O();a&&a!==E()&&j(a)});window.closeMobileNav=ya;window.handleFormSubmit=ma;
